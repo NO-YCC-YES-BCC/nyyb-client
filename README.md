@@ -157,28 +157,35 @@ src
 프론트엔드 코드는 역할에 따라 폴더를 나누어 관리합니다.
 
 ```txt
-src
-├─ app                         # 앱 전체 설정
-│  └─ router.jsx               # 라우터 설정
-├─ pages                       # 페이지 단위 화면
-│  ├─ HomePage.jsx             # 홈 페이지
-│  ├─ LoginPage.jsx            # 로그인 페이지
-│  └─ MyPage.jsx               # 마이 페이지
-├─ features                    # 기능 단위 코드
-│  ├─ auth                     # 인증 관련 기능
-│  │  ├─ api.js                # 로그인, 회원가입 API 요청
-│  │  └─ components            # 인증 관련 컴포넌트
-│  └─ user                     # 사용자 관련 기능
-│     ├─ api.js                # 사용자 API 요청
-│     └─ components            # 사용자 관련 컴포넌트
-├─ shared                      # 여러 기능에서 공통으로 사용하는 코드
-│  ├─ api
-│  │  └─ client.js             # Axios 기본 설정
-│  ├─ components               # 공통 컴포넌트
-│  ├─ styles                   # 전역 스타일
-│  └─ utils                    # 공통 유틸 함수
-├─ App.jsx                     # 앱 전체 구조
-└─ main.jsx                    # React 앱 진입점
+src/
+├─ app/
+│  ├─ App.jsx
+│  └─ Router.jsx
+│
+├─ assets/
+│  └─ images/
+│
+├─ features/
+│  ├─ onboarding/
+│  ├─ auth/
+│  ├─ home/
+│  ├─ capture/
+│  ├─ analysis/
+│  ├─ report/
+│  ├─ routine/
+│  └─ mypage/
+│
+├─ shared/
+│  ├─ api/
+│  ├─ components/
+│  ├─ constants/
+│  ├─ styles/
+│  └─ utils/
+│
+├─ mocks/
+│  └─ mockData.js
+│
+└─ main.jsx
 ```
 
 새로운 기능을 추가할 때는 `features` 폴더 아래에 기능 이름으로 폴더를 만들고 관리합니다.
