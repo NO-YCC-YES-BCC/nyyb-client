@@ -1,0 +1,54 @@
+/* global.css */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  background: #f3f5f0;
+  color: #111;
+}
+
+/* 웹사이트지만 모바일 앱 화면처럼 보이게 하는 바깥 프레임 */
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+/* 실제 앱 화면 영역 */
+.app-shell {
+  width: 100%;
+  max-width: 393px;
+  min-height: 100vh;
+  background: #fff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 하단 네비가 있는 화면에서 내용이 가려지지 않게 */
+.page {
+  min-height: 100vh;
+  padding: 20px;
+  padding-bottom: 96px;
+}
+
+/* 하단 네비게이션 */
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  max-width: 393px;
+  transform: translateX(-50%);
+  height: 72px;
+  background: #c9d8c5;
+}
