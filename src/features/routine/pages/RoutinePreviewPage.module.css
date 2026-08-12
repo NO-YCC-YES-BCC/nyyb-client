@@ -1,0 +1,127 @@
+.page {
+  padding: 20px 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.loadingText {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-sub);
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+.compareWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.columnTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slotLabel {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-sub);
+}
+
+.slotList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.emptyText {
+  margin: 0;
+  padding: 10px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+.ctaWrap {
+  position: sticky;
+  bottom: 0;
+  padding: 12px 0 20px;
+  background: linear-gradient(to top, var(--color-bg) 70%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.ctaButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.savedText {
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.errorText {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-remove);
+  text-align: center;
+}

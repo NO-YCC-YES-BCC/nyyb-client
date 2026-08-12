@@ -1,0 +1,67 @@
+.page {
+  padding: 20px 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loadingText {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-sub);
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-sub);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctaWrap {
+  position: sticky;
+  bottom: 0;
+  padding: 12px 0 20px;
+  background: linear-gradient(to top, var(--color-bg) 70%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.selectedCount {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}

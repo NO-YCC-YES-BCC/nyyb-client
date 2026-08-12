@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.level {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-caution);
+}
+
+.name {
+  margin: 4px 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.reason {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.foundIn {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--color-text-sub);
+}
+
+.detailButton {
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-sub);
+  font-size: 12px;
+  cursor: not-allowed;
+}
