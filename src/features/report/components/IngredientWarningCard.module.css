@@ -11,38 +11,41 @@
 }
 
 .level {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   color: var(--color-caution);
 }
 
 .name {
   margin: 4px 0 2px;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .reason {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--color-text);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--color-text-sub);
 }
 
 .foundIn {
   margin: 6px 0 0;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-sub);
 }
 
-.detailButton {
+.detailLink {
   margin-top: 10px;
   align-self: flex-start;
-  padding: 6px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
-  color: var(--color-text-sub);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-caution);
   font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   cursor: not-allowed;
+  opacity: 0.7;
 }

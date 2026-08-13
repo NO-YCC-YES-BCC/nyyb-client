@@ -62,7 +62,7 @@ export const mockProducts = {
 
 export const mockReport = {
   jobId: MOCK_JOB_ID,
-  userName: '황천솔',
+  userName: '김지선',
   completedAt: '2026-08-12T09:30:00+09:00',
   summary: {
     totalProductCount: 6,
@@ -165,7 +165,84 @@ export function buildRoutinePreview(selection = mockDefaultSelection) {
   };
 }
 
+export const MOCK_ROUTINE_ID = 'routine_001';
+
 export const mockSaveRoutineResponse = {
-  routineId: 'routine_001',
+  routineId: MOCK_ROUTINE_ID,
   savedAt: new Date().toISOString(),
+};
+
+// ---------------------------------------------------------------------------
+// GET /routines, GET /routines/{routineId} 목데이터
+// (오늘 저장된 루틴이 하나 있다고 가정 - RoutineMainPage/Morning/EveningRoutinePage 공용)
+// ---------------------------------------------------------------------------
+
+export const mockSavedRoutine = {
+  routineId: MOCK_ROUTINE_ID,
+  jobId: MOCK_JOB_ID,
+  savedAt: '2026-08-12T10:00:00+09:00',
+  // 와이어프레임(루틴 카드 메인) 수치: "66점 · 겹치는 성분 3건 · 제외 제안 2건"
+  score: 66,
+  overlapIngredientCount: 3,
+  excludeSuggestionCount: 2,
+  morning: buildRoutinePreview(mockDefaultSelection).after.morning,
+  evening: buildRoutinePreview(mockDefaultSelection).after.evening,
+};
+
+// ---------------------------------------------------------------------------
+// GET /analyses/list 목데이터 (분석 이력 리스트)
+// ---------------------------------------------------------------------------
+
+export const mockAnalysisHistory = [
+  {
+    jobId: MOCK_JOB_ID,
+    completedAt: '2026-08-12T09:30:00+09:00',
+    checkedProductCount: 6,
+    removedProductCount: 3,
+    estimatedSavings: 373000,
+  },
+  {
+    jobId: 'demo-job-000',
+    completedAt: '2026-08-05T14:10:00+09:00',
+    checkedProductCount: 5,
+    removedProductCount: 1,
+    estimatedSavings: 45000,
+  },
+  {
+    jobId: 'demo-job-002',
+    completedAt: '2026-07-28T11:20:00+09:00',
+    checkedProductCount: 4,
+    removedProductCount: 2,
+    estimatedSavings: 88000,
+  },
+];
+
+// ---------------------------------------------------------------------------
+// GET /profile 목데이터 (마이페이지)
+// ---------------------------------------------------------------------------
+
+export const mockProfile = {
+  userName: '김지선',
+  joinedAt: '2026-07-01T00:00:00+09:00',
+  stats: {
+    totalAnalysisCount: mockAnalysisHistory.length,
+    totalRemovedProductCount: 6,
+    totalSavings: 506000,
+  },
+  // 카카오톡 리포트 수신 여부. 실제 토글 연동("카카오톡 수신 토글 구현")은 P2라 오늘 범위 밖.
+  notifyKakao: false,
+};
+
+// ---------------------------------------------------------------------------
+// POST /auth/kakao 목데이터 (카카오 로그인)
+// 13. 백엔드와 확정해야 할 것: payload가 authorization code인지 access token인지 미확정 -
+// 확정 전까지는 프론트에서 임의의 code 문자열을 보내는 것으로 가정한다.
+// ---------------------------------------------------------------------------
+
+export const mockKakaoLoginResponse = {
+  accessToken: 'mock-access-token',
+  user: {
+    userName: '김지선',
+    isNewUser: false,
+  },
 };

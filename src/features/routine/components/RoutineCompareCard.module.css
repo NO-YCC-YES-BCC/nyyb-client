@@ -1,0 +1,73 @@
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scoreBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.score {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.scoreCaption {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+.badge {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-remove-bg);
+  color: var(--color-remove);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rowList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.rowHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rowLabel {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rowMeta {
+  font-size: 12px;
+  color: var(--color-text-sub);
+}
+
+.iconList {
+  display: flex;
+  gap: 8px;
+}

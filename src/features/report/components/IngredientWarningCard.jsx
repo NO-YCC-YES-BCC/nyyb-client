@@ -33,8 +33,8 @@ export default function IngredientWarningCard({ ingredient }) {
       {foundIn.length > 0 && (
         <p className={styles.foundIn}>포함 제품: {foundIn.join(', ')}</p>
       )}
-      <button type="button" className={styles.detailButton} disabled>
-        성분 상세보기 (준비중)
+      <button type="button" className={styles.detailLink} disabled>
+        성분 상세보기 열기 (준비중)
       </button>
     </Card>
   );

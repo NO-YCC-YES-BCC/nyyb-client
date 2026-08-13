@@ -3,42 +3,63 @@
   담당: 기범 (task: "모바일 앱 프레임 CSS", P0, 8/12)
   ------------------------------------------------------------------
   이 파일은 원래 기범 담당 파일입니다.
-  천솔 담당 화면(P0)을 오늘 바로 확인/데모할 수 있도록
+  천솔 담당 화면(P0/P1)을 오늘 바로 확인/데모할 수 있도록
   "모바일 앱처럼 보이는 최소 프레임 + 디자인 토큰"만 임시로 채워 두었습니다.
   기범 작업 시작 시 이 파일 기준으로 자유롭게 덮어써도 됩니다.
 
   기준: 모바일 393px 디자인, 360px에서도 깨지지 않도록 min-width 대응 (12. 공통 규칙 참고)
+
+  색상/라운드 값은 Figma 와이어프레임 스크린샷을 보고 눈대중으로 맞춘 근사치입니다.
+  실제 디자인 시스템(컬러 hex, spacing 토큰)이 Figma에 정리되면 이 파일 값만
+  교체하면 되도록 전부 CSS 변수로 뺐습니다.
 */
 
 :root {
   --sott-max-width: 430px;
   --sott-min-width: 360px;
 
-  --color-bg: #f5f6f4;
+  /* 배경/서피스: 와이어프레임은 살짝 웜톤이 도는 아이보리 배경을 씀 */
+  --color-bg: #f6f4ee;
   --color-surface: #ffffff;
-  --color-text: #1c1c1c;
-  --color-text-sub: #6b6f76;
-  --color-border: #e5e7eb;
+  --color-text: #201e1a;
+  --color-text-sub: #8a887f;
+  --color-border: #ebe8df;
 
-  --color-primary: #3fbf7f;
-  --color-primary-dark: #2e9c66;
-  --color-primary-bg: #eaf8f0;
+  /* 브랜드 컬러: 하단 네비/버튼에 쓰인 세이지 그린 계열 */
+  --color-primary: #6f9a78;
+  --color-primary-dark: #4f7a5a;
+  --color-primary-bg: #e9f1e6;
 
-  --color-remove: #e2483d;
-  --color-remove-bg: #fdecea;
+  /* 카카오 로그인 버튼 */
+  --color-kakao: #fee500;
+  --color-kakao-text: #1a1a09;
 
-  --color-keep: #3fbf7f;
-  --color-keep-bg: #eaf8f0;
+  /* 다크 섹션(로그인 상단 로고 영역 등) */
+  --color-dark: #1c1b18;
+  --color-on-dark: #f6f4ee;
 
-  --color-caution: #e08a1e;
-  --color-caution-bg: #fdf1e2;
+  /* 제외 권장 = 코랄, 유지 = 세이지, 주의 = 앰버, 이력 = 그레이 */
+  --color-remove: #c85a4b;
+  --color-remove-bg: #fbe9e5;
 
-  --color-history: #6b6f76;
-  --color-history-bg: #eef0f2;
+  --color-keep: #4f7a5a;
+  --color-keep-bg: #e9f1e6;
 
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --color-caution: #b8792a;
+  --color-caution-bg: #f7ecd8;
+
+  --color-history: #8a887f;
+  --color-history-bg: #efece3;
+
+  /* 브랜드/제품 썸네일 기본 톤(제외/유지/주의 태그가 없는 일반 제품) */
+  --color-thumb-default: #cfcabb;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 2px 10px rgba(32, 30, 26, 0.06);
 
   --nav-height: 64px;
   --safe-bottom: calc(var(--nav-height) + 24px);
@@ -52,7 +73,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #dfe1e6;
+  background: #e7e4da;
   color: var(--color-text);
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
     'Noto Sans KR', system-ui, sans-serif;
