@@ -1,0 +1,31 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.keep {
+  color: var(--color-primary-dark);
+  background: var(--color-keep-bg);
+}
+
+.remove {
+  color: var(--color-remove);
+  background: var(--color-remove-bg);
+}
+
+.caution {
+  color: var(--color-caution);
+  background: var(--color-caution-bg);
+}
+
+.history {
+  color: var(--color-history);
+  background: var(--color-history-bg);
+}

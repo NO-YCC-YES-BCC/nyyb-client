@@ -1,54 +1,118 @@
-/* global.css */
+/*
+  global.css
+  담당: 기범 (task: "모바일 앱 프레임 CSS", P0, 8/12)
+  ------------------------------------------------------------------
+  이 파일은 원래 기범 담당 파일입니다.
+  천솔 담당 화면(P0/P1)을 오늘 바로 확인/데모할 수 있도록
+  "모바일 앱처럼 보이는 최소 프레임 + 디자인 토큰"만 임시로 채워 두었습니다.
+  기범 작업 시작 시 이 파일 기준으로 자유롭게 덮어써도 됩니다.
+
+  기준: 모바일 393px 디자인, 360px에서도 깨지지 않도록 min-width 대응 (12. 공통 규칙 참고)
+
+  색상/라운드 값은 Figma 와이어프레임 스크린샷을 보고 눈대중으로 맞춘 근사치입니다.
+  실제 디자인 시스템(컬러 hex, spacing 토큰)이 Figma에 정리되면 이 파일 값만
+  교체하면 되도록 전부 CSS 변수로 뺐습니다.
+*/
+
+:root {
+  --sott-max-width: 430px;
+  --sott-min-width: 360px;
+
+  /* 배경/서피스: 와이어프레임은 살짝 웜톤이 도는 아이보리 배경을 씀 */
+  --color-bg: #f6f4ee;
+  --color-surface: #ffffff;
+  --color-text: #201e1a;
+  --color-text-sub: #8a887f;
+  --color-border: #ebe8df;
+
+  /* 브랜드 컬러: 하단 네비/버튼에 쓰인 세이지 그린 계열 */
+  --color-primary: #6f9a78;
+  --color-primary-dark: #4f7a5a;
+  --color-primary-bg: #e9f1e6;
+
+  /* 카카오 로그인 버튼 */
+  --color-kakao: #fee500;
+  --color-kakao-text: #1a1a09;
+
+  /* 다크 섹션(로그인 상단 로고 영역 등) */
+  --color-dark: #1c1b18;
+  --color-on-dark: #f6f4ee;
+
+  /* 제외 권장 = 코랄, 유지 = 세이지, 주의 = 앰버, 이력 = 그레이 */
+  --color-remove: #c85a4b;
+  --color-remove-bg: #fbe9e5;
+
+  --color-keep: #4f7a5a;
+  --color-keep-bg: #e9f1e6;
+
+  --color-caution: #b8792a;
+  --color-caution-bg: #f7ecd8;
+
+  --color-history: #8a887f;
+  --color-history-bg: #efece3;
+
+  /* 브랜드/제품 썸네일 기본 톤(제외/유지/주의 태그가 없는 일반 제품) */
+  --color-thumb-default: #cfcabb;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 2px 10px rgba(32, 30, 26, 0.06);
+
+  --nav-height: 64px;
+  --safe-bottom: calc(var(--nav-height) + 24px);
+}
 
 * {
   box-sizing: border-box;
 }
 
 html,
-body,
-#root {
-  min-height: 100%;
-  margin: 0;
-}
-
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
-  background: #f3f5f0;
-  color: #111;
+  margin: 0;
+  padding: 0;
+  background: #e7e4da;
+  color: var(--color-text);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Noto Sans KR', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 웹사이트지만 모바일 앱 화면처럼 보이게 하는 바깥 프레임 */
 #root {
-  display: flex;
-  justify-content: center;
+  min-height: 100vh;
 }
 
-/* 실제 앱 화면 영역 */
-.app-shell {
+/* 모바일 웹을 앱처럼 보이게 하는 프레임 (데스크톱에서는 중앙 정렬된 카드형 뷰포트) */
+.app-frame {
+  max-width: var(--sott-max-width);
+  min-width: var(--sott-min-width);
   width: 100%;
-  max-width: 393px;
+  margin: 0 auto;
   min-height: 100vh;
-  background: #fff;
+  background: var(--color-bg);
   position: relative;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 하단 네비가 있는 화면에서 내용이 가려지지 않게 */
-.page {
-  min-height: 100vh;
-  padding: 20px;
-  padding-bottom: 96px;
+.app-frame__content {
+  flex: 1;
+  padding-bottom: var(--safe-bottom);
 }
 
-/* 하단 네비게이션 */
-.bottom-nav {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  width: 100%;
-  max-width: 393px;
-  transform: translateX(-50%);
-  height: 72px;
-  background: #c9d8c5;
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
