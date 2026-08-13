@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ROUTES } from "../shared/constants/routes";
 
 import EntryPage from "../features/onboarding/pages/EntryPage"
@@ -15,6 +15,7 @@ import EveningRoutinePage from "../features/routine/pages/EveningRoutinePage"
 import HistoryPage from "../features/report/pages/HistoryPage"
 import MyPage from "../features/mypage/pages/MyPage"
 import BottomNav from "../shared/components/BottomNav";
+import NotFoundPage from "../features/not-found/pages/NotFoundPage"
 
 export default function AppRouter() {
     return(
@@ -33,6 +34,10 @@ export default function AppRouter() {
                 <Route path={ROUTES.ROUTINE_EVENING} element={<EveningRoutinePage />} />
                 <Route path={ROUTES.HISTORY} element={<HistoryPage />} />
                 <Route path={ROUTES.MYPAGE} element={<MyPage />} />
+
+                <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage/>} />
+                <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} replace />} />
+                
             </Routes>
             <BottomNav/>
         </BrowserRouter>
