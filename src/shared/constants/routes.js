@@ -12,4 +12,5 @@ export const ROUTES = {
   ROUTINE_EVENING: "/routine/evening",
   HISTORY: "/history",
   MYPAGE: "/mypage",
+  NOT_FOUND: "/not-found",
 };
