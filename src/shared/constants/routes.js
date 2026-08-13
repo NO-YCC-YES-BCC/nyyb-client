@@ -1,0 +1,18 @@
+export const ROUTES = {
+  ENTRY: "/",
+  ONBOARDING: "/onboarding",
+  LOGIN: "/login",
+  HOME: "/home",
+  CAPTURE: "/capture",
+  CAPTURE_PRODUCTS: "/capture/products",
+  ANALYSIS_LOADING: "/analysis/loading",
+  REPORT: "/report/:jobId",
+  ROUTINE: "/routine",
+  ROUTINE_EDIT: "/routine/edit/:jobId",
+  ROUTINE_PREVIEW: "/routine/preview/:jobId",
+  ROUTINE_MORNING: "/routine/morning/:routineId",
+  ROUTINE_EVENING: "/routine/evening/:routineId",
+  HISTORY: "/history",
+  MYPAGE: "/mypage",
+  NOT_FOUND: "/not-found",
+};
