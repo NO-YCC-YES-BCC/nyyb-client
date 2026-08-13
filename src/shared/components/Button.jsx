@@ -7,11 +7,12 @@ export default function Button({
     disabled = false,
     onClick,
     leftIcon,
+    className = "",
 }) {
     return(
         <button
         type={type}
-        className={[styles.button, styles[variant]].join(" ")}
+        className={[styles.button, styles[variant], className].join(" ")}
         disabled={disabled}
         onClick={onClick}
         >
