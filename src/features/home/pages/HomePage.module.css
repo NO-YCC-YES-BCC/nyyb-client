@@ -1,7 +1,22 @@
 .page {
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
   background: #fff;
+}
+
+.page::-webkit-scrollbar {
+  display: none;
+}
+
+.section {
+  min-height: 100vh;
+  position: relative;
+  padding: 20px;
+  scroll-snap-align: start;
+  /* scroll-snap-stop: always; */
 }
 
 .header {
