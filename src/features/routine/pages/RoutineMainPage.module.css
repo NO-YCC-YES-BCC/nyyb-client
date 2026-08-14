@@ -1,0 +1,119 @@
+.page {
+  padding: 20px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scoreCard {
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 2px 10px rgba(17, 17, 17, 0.08);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.score {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  color: #111111;
+}
+
+.scoreBadge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #fbe9e5;
+  color: #c85a4b;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #767a72;
+}
+
+.summaryPill {
+  margin: 0;
+  text-align: center;
+  padding: 14px;
+  border-radius: 999px;
+  background: #e9f1e6;
+  color: #4f7a5a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.timeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 2px 10px rgba(17, 17, 17, 0.08);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.timeHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.timeIconMorning {
+  background: #6f9a78;
+}
+
+.timeIconEvening {
+  background: #4f7a5a;
+}
+
+.timeLabel {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.thumbRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #cfcabb;
+  display: block;
+}
+
+.loadingText,
+.emptyState {
+  text-align: center;
+  color: #767a72;
+  font-size: 14px;
+  padding: 40px 0;
+}
