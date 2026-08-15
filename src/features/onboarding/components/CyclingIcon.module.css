@@ -1,0 +1,16 @@
+.wrapper {
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px 0 #eee3dc;
+}
+
+.icon {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
