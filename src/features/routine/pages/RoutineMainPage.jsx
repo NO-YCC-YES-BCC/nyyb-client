@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
 import { getRoutineMain } from '../api/routineApi';
 import styles from './RoutineMainPage.module.css';
+import morningIcon from '../../../assets/icons/routine/morning.svg';
+import eveningIcon from '../../../assets/icons/routine/evening.svg';
 
 export default function RoutineMainPage() {
   const [routine, setRoutine] = useState(null);
@@ -67,7 +69,9 @@ export default function RoutineMainPage() {
 
       <Link to={ROUTES.ROUTINE_MORNING} className={styles.timeCard}>
         <div className={styles.timeHeader}>
-          <span className={`${styles.timeIcon} ${styles.timeIconMorning}`}>+</span>
+          <span className={`${styles.timeIcon} ${styles.timeIconMorning}`}>
+            <img src={morningIcon} alt="" className={styles.timeIconImg} />
+          </span>
           <span className={styles.timeLabel}>오전 루틴</span>
         </div>
         <div className={styles.thumbRow}>
@@ -79,7 +83,9 @@ export default function RoutineMainPage() {
 
       <Link to={ROUTES.ROUTINE_EVENING} className={styles.timeCard}>
         <div className={styles.timeHeader}>
-          <span className={`${styles.timeIcon} ${styles.timeIconEvening}`}>☾</span>
+          <span className={`${styles.timeIcon} ${styles.timeIconEvening}`}>
+            <img src={eveningIcon} alt="" className={styles.timeIconImg} />
+          </span>
           <span className={styles.timeLabel}>오후 루틴</span>
         </div>
         <div className={styles.thumbRow}>
