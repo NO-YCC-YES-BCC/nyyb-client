@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
 import styles from "./CaptureGuidePage.module.css";
+import { addProductImage } from "../api/captureApi";
 
 export default function CaptureGuidePage() {
     const fileInputRef = useRef(null);
@@ -12,12 +13,12 @@ export default function CaptureGuidePage() {
         fileInputRef.current?.click();
     }
 
-    function handleImageChange(event) {
+    async function handleImageChange(event) {
         const file = event.target.files?.[0];
 
         if (!file) return;
 
-        // TODO: 이후 OCR/API 연결 시 여기서 file을 업로드하거나 다음 단계로 전달
+        await addProductImage(file);
         navigate(ROUTES.CAPTURE_PRODUCTS);
     }
 
