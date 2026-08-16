@@ -1,0 +1,87 @@
+.page {
+    min-height: 100vh;
+    padding: 22px 22px 44px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.badge {
+    width: fit-content;
+    padding: 7px 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    background: #edf4ef;
+    color: #456653;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(181, 194, 182, 0.32);
+}
+
+.badgeIcon {
+    flex-shrink: 0;
+}
+.header {
+    margin-top: 28px;
+}
+
+.title {
+    margin: 0;
+    color: #000;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.description {
+    margin: 8px 0 0;
+    color: #8c8c8c;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.productList {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.emptyState {
+    margin-top: 34px;
+    padding: 36px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border: 1px dashed #c2d1c5;
+    border-radius: 18px;
+    color: #49604f;
+    text-align: center;
+}
+
+.emptyState strong {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.emptyState p {
+    margin: 0;
+    color: #8c8c8c;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.actionRow {
+    margin-top: 42px;
+    display: flex;
+    gap: 8px;
+}
+
+.startButton {
+    align-self: center;
+    margin-top: 28px;
+}
