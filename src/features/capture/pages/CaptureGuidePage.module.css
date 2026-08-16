@@ -1,0 +1,267 @@
+.page {
+    min-height: 100vh;
+    padding: 14px 20px 28px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.backButton {
+    width: fit-content;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #000;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.title {
+    margin: 34px 0 0;
+    color: #000;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.cameraGuide {
+    margin-top: 30px;
+}
+
+.guideFrame {
+    position: relative;
+    height: 485px;
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 28px;
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(198, 230, 207, 0.95),
+            rgba(120, 132, 122, 0.88)
+        ),
+        linear-gradient(180deg, #d3e4d5 0%, #727a72 100%);
+}
+
+.guideFrame::before {
+    content: "";
+    position: absolute;
+    inset: 16px 14px;
+    border: 2px dashed rgba(255, 255, 255, 0.78);
+    border-radius: 22px;
+    pointer-events: none;
+}
+
+.detectBadge {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    z-index: 3;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: #4f7864;
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.18);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.statusDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #57e39a;
+    box-shadow: 0 0 8px rgba(87, 227, 154, 0.9);
+}
+
+.bottleShape {
+    position: relative;
+    width: 258px;
+    height: 334px;
+    margin-top: 30px;
+}
+
+.bottleSvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.45));
+}
+
+.bottleSvg path {
+    stroke: rgba(255, 255, 255, 0.55);
+    stroke-width: 1;
+}
+
+.bottleHighlight {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    width: 88px;
+    height: 210px;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.24),
+        rgba(255, 255, 255, 0)
+    );
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.labelGlow {
+    position: absolute;
+    top: 121px;
+    left: 26px;
+    right: 26px;
+    height: 110px;
+    background: rgba(101, 241, 166, 0.14);
+    filter: blur(16px);
+    pointer-events: none;
+}
+
+.labelCard {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    z-index: 2;
+    width: 238px;
+    height: 218px;
+    display: grid;
+    grid-template-rows: 29px 29px 29px 29px 29px 42px 31px;
+    overflow: hidden;
+    transform: translateX(-50%);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(82, 214, 138, 0.14) 50%,
+            rgba(255, 255, 255, 0.18) 100%
+        );
+    box-shadow: 0 0 12px 0 rgba(82, 214, 138, 0.75);
+}
+
+.labelRow {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    border-bottom: 1px solid rgba(96, 161, 117, 0.22);
+    color: #244531;
+    font-size: 9.5px;
+    line-height: 1.25;
+}
+
+.labelRow:last-child {
+    border-bottom: none;
+}
+
+.labelRow strong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9px;
+    background: rgba(174, 222, 190, 0.28);
+    font-weight: 800;
+}
+
+.labelRow span {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.frameHint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    z-index: 2;
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 11px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.tip {
+    margin: 64px 0 34px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 999px;
+    background: #eef5ef;
+
+    color: #436653;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.tipIcon {
+    flex-shrink: 0;
+}
+
+.fileInput {
+    display: none;
+}
+
+.cameraButton {
+    align-self: center;
+}
+
+.cornerTopLeft,
+.cornerTopRight,
+.cornerBottomLeft,
+.cornerBottomRight {
+    position: absolute;
+    z-index: 3;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    border-color: #e8efe9;
+    border-style: solid;
+}
+
+.cornerTopLeft {
+    top: 15px;
+    left: 13px;
+    border-width: 4px 0 0 4px;
+    border-radius: 20px 0 0 0;
+}
+
+.cornerTopRight {
+    top: 15px;
+    right: 13px;
+    border-width: 4px 4px 0 0;
+    border-radius: 0 20px 0 0;
+}
+
+.cornerBottomLeft {
+    bottom: 15px;
+    left: 13px;
+    border-width: 0 0 4px 4px;
+    border-radius: 0 0 0 20px;
+}
+
+.cornerBottomRight {
+    right: 13px;
+    bottom: 15px;
+    border-width: 0 4px 4px 0;
+    border-radius: 0 0 20px 0;
+}
