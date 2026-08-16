@@ -1,5 +1,7 @@
+export const MOCK_JOB_ID = 'demo-job-001';
+
 export const mockUser = {
-    nickname: "김지은",
+    nickname: "김지선",
     profileImageUrl: null,
     hasAnalysis: false,
 };
@@ -7,8 +9,7 @@ export const mockUser = {
 // ── 루틴 카드 메인 / 아침·저녁 루틴 상세 (P1) 목데이터 ──
 // 백엔드 /routines, /routines/{routineId} 연동 전까지 이 데이터로 화면을 완성합니다.
 
-export const MOCK_ROUTINE_ID = 'routine_001'; 
-export const MOCK_JOB_ID = 'demo-job-001';
+export const MOCK_ROUTINE_ID = 'routine_001';
 
 const PLACEHOLDER_IMG = (seed) =>
   `https://placehold.co/120x120/f6f4ee/8a887f?text=${encodeURIComponent(seed)}`;
@@ -36,4 +37,242 @@ export const mockRoutineDetail = {
     { id: 'e4', brand: 'BOTANICA', category: '바디 크림', name: 'INTENSIVE BODY MOISTURIZER', reason: "'카프릴릭' 과도하게 중복돼요", status: 'exclude', imageUrl: PLACEHOLDER_IMG('B') },
     { id: 'e5', brand: 'AUROR', category: '앰플', name: 'REVITALIZING FACE SERUM', reason: '비타민C 고농축으로 들어있어, 소량으로도 피부 잡티를 개선해요', status: 'keep', imageUrl: PLACEHOLDER_IMG('A') },
   ],
+};
+
+export const mockProducts = {
+  cleanser: {
+    id: 'p1',
+    name: '저자극 약산성 클렌저',
+    brand: '이니스프리',
+    price: 18000,
+    category: '클렌저',
+  },
+  vitaminCAmpoule: {
+    id: 'p2',
+    name: '비타민C 앰플 22%',
+    brand: '스킨1004',
+    price: 32000,
+    category: '앰플',
+  },
+  retinolCream: {
+    id: 'p3',
+    name: '레티놀 나이트 크림',
+    brand: '닥터지',
+    price: 45000,
+    category: '크림',
+  },
+  ahaBhaToner: {
+    id: 'p4',
+    name: 'AHA/BHA 필링 토너',
+    brand: '코스알엑스',
+    price: 24000,
+    category: '토너',
+  },
+  hyaluronicSerum: {
+    id: 'p5',
+    name: '히알루론산 수분 세럼',
+    brand: '라운드랩',
+    price: 26000,
+    category: '세럼',
+  },
+  sunscreen: {
+    id: 'p6',
+    name: '무기자차 선크림 SPF50+',
+    brand: '구달',
+    price: 19000,
+    category: '선크림',
+  },
+  soothingCream: {
+    id: 'p7',
+    name: '병풀 진정 수딩크림',
+    brand: '토리든',
+    price: 21000,
+    category: '크림',
+  },
+};
+
+export const mockReport = {
+  jobId: MOCK_JOB_ID,
+  userName: '김지선',
+  completedAt: '2026-08-12T09:30:00+09:00',
+  summary: {
+    totalProductCount: 7,
+    checkedProductCount: 7,
+    duplicateIngredientCount: 2,
+    estimatedSavings: 373000,
+  },
+  // 구매하지 않아도 되는 제품 (제외 권장). reason: 카드 상단 한 줄 요약,
+  // overlaps: 와이어프레임의 "겹치는 성분/제품" bullet 목록.
+removeProducts: [
+    {
+      ...mockProducts.vitaminCAmpoule,
+      reason: '2번 제품과 성분 구성이 비슷하며, 함께 사용하면 자극이 더 커질 수 있어요.',
+      overlaps: [
+        { productNumber: 2, count: 4 },
+        { productNumber: 3, count: 3 },
+      ],
+    },
+    {
+      ...mockProducts.retinolCream,
+      reason: '3번 제품과 각질 제거 효과가 중복되어 자극이 커질 수 있어요.',
+      overlaps: [
+        { productNumber: 3, count: 6 },
+      ],
+    },
+    {
+      ...mockProducts.ahaBhaToner,
+      reason: '2번 제품과 동일한 역할이며, 자극 강도가 더 강해요.',
+      overlaps: [
+        { productNumber: 2, count: 6 },
+      ],
+    },
+  ],
+  // 계속 써도 괜찮은 제품 (유지) - 와이어프레임 기준 4개
+  keepProducts: [
+    {
+      ...mockProducts.cleanser,
+      reason: '자극 성분이 없는 약산성 클렌저라 아침/저녁 모두 사용해도 좋아요.',
+    },
+    {
+      ...mockProducts.hyaluronicSerum,
+      reason: '보습 성분 중심이라 다른 제품과 함께 사용해도 자극이 적어요.',
+    },
+    {
+      ...mockProducts.sunscreen,
+      reason: '무기자차 성분이라 자극 없이 매일 사용하기 좋아요.',
+    },
+    {
+      ...mockProducts.soothingCream,
+      reason: '진정 성분 위주라 다른 제품과 함께 매일 사용해도 좋아요.',
+    },
+  ],
+  // 주의해야 할 성분 - 와이어프레임 기준 2개
+  cautionIngredients: [
+    {
+      id: 'ing1',
+      name: '레티놀',
+      nameEn: 'Retinol',
+      routineLocation: '저녁 루틴 · 레티놀 나이트 크림',
+      reason: '세포 재생을 촉진하는 성분이라 AHA/BHA 같은 각질 제거 성분과 함께 쓰면 자극이 커질 수 있어요.',
+      source: '식품의약품안전처 화장품 성분사전',
+    },
+    {
+      id: 'ing2',
+      name: 'AHA/BHA',
+      nameEn: 'Glycolic Acid / Salicylic Acid',
+      routineLocation: '저녁 루틴 · AHA/BHA 필링 토너',
+      reason: '각질 제거 성분이 레티놀과 중복되면 피부 장벽이 약해질 수 있어요.',
+      source: '대한피부과학회 성분 가이드',
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// POST /routines/preview, POST /routines 에서 사용할 기존(before) 루틴 목데이터
+// ---------------------------------------------------------------------------
+
+export const mockCurrentRoutine = {
+  morning: [mockProducts.cleanser, mockProducts.vitaminCAmpoule, mockProducts.hyaluronicSerum, mockProducts.sunscreen],
+  evening: [mockProducts.cleanser, mockProducts.retinolCream, mockProducts.ahaBhaToner, mockProducts.hyaluronicSerum],
+};
+
+export const mockDefaultSelection = {
+  p1: { morning: true, evening: true },
+  p5: { morning: true, evening: true },
+  p6: { morning: true, evening: false },
+};
+
+export function buildRoutinePreview(selection = mockDefaultSelection) {
+  const after = { morning: [], evening: [] };
+
+  mockReport.keepProducts.forEach((product) => {
+    const slot = selection[product.id];
+    if (!slot) return;
+    if (slot.morning) after.morning.push(product);
+    if (slot.evening) after.evening.push(product);
+  });
+
+  return {
+    jobId: MOCK_JOB_ID,
+    before: mockCurrentRoutine,
+    after,
+  };
+}
+
+export const mockSaveRoutineResponse = {
+  routineId: MOCK_ROUTINE_ID,
+  savedAt: new Date().toISOString(),
+};
+
+// ---------------------------------------------------------------------------
+// GET /routines, GET /routines/{routineId} 목데이터
+// ---------------------------------------------------------------------------
+
+export const mockSavedRoutine = {
+  routineId: MOCK_ROUTINE_ID,
+  jobId: MOCK_JOB_ID,
+  savedAt: '2026-08-12T10:00:00+09:00',
+  score: 66,
+  overlapIngredientCount: 3,
+  excludeSuggestionCount: 2,
+  morning: buildRoutinePreview(mockDefaultSelection).after.morning,
+  evening: buildRoutinePreview(mockDefaultSelection).after.evening,
+};
+
+// ---------------------------------------------------------------------------
+// GET /analyses/list 목데이터 (분석 이력 리스트)
+// ---------------------------------------------------------------------------
+
+export const mockAnalysisHistory = [
+  {
+    jobId: MOCK_JOB_ID,
+    completedAt: '2026-08-12T09:30:00+09:00',
+    checkedProductCount: mockReport.summary.checkedProductCount,
+    removedProductCount: mockReport.removeProducts.length,
+    estimatedSavings: mockReport.summary.estimatedSavings,
+    routineScore: null,
+  },
+  {
+    jobId: 'demo-job-000',
+    completedAt: '2026-08-05T14:10:00+09:00',
+    checkedProductCount: 5,
+    removedProductCount: 0,
+    estimatedSavings: 0,
+    routineScore: 66,
+  },
+  {
+    jobId: 'demo-job-002',
+    completedAt: '2026-07-28T11:20:00+09:00',
+    checkedProductCount: 4,
+    removedProductCount: 0,
+    estimatedSavings: 45000,
+    routineScore: null,
+  },
+];
+
+// ---------------------------------------------------------------------------
+// GET /profile 목데이터 (마이페이지)
+// ---------------------------------------------------------------------------
+
+export const mockProfile = {
+  userName: '김지선',
+  joinedAt: '2026-07-01T00:00:00+09:00',
+  stats: {
+    totalAnalysisCount: mockAnalysisHistory.length,
+    totalRemovedProductCount: 6,
+    totalSavings: 506000,
+  },
+  notifyKakao: false,
+};
+
+// ---------------------------------------------------------------------------
+// POST /auth/kakao 목데이터 (카카오 로그인)
+// ---------------------------------------------------------------------------
+
+export const mockKakaoLoginResponse = {
+  accessToken: 'mock-access-token',
+  user: {
+    userName: '김지선',
+    isNewUser: false,
+  },
 };
