@@ -1,0 +1,134 @@
+.page {
+  padding: 20px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scoreCard {
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 2px 10px rgba(17, 17, 17, 0.08);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.score {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  color: #111111;
+}
+
+.scoreBadge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #fbe9e5;
+  color: #000000;
+  box-shadow : 2px 2px 10px rgba(0,0,0,0.25);
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: #000000;
+}
+
+.summaryPill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 353px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: 1px solid #FFE0D7;
+  border-radius: 10px;
+  background: #FFE2E0;
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+}
+
+.timeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 2px 10px rgba(17, 17, 17, 0.08);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.timeHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeIconMorning {
+  background: #C6EEC5;
+  box-shadow: 0px 0px 8px rgba(198, 238, 197, 1);
+}
+
+.timeIconEvening {
+  background: #C6EEC5;
+  box-shadow: 0px 0px 8px rgba(198, 238, 197, 1);
+}
+
+.timeIconImg {
+  width: 13px;
+  height: 13px;
+  display: block;
+}
+
+.timeLabel {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.thumbRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #cfcabb;
+  display: block;
+  box-shadow : 4px 2px 6px rgba(0,0,0,0.25);
+}
+
+.loadingText,
+.emptyState {
+  text-align: center;
+  color: #767a72;
+  font-size: 14px;
+  padding: 40px 0;
+}

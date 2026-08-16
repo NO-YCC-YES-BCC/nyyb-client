@@ -1,0 +1,104 @@
+.page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.headerPill {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(17, 17, 17, 0.08);
+  padding: 10px 20px;
+}
+
+.headerIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.icon-morning {
+  background: #C6EEC5;
+}
+
+.icon-evening {
+  background: #C6EEC5;
+}
+
+.headerLabel {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.statChips {
+  display: flex;
+  gap: 8px;
+}
+
+.chip {
+  flex: 1;
+  text-align: center;
+  padding: 10px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #767a72;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(17, 17, 17, 0.08);
+}
+
+.chipActive_3 {
+  background: #F7F2E3;
+  color: #D8A200;
+}
+
+.chipActive_2{
+  background : #DEE8DC;
+  color : #385D4F;
+}
+
+.chipActive_1{
+  background : #CDCDCD;
+  color : #686868
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ctaWrap {
+  position: sticky;
+  bottom: 16px;
+  padding-top: 4px;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 297px;
+  height: 43px;
+  margin: 0 auto;
+  padding: 0 10px;
+  border: none;
+  border-radius: 10px;
+  background: #EFFAD7;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
