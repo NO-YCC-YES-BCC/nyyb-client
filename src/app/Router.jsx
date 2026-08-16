@@ -16,6 +16,8 @@ import HistoryPage from "../features/report/pages/HistoryPage"
 import MyPage from "../features/mypage/pages/MyPage"
 import BottomNav from "../shared/components/BottomNav";
 import NotFoundPage from "../features/not-found/pages/NotFoundPage"
+import RoutineEditPage from "../features/routine/pages/RoutineEditPage"
+import RoutinePreviewPage from "../features/routine/pages/RoutinePreviewPage"
 
 export default function AppRouter() {
     return(
@@ -32,6 +34,8 @@ export default function AppRouter() {
                 <Route path={ROUTES.ROUTINE} element={<RoutineMainPage />} />
                 <Route path={ROUTES.ROUTINE_MORNING} element={<MorningRoutinePage />} />
                 <Route path={ROUTES.ROUTINE_EVENING} element={<EveningRoutinePage />} />
+                <Route path={ROUTES.ROUTINE_EDIT} element={<RoutineEditPage />} />
+                <Route path={ROUTES.ROUTINE_PREVIEW} element={<RoutinePreviewPage />} />
                 <Route path={ROUTES.HISTORY} element={<HistoryPage />} />
                 <Route path={ROUTES.MYPAGE} element={<MyPage />} />
 
