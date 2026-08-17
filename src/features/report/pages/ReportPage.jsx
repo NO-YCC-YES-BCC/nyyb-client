@@ -18,6 +18,7 @@ import { getReport } from '../api/reportApi';
 import RemoveProductCard from '../components/RemoveProductCard';
 import KeepProductCard from '../components/KeepProductCard';
 import IngredientWarningCard from '../components/IngredientWarningCard';
+import { ROUTES } from '../../../shared/constants/routes';
 import styles from './ReportPage.module.css';
 
 export default function ReportPage() {
@@ -93,7 +94,7 @@ export default function ReportPage() {
       </section>
 
       <div className={styles.ctaWrap}>
-        <Link to={`/routine/edit/${jobId}`} className={styles.ctaButton}>
+        <Link to={ROUTES.ROUTINE} className={styles.ctaButton}>
           루틴 추천받기
         </Link>
         {/* TODO: 실제 이미지 캡처/저장 기능은 별도 태스크에서 연결 */}
