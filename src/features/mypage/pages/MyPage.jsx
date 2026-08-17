@@ -43,17 +43,6 @@ export default function MyPage() {
       <ProfileSummary profile={profile} />
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>알림 설정</h2>
-        <div className={styles.notifyCard}>
-          <div>
-            <p className={styles.notifyLabel}>분석 결과 카톡으로 받기</p>
-            <p className={styles.notifySub}>나와의 채팅방으로 보내드려요</p>
-          </div>
-          <span className={styles.notifyToggle}>{profile.notifyKakao ? 'ON' : 'OFF'}</span>
-        </div>
-      </section>
-
-      <section className={styles.section}>
         <h2 className={styles.sectionTitle}>서비스 정보</h2>
         <div className={styles.linkCard}>
           {SERVICE_LINKS.map((label) => (
