@@ -37,6 +37,7 @@ export default function AppRouter() {
 
                 <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage/>} />
                 <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} replace />} />
+
                 
             </Routes>
             <BottomNav/>

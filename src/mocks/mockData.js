@@ -1,13 +1,10 @@
 export const MOCK_JOB_ID = 'demo-job-001';
 
 export const mockUser = {
-    nickname: "김지선",
-    profileImageUrl: null,
-    hasAnalysis: false,
+  nickname: '김지은',
+  profileImageUrl: null,
+  hasAnalysis: false,
 };
-
-// ── 루틴 카드 메인 / 아침·저녁 루틴 상세 (P1) 목데이터 ──
-// 백엔드 /routines, /routines/{routineId} 연동 전까지 이 데이터로 화면을 완성합니다.
 
 export const MOCK_ROUTINE_ID = 'routine_001';
 
@@ -16,7 +13,7 @@ const PLACEHOLDER_IMG = (seed) =>
 
 export const mockRoutineDetail = {
   routineId: MOCK_ROUTINE_ID,
-  jobId: MOCK_JOB_ID, // 이미 있으면 이 값 재사용, 없으면 'demo-job-001' 등으로 대체
+  jobId: MOCK_JOB_ID,
   score: 66,
   scoreCaption: '조금만 바꾸면 더 좋아요',
   description:
@@ -24,18 +21,99 @@ export const mockRoutineDetail = {
   overlapIngredientCount: 3,
   excludeSuggestionCount: 2,
   morning: [
-    { id: 'm1', brand: 'BOTANICA', category: '크림', name: 'RESTORATIVE', reason: "크림 성분 '판테놀' 성분이 중복돼요", status: 'exclude', imageUrl: PLACEHOLDER_IMG('B') },
-    { id: 'm2', brand: 'SNAIL', category: '크림', name: 'RERAIR CREAM', reason: '뮤신 성분이 강력한 수분 보유력으로 피부가 건조해지지 않아요', status: 'keep', imageUrl: PLACEHOLDER_IMG('S') },
-    { id: 'm3', brand: 'HYDRATING', category: '토너', name: 'FACIAL TONER', reason: '병풀 추출물 성분이 속건조 완화에 도움돼요', status: 'keep', imageUrl: PLACEHOLDER_IMG('H') },
-    { id: 'm4', brand: 'DERMOTORY', category: '선스틱', name: 'AURA DEFENSE', reason: '고체 형태의 오일 막이 피부 수분 증발을 예방해요', status: 'keep', imageUrl: PLACEHOLDER_IMG('D') },
-    { id: 'm5', brand: 'BOTANICA', category: '립밤', name: 'RESTORATIVE', reason: '강력한 보습 장벽을 형성하여 트거나 갈라짐을 방지해요', status: 'keep', imageUrl: PLACEHOLDER_IMG('B') },
+    {
+      id: 'm1',
+      brand: 'BOTANICA',
+      category: '크림',
+      name: 'RESTORATIVE',
+      reason: "크림 성분 '판테놀' 성분이 중복돼요",
+      status: 'exclude',
+      imageUrl: PLACEHOLDER_IMG('B'),
+    },
+    {
+      id: 'm2',
+      brand: 'SNAIL',
+      category: '크림',
+      name: 'RERAIR CREAM',
+      reason: '뮤신 성분이 강력한 수분 보유력으로 피부가 건조해지지 않아요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('S'),
+    },
+    {
+      id: 'm3',
+      brand: 'HYDRATING',
+      category: '토너',
+      name: 'FACIAL TONER',
+      reason: '병풀 추출물 성분이 속건조 완화에 도움돼요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('H'),
+    },
+    {
+      id: 'm4',
+      brand: 'DERMOTORY',
+      category: '선스틱',
+      name: 'AURA DEFENSE',
+      reason: '고체 형태의 오일 막이 피부 수분 증발을 예방해요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('D'),
+    },
+    {
+      id: 'm5',
+      brand: 'BOTANICA',
+      category: '립밤',
+      name: 'RESTORATIVE',
+      reason: '강력한 보습 장벽을 형성하여 트거나 갈라짐을 방지해요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('B'),
+    },
   ],
   evening: [
-    { id: 'e1', brand: 'AURA BOTANICA', category: '미스트', name: 'REPLENISHING FACIAL MIST', reason: "'글리세린' 성분이 중복돼요", status: 'exclude', imageUrl: PLACEHOLDER_IMG('A') },
-    { id: 'e2', brand: 'DEWY+LAB', category: '팩', name: 'RESTORATIVE', reason: '풀 추출물 성분이 피부에 밀착되며 공기를 차단해, 피부를 급속 쿨링하고 유효 성분을 피부 깊숙이 흡수해요', status: 'keep', imageUrl: PLACEHOLDER_IMG('D') },
-    { id: 'e3', brand: '아로티카', category: '헤어토닉', name: '두피 활력 토닉', reason: '병풀 성분이 두피 열을 내리고 각질을 제거해줘요', status: 'keep', imageUrl: PLACEHOLDER_IMG('T') },
-    { id: 'e4', brand: 'BOTANICA', category: '바디 크림', name: 'INTENSIVE BODY MOISTURIZER', reason: "'카프릴릭' 과도하게 중복돼요", status: 'exclude', imageUrl: PLACEHOLDER_IMG('B') },
-    { id: 'e5', brand: 'AUROR', category: '앰플', name: 'REVITALIZING FACE SERUM', reason: '비타민C 고농축으로 들어있어, 소량으로도 피부 잡티를 개선해요', status: 'keep', imageUrl: PLACEHOLDER_IMG('A') },
+    {
+      id: 'e1',
+      brand: 'AURA BOTANICA',
+      category: '미스트',
+      name: 'REPLENISHING FACIAL MIST',
+      reason: "'글리세린' 성분이 중복돼요",
+      status: 'exclude',
+      imageUrl: PLACEHOLDER_IMG('A'),
+    },
+    {
+      id: 'e2',
+      brand: 'DEWY+LAB',
+      category: '팩',
+      name: 'RESTORATIVE',
+      reason:
+        '풀 추출물 성분이 피부에 밀착되며 공기를 차단해, 피부를 급속 쿨링하고 유효 성분을 피부 깊숙이 흡수해요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('D'),
+    },
+    {
+      id: 'e3',
+      brand: '아로티카',
+      category: '헤어토닉',
+      name: '두피 활력 토닉',
+      reason: '병풀 성분이 두피 열을 내리고 각질을 제거해줘요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('T'),
+    },
+    {
+      id: 'e4',
+      brand: 'BOTANICA',
+      category: '바디 크림',
+      name: 'INTENSIVE BODY MOISTURIZER',
+      reason: "'카프릴릭' 과도하게 중복돼요",
+      status: 'exclude',
+      imageUrl: PLACEHOLDER_IMG('B'),
+    },
+    {
+      id: 'e5',
+      brand: 'AUROR',
+      category: '앰플',
+      name: 'REVITALIZING FACE SERUM',
+      reason: '비타민C 고농축으로 들어있어, 소량으로도 피부 잡티를 개선해요',
+      status: 'keep',
+      imageUrl: PLACEHOLDER_IMG('A'),
+    },
   ],
 };
 
@@ -101,9 +179,7 @@ export const mockReport = {
     duplicateIngredientCount: 2,
     estimatedSavings: 373000,
   },
-  // 구매하지 않아도 되는 제품 (제외 권장). reason: 카드 상단 한 줄 요약,
-  // overlaps: 와이어프레임의 "겹치는 성분/제품" bullet 목록.
-removeProducts: [
+  removeProducts: [
     {
       ...mockProducts.vitaminCAmpoule,
       reason: '2번 제품과 성분 구성이 비슷하며, 함께 사용하면 자극이 더 커질 수 있어요.',
@@ -115,19 +191,14 @@ removeProducts: [
     {
       ...mockProducts.retinolCream,
       reason: '3번 제품과 각질 제거 효과가 중복되어 자극이 커질 수 있어요.',
-      overlaps: [
-        { productNumber: 3, count: 6 },
-      ],
+      overlaps: [{ productNumber: 3, count: 6 }],
     },
     {
       ...mockProducts.ahaBhaToner,
       reason: '2번 제품과 동일한 역할이며, 자극 강도가 더 강해요.',
-      overlaps: [
-        { productNumber: 2, count: 6 },
-      ],
+      overlaps: [{ productNumber: 2, count: 6 }],
     },
   ],
-  // 계속 써도 괜찮은 제품 (유지) - 와이어프레임 기준 4개
   keepProducts: [
     {
       ...mockProducts.cleanser,
@@ -146,14 +217,14 @@ removeProducts: [
       reason: '진정 성분 위주라 다른 제품과 함께 매일 사용해도 좋아요.',
     },
   ],
-  // 주의해야 할 성분 - 와이어프레임 기준 2개
   cautionIngredients: [
     {
       id: 'ing1',
       name: '레티놀',
       nameEn: 'Retinol',
       routineLocation: '저녁 루틴 · 레티놀 나이트 크림',
-      reason: '세포 재생을 촉진하는 성분이라 AHA/BHA 같은 각질 제거 성분과 함께 쓰면 자극이 커질 수 있어요.',
+      reason:
+        '세포 재생을 촉진하는 성분이라 AHA/BHA 같은 각질 제거 성분과 함께 쓰면 자극이 커질 수 있어요.',
       source: '식품의약품안전처 화장품 성분사전',
     },
     {
@@ -167,13 +238,19 @@ removeProducts: [
   ],
 };
 
-// ---------------------------------------------------------------------------
-// POST /routines/preview, POST /routines 에서 사용할 기존(before) 루틴 목데이터
-// ---------------------------------------------------------------------------
-
 export const mockCurrentRoutine = {
-  morning: [mockProducts.cleanser, mockProducts.vitaminCAmpoule, mockProducts.hyaluronicSerum, mockProducts.sunscreen],
-  evening: [mockProducts.cleanser, mockProducts.retinolCream, mockProducts.ahaBhaToner, mockProducts.hyaluronicSerum],
+  morning: [
+    mockProducts.cleanser,
+    mockProducts.vitaminCAmpoule,
+    mockProducts.hyaluronicSerum,
+    mockProducts.sunscreen,
+  ],
+  evening: [
+    mockProducts.cleanser,
+    mockProducts.retinolCream,
+    mockProducts.ahaBhaToner,
+    mockProducts.hyaluronicSerum,
+  ],
 };
 
 export const mockDefaultSelection = {
@@ -204,10 +281,6 @@ export const mockSaveRoutineResponse = {
   savedAt: new Date().toISOString(),
 };
 
-// ---------------------------------------------------------------------------
-// GET /routines, GET /routines/{routineId} 목데이터
-// ---------------------------------------------------------------------------
-
 export const mockSavedRoutine = {
   routineId: MOCK_ROUTINE_ID,
   jobId: MOCK_JOB_ID,
@@ -218,10 +291,6 @@ export const mockSavedRoutine = {
   morning: buildRoutinePreview(mockDefaultSelection).after.morning,
   evening: buildRoutinePreview(mockDefaultSelection).after.evening,
 };
-
-// ---------------------------------------------------------------------------
-// GET /analyses/list 목데이터 (분석 이력 리스트)
-// ---------------------------------------------------------------------------
 
 export const mockAnalysisHistory = [
   {
@@ -250,24 +319,20 @@ export const mockAnalysisHistory = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// GET /profile 목데이터 (마이페이지)
-// ---------------------------------------------------------------------------
-
 export const mockProfile = {
-  userName: '김지선',
+  userName: '김지은',
+  email: 'jieun.kim@kakao.com',
   joinedAt: '2026-07-01T00:00:00+09:00',
   stats: {
+    usingProductCount: 3,
+    removedProductCount: 2,
+    analysisCount: 3,
     totalAnalysisCount: mockAnalysisHistory.length,
     totalRemovedProductCount: 6,
     totalSavings: 506000,
   },
-  notifyKakao: false,
+  notifyKakao: true,
 };
-
-// ---------------------------------------------------------------------------
-// POST /auth/kakao 목데이터 (카카오 로그인)
-// ---------------------------------------------------------------------------
 
 export const mockKakaoLoginResponse = {
   accessToken: 'mock-access-token',
