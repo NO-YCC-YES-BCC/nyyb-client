@@ -37,3 +37,14 @@ export const mockRoutineDetail = {
     { id: 'e5', brand: 'AUROR', category: '앰플', name: 'REVITALIZING FACE SERUM', reason: '비타민C 고농축으로 들어있어, 소량으로도 피부 잡티를 개선해요', status: 'keep', imageUrl: PLACEHOLDER_IMG('A') },
   ],
 };
+
+export const mockProfile = {
+  userName: '김지은',
+  email: 'jieun.kim@kakao.com',
+  stats: {
+    usingProductCount: 3,
+    removedProductCount: 2,
+    analysisCount: 3,
+  },
+  notifyKakao: true,
+};
