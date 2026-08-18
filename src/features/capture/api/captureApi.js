@@ -1,15 +1,6 @@
-const CAPTURE_PRODUCTS_STORAGE_KEY = "sott.capture.products";
+import { apiClient } from "../../../shared/api/client";
 
-function createMockProduct(file) {
-    return {
-        productId: Date.now(),
-        imageUrl: URL.createObjectURL(file),
-        productName: "촬영한 제품",
-        category: "ETC",
-        ingredientCount: 0,
-        userRoutineSlot: "BOTH",
-    };
-}
+const CAPTURE_PRODUCTS_STORAGE_KEY = "sott.capture.products";
 
 export function getStoredCaptureProducts() {
     const storedProducts = sessionStorage.getItem(CAPTURE_PRODUCTS_STORAGE_KEY);
@@ -28,8 +19,21 @@ export function saveStoredCaptureProducts(products) {
 }
 
 export async function uploadProductImage(file) {
-    // TODO: 실제 API 연결 시 POST /analyses/ocr multipart/form-data 요청으로 교체
-    return createMockProduct(file);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await apiClient.post("/analyses/ocr", formData);
+    const data = response.data?.data ?? response.data;
+
+    return {
+        productId: data.productId,
+        imageUrl: URL.createObjectURL(file),
+        productName: data.productName || "촬영한 제품",
+        category: data.category,
+        ingredientCount: data.ingredientCount,
+        ingredients: data.ingredients ?? [],
+        userRoutineSlot: "BOTH",
+    };
 }
 
 export async function addProductImage(file) {

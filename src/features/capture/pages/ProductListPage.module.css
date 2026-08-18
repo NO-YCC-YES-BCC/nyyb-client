@@ -85,3 +85,18 @@
     align-self: center;
     margin-top: 28px;
 }
+
+.errorMessage {
+    width: 100%;
+    margin: 14px 0 0;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #fff3ef;
+    border: 1px solid #f1d0c4;
+    color: #c65f4f;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 1px 1px 10px 0 #eee3dc;
+}
