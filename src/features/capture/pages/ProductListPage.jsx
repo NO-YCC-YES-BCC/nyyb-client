@@ -15,10 +15,19 @@ import styles from "./ProductListPage.module.css";
 export default function ProductListPage() {
     const navigate = useNavigate();
     const [products, setProducts] = useState(() => getStoredCaptureProducts());
+    const [errorMessage, setErrorMessage] = useState("");
 
     async function handleAddImage(file) {
-      const nextProducts = await addProductImage(file);
-      setProducts(nextProducts);
+      try {
+        setErrorMessage("");
+
+        const nextProducts = await addProductImage(file);
+        setProducts(nextProducts);
+      } catch(error) {
+        console.error("제품 사진 분석 실패", error);
+        setErrorMessage("사진 분석에 실패했어요. 글자가 잘 보이도록 다시 촬영해주세요.");
+      }
+
     }
 
     function handleRemove(productId) {
@@ -43,10 +52,10 @@ export default function ProductListPage() {
 
     function handleStartAnalysis() {
       if (products.length === 0) {
-        alert("분석할 제품 사진을 먼저 추가해주세요.");
+        setErrorMessage("분석할 제품 사진을 먼저 추가해주세요.");
         return;
       }
-
+      setErrorMessage("");
       navigate(ROUTES.ANALYSIS_LOADING);
     }
 
@@ -64,6 +73,12 @@ export default function ProductListPage() {
             <p className={styles.description}>
               분석 전 추가하거나 제외할 제품이 있다면 지금 수정해주세요!
             </p>
+
+            {errorMessage && (
+              <p className={styles.errorMessage}>
+                {errorMessage}
+              </p>
+            )}
           </header>
 
           {products.length > 0 ? (
