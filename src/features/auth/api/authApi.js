@@ -5,6 +5,8 @@ import {
     saveUser,
 } from "../../../shared/utils/tokenStorage";
 
+let guestSessionPromise = null;
+
 function getResponseData(response) {
     return response.data?.data ?? response.data;
 }
@@ -18,6 +20,7 @@ export async function createGuestSession() {
         id: data.id,
         nickname: data.nickname,
         guest: data.guest,
+        linkedGuestUserId: data.linkedGuestUserId,
     });
 
     return data;
@@ -29,5 +32,13 @@ export async function ensureGuestSession() {
     if(accessToken) {
         return null;
     }
-    return createGuestSession();
+    
+    if (guestSessionPromise) {
+        return guestSessionPromise
+    }
+    guestSessionPromise = createGuestSession().finally(() => {
+        guestSessionPromise = null;
+    });
+
+    return guestSessionPromise;
 }
