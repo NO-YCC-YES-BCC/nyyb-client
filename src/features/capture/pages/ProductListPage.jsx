@@ -10,12 +10,17 @@ import {
     saveStoredCaptureProducts,
 } from "../api/captureApi";
 import styles from "./ProductListPage.module.css";
+import {
+  saveStoredAnalysisResult,
+  startAnalysis,
+} from "../../analysis/api/analysisApi"
 
 
 export default function ProductListPage() {
     const navigate = useNavigate();
     const [products, setProducts] = useState(() => getStoredCaptureProducts());
     const [errorMessage, setErrorMessage] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     async function handleAddImage(file) {
       try {
@@ -50,13 +55,28 @@ export default function ProductListPage() {
       saveStoredCaptureProducts(nextProducts);
     }
 
-    function handleStartAnalysis() {
+    async function handleStartAnalysis() {
       if (products.length === 0) {
         setErrorMessage("분석할 제품 사진을 먼저 추가해주세요.");
         return;
       }
-      setErrorMessage("");
-      navigate(ROUTES.ANALYSIS_LOADING);
+
+      try {
+        setErrorMessage("");
+        setIsSubmitting(true);
+
+        const analysisResult = await startAnalysis(products);
+        saveStoredAnalysisResult(analysisResult);
+
+        navigate(ROUTES.ANALYSIS_LOADING, {
+          state: { analysisResult },
+        });
+      } catch (error) {
+        console.error("제품 분석 시작 실패", error);
+        setErrorMessage("분석을 시작하지 못했어요. 잠시 후 다시 시도해주세요.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
 
     return (
@@ -113,8 +133,9 @@ export default function ProductListPage() {
               variant="primary"
               className={styles.startButton}
               onClick={handleStartAnalysis}
+              disabled={isSubmitting}
             >
-                  루틴 저장하고 분석 시작하기
+                  {isSubmitting ? "분석 시작 중..." : "루틴 저장하고 분석 시작하기"}
           </Button>
       </main>
     );

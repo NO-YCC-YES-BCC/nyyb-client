@@ -1,0 +1,129 @@
+.page {
+    min-height: 100%;
+    padding: 150px 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    animation: pageFadeUp 0.45s ease both;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progressArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 78px;
+}
+
+.progressRing {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background:
+    conic-gradient(#c8f1ce 0deg 216deg, #d9d9d9 216deg 360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: ringRotate 1.4s linear infinite;
+}
+
+.progressRing::after {
+    content: "";
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+}
+
+.progressValue {
+    position: relative;
+    z-index: 1;
+    font-size: 0;
+}
+
+.progressText {
+    margin: 18px 0 0;
+    color: #b5b5b5;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.messageArea {
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    color: #000;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.description {
+    margin: 16px 0 0;
+    color: #b5b5b5;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.dots {
+    display: inline-block;
+    width: 18px;
+    text-align: left;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation: dotsBlink 2s steps(4, end) infinite;
+}
+
+@keyframes ringRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pageFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+}
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dotsBlink {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page,
+    .progressRing,
+    .dots {
+        animation: none;
+    }
+}
