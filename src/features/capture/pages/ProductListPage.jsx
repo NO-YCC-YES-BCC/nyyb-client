@@ -100,9 +100,13 @@ export default function ProductListPage() {
             </section>
           )}
 
-          <div className={styles.actionRow}>
-            <ImagePicker onSelect={handleAddImage} />
-            <Button variant="secondarySolid">루틴으로 저장하기</Button>
+          <div className={styles.addButtonArea}>
+            <ImagePicker 
+              buttonText="+ 제품 추가 촬영하기"
+              buttonVariant="secondaryDashed"
+              className={styles.addButton}
+              onSelect={handleAddImage}
+            />
           </div>
           
           <Button
@@ -110,7 +114,7 @@ export default function ProductListPage() {
               className={styles.startButton}
               onClick={handleStartAnalysis}
             >
-                  분석 시작하기
+                  루틴 저장하고 분석 시작하기
           </Button>
       </main>
     );

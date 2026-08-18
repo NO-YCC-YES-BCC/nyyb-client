@@ -1,21 +1,14 @@
-import { useRef } from "react";
+import ImagePicker from "../components/ImagePicker";
 import { useNavigate } from "react-router-dom";
-import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
 import styles from "./CaptureGuidePage.module.css";
 import { addProductImage } from "../api/captureApi";
 
 export default function CaptureGuidePage() {
-    const fileInputRef = useRef(null);
     const navigate = useNavigate();
 
-    function openCamera() {
-        fileInputRef.current?.click();
-    }
 
-    async function handleImageChange(event) {
-        const file = event.target.files?.[0];
-
+    async function handleImageChange(file) {
         if (!file) return;
 
         await addProductImage(file);
@@ -123,22 +116,22 @@ export default function CaptureGuidePage() {
                 <span>전성분표면 전체가 가이드 틀 안에 들어오게 해주세요</span>
             </p>
 
-            <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                capture="environment"
-                className={styles.fileInput}
-                onChange={handleImageChange}
-            />
+            <div className={styles.buttonRow}>
+                <ImagePicker
+                    buttonText="카메라 열기"
+                    buttonVariant="primary"
+                    capture="environment"
+                    className={styles.guideButton}
+                    onSelect={handleImageChange}
+                />
 
-            <Button
-                variant="primary"
-                className={styles.cameraButton}
-                onClick={openCamera}
-            >
-                카메라 열기
-            </Button>
+                <ImagePicker 
+                    buttonText="사진첩 열기"
+                    buttonVariant="primary"
+                    className={styles.guideButton}
+                    onSelect={handleImageChange}
+                />
+            </div>
         </main>
     );
 }
