@@ -53,7 +53,7 @@ export default function ReportPage() {
 
   return (
     <div className={styles.page}>
-      <span className={styles.pageTag}>✨ SOTT 비용 리포트</span>
+      <span className={styles.pageTag}>✨ SOTT 비움 리포트</span>
 
       {/* 상단 요약 (P0: 분석 리포트 상단 요약 구현) */}
       <header className={styles.summarySection}>
@@ -77,8 +77,12 @@ export default function ReportPage() {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>📍 이 제품들은 계속 써도 괜찮아요</h2>
         <div className={styles.cardList}>
-          {keepProducts.map((product) => (
-            <KeepProductCard key={product.id} product={product} />
+          {keepProducts.map((product, index) => (
+            <KeepProductCard
+              key={product.id}
+              product={product}
+              number={removeProducts.length + index + 1}
+            />
           ))}
         </div>
       </section>
