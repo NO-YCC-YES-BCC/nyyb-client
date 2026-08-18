@@ -198,7 +198,7 @@
 }
 
 .tip {
-    margin: 64px 0 34px;
+    margin: 32px 0 28px;
     padding: 10px 14px;
     display: flex;
     align-items: center;
@@ -265,3 +265,16 @@
     border-width: 0 4px 4px 0;
     border-radius: 0 0 20px 0;
 }
+
+.buttonRow {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.guideButton {
+    width: 100%;
+}
+

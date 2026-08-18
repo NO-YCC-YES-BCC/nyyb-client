@@ -5,7 +5,9 @@ import styles from "./ImagePicker.module.css";
 export default function ImagePicker({
     buttonText = "+ 제품 추가 촬영하기",
     buttonVariant = "secondaryDashed",
+    capture,
     onSelect,
+    className = "",
 }) {
     const inputRef = useRef(null);
 
@@ -24,7 +26,7 @@ export default function ImagePicker({
 
     return (
         <>
-            <Button variant={buttonVariant} onClick={openPicker}>
+            <Button variant={buttonVariant} className={className} onClick={openPicker}>
                 {buttonText}
             </Button>
 
@@ -32,7 +34,7 @@ export default function ImagePicker({
                 ref={inputRef}
                 type="file"
                 accept="image/*"
-                capture="environment"
+                capture={capture}
                 className={styles.fileInput}
                 onChange={handleChange}
             />
