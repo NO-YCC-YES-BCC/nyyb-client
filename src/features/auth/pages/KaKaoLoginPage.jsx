@@ -11,7 +11,7 @@ export default function KakaoLoginPage() {
     console.warn('[KakaoLoginPage] 카카오 로그인 연동 예정');
   };
 
-  const handleTestLogin = () => {
+  const handleGuestLogin = () => {
     navigate(ROUTES.HOME);
   };
 
@@ -29,8 +29,8 @@ export default function KakaoLoginPage() {
         <Button variant="kakao" leftIcon={kakaoIcon} onClick={handleKakaoLogin}>
           카카오로 시작하기
         </Button>
-        <Button variant="kakaoLight" onClick={handleTestLogin}>
-          테스트 계정으로 로그인
+        <Button variant="kakaoLight" onClick={handleGuestLogin}>
+          게스트 계정으로 로그인
         </Button>
       </div>
     </div>
