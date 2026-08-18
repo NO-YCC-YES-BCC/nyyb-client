@@ -2,16 +2,18 @@
   features/routine/pages/RoutineMainPage.jsx
   라우트: /routine
   담당: 천솔
-  작업현황판 task: "루틴 카드 메인 UI 구현" (P1, 마감 8/15, API: /routines)
+  작업현황판 task: "루틴 카드 메인 UI 구현" (P1, API: /routines)
   comment: "저장된 루틴 요약 표시"
 
   와이어프레임 기준: 점수 카드 + 겹치는 성분/제외 제안 요약 pill + 오전/오후
-  루틴 미리보기 카드(각 4개 썸네일). 카드 클릭 시 해당 시간대 상세로 이동.
+  루틴 미리보기 카드(가로 스크롤 + dot 인디케이터) + 하단 저장 CTA.
 */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
 import { getRoutineMain } from '../api/routineApi';
+import RoutineThumbCarousel from '../components/RoutineThumbCarousel';
+import Button from '../../../shared/components/Button';
 import styles from './RoutineMainPage.module.css';
 import morningIcon from '../../../assets/icons/routine/morning.svg';
 import eveningIcon from '../../../assets/icons/routine/evening.svg';
@@ -32,6 +34,11 @@ export default function RoutineMainPage() {
       ignore = true;
     };
   }, []);
+
+  // TODO: 카카오 로그인 연동 후 루틴 저장 API(POST /routines)로 교체 예정
+  const handleSaveRoutine = () => {
+    console.warn('[RoutineMainPage] 카카오 로그인 후 루틴 저장 연동 예정');
+  };
 
   if (isLoading) {
     return <div className={styles.page}>불러오는 중...</div>;
@@ -74,11 +81,7 @@ export default function RoutineMainPage() {
           </span>
           <span className={styles.timeLabel}>오전 루틴</span>
         </div>
-        <div className={styles.thumbRow}>
-          {morning.slice(0, 4).map((item) => (
-            <img key={item.id} src={item.imageUrl} alt={item.name} className={styles.thumb} />
-          ))}
-        </div>
+        <RoutineThumbCarousel items={morning} />
       </Link>
 
       <Link to={ROUTES.ROUTINE_EVENING} className={styles.timeCard}>
@@ -88,12 +91,12 @@ export default function RoutineMainPage() {
           </span>
           <span className={styles.timeLabel}>오후 루틴</span>
         </div>
-        <div className={styles.thumbRow}>
-          {evening.slice(0, 4).map((item) => (
-            <img key={item.id} src={item.imageUrl} alt={item.name} className={styles.thumb} />
-          ))}
-        </div>
+        <RoutineThumbCarousel items={evening} />
       </Link>
+
+      <Button variant="primary" className={styles.saveButton} onClick={handleSaveRoutine}>
+        카카오로 로그인하고 저장하기
+      </Button>
     </div>
   );
 }
