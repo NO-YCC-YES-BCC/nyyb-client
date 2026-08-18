@@ -2,7 +2,7 @@
   padding: 16px 20px 110px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 40px;
 }
 
 .loadingText {
@@ -38,7 +38,6 @@
   margin: 0;
   font-size: 15px;
   font-weight: 700;
-  font-style:bold;
 }
 
 .section {
@@ -52,38 +51,6 @@
   font-size: 14px;
   font-weight: 700;
   color: #4a4a45;
-}
-
-.notifyCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 16px 18px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid #E0CEC0;
-  box-shadow: 0 4px 12px rgba(28, 43, 36, 0.03);
-}
-
-.notifyLabel {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 700;
-  color: #111111;
-}
-
-.notifySub {
-  margin: 2px 0 0;
-  font-size: 12px;
-  color: #a8a49a;
-}
-
-.notifyToggle {
-  flex-shrink: 0;
-  font-size: 14px;
-  font-weight: 800;
-  color: #6f9a78;
 }
 
 .linkRowBase {
@@ -114,6 +81,7 @@
   right: 16px;
   border-top: 1px dashed #E0CEC0;
 }
+
 .linkCard {
   display: flex;
   flex-direction: column;
@@ -121,7 +89,7 @@
   border: 1px solid #E0CEC0;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow : 0 4px 12px rgba(28, 43, 36, 0.03);
+  box-shadow: 0 4px 12px rgba(28, 43, 36, 0.03);
 }
 
 .linkArrow {
