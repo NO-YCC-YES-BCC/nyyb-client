@@ -1,13 +1,11 @@
 import styles from './ProductCard.module.css';
 
-export default function KeepProductCard({ product, number }) {
-  const { name } = product;
+export default function KeepProductCard({ product }) {
+  const { productName } = product;
 
   return (
     <div className={styles.keepCard}>
-      <p className={styles.keepName}>
-        {number}번 {name}
-      </p>
+      <p className={styles.keepName}>{productName}</p>
       <span className={styles.keepBadge}>유지</span>
     </div>
   );

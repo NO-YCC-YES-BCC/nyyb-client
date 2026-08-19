@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getStoredAnalysisResult } from "../api/analysisApi";
 import styles from "./LoadingPage.module.css";
 
-const MIN_LOADING_TIME = 2000;
+const MIN_LOADING_TIME = 3000;
 
 export default function LoadingPage() {
   const location = useLocation();
@@ -46,11 +46,11 @@ export default function LoadingPage() {
         </div>
 
         <section className={styles.messageArea}>
-          <h1 className={styles.title}>전성분을 정규화하고 있어요</h1>
+          <h1 className={styles.title}>성분을 분석하고 있어요!</h1>
           <p className={styles.description}>
             식약처 공공데이터 원료 DB 대조 분석 중
             <span className={styles.dots} aria-hidden="true">
-              ...w
+              ....
             </span>
           </p>
         </section>

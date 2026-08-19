@@ -1,0 +1,88 @@
+.section {
+    margin-top: 20px;
+    padding: 24px 20px 0;
+    border-top: 8px solid #f4f5f2;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    margin: 0;
+    color: #111;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.moreLink {
+    color: #7b7b7b;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.underlineText {
+    text-decoration: underline;
+}
+
+.list {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid #FFEEEC;
+    overflow: hidden;
+    }
+
+.cardLink {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px;
+    color: inherit;
+    text-decoration: none;
+}
+.cardTitle {
+    margin: 0;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cardCaption {
+    margin: 6px 0 0;
+    color: #8c8c8c;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tag {
+    flex-shrink: 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tagWarning {
+    background: #fde8ea;
+    color: #d2606f;
+}
+
+.tagSafe {
+    background: #e4f0e2;
+    color: #4f7a5a;
+}
