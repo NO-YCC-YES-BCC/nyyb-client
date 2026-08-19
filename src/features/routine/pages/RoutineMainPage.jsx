@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
-import { getRoutineMain } from '../api/routineApi';
+import { getRoutineMain, createRoutineDesign } from '../api/routineApi';
 import { getUser } from '../../../shared/utils/tokenStorage';
 import RoutineThumbCarousel from '../components/RoutineThumbCarousel';
 import Button from '../../../shared/components/Button';
@@ -13,19 +13,37 @@ export default function RoutineMainPage() {
   const navigate = useNavigate();
   const [routine, setRoutine] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDesigning, setIsDesigning] = useState(false);
   const [loadError, setLoadError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 재요청 전 로딩/에러 상태 초기화 (React 데이터 페칭 표준 패턴)
     setIsLoading(true);
     setLoadError(null);
 
     getRoutineMain()
-      .then((data) => {
-        if (!ignore) {
+      .then(async (data) => {
+        if (ignore) return;
+
+        // 아직 루틴 설계(LLM)가 실행되지 않았으면 여기서 한 번 실행한다.
+        if (data.score === null || data.score === undefined) {
           setRoutine(data);
           setIsLoading(false);
+          setIsDesigning(true);
+          try {
+            const designed = await createRoutineDesign(data.routineId);
+            if (!ignore) setRoutine(designed);
+          } catch (error) {
+            console.error('[RoutineMainPage] failed to create routine design:', error);
+          } finally {
+            if (!ignore) setIsDesigning(false);
+          }
+          return;
         }
+
+        setRoutine(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error('[RoutineMainPage] failed to load routine:', error);
@@ -79,7 +97,11 @@ export default function RoutineMainPage() {
             <p className={styles.description}>{summary}</p>
           </>
         ) : (
-          <p className={styles.description}>루틴을 분석하고 있어요. 잠시 후 다시 확인해주세요.</p>
+          <p className={styles.description}>
+            {isDesigning
+              ? '루틴을 분석하고 있어요. 잠시만 기다려주세요...'
+              : '루틴을 분석하고 있어요. 잠시 후 다시 확인해주세요.'}
+          </p>
         )}
       </section>
 

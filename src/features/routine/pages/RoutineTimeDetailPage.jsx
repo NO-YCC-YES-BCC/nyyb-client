@@ -23,6 +23,7 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
 
   useEffect(() => {
     let ignore = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 재요청 전 로딩/에러 상태 초기화 (React 데이터 페칭 표준 패턴)
     setIsLoading(true);
     setLoadError(null);
 
@@ -46,16 +47,41 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
     };
   }, [routineId, timeSlot]);
 
+  const handleGoBack = () => {
+    navigate(ROUTES.ROUTINE);
+  };
+
+  const backButton = (
+    <button type="button" className={styles.backButton} onClick={handleGoBack} aria-label="루틴 카드로 돌아가기">
+      ← 이전
+    </button>
+  );
+
   if (isLoading) {
-    return <div className={styles.page}>불러오는 중...</div>;
+    return (
+      <div className={styles.page}>
+        {backButton}
+        불러오는 중...
+      </div>
+    );
   }
 
   if (loadError) {
-    return <div className={styles.page}>루틴 정보를 불러오지 못했어요. 잠시 후 다시 시도해주세요.</div>;
+    return (
+      <div className={styles.page}>
+        {backButton}
+        루틴 정보를 불러오지 못했어요. 잠시 후 다시 시도해주세요.
+      </div>
+    );
   }
 
   if (!dayData) {
-    return <div className={styles.page}>루틴 정보를 찾을 수 없어요.</div>;
+    return (
+      <div className={styles.page}>
+        {backButton}
+        루틴 정보를 찾을 수 없어요.
+      </div>
+    );
   }
 
   const meta = TIME_SLOT_META[timeSlot];
@@ -84,6 +110,8 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
 
   return (
     <div className={styles.page}>
+      {backButton}
+
       <div className={styles.headerPill}>
         <span className={`${styles.headerIcon} ${styles[`icon-${timeSlot}`]}`}>
           <img src={meta.icon} alt="" className={styles.headerIconImg} />
