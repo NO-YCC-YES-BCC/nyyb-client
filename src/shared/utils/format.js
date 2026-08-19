@@ -18,3 +18,13 @@ export function formatDate(isoString) {
     date.getDate()
   ).padStart(2, '0')}`;
 }
+
+// "2026-08-12T09:30:00+09:00" → "8월 12일"
+export function formatKoreanMonthDay(isoString) {
+  if (!isoString) return '-';
+
+  const date = new Date(isoString);
+  if (Number.isNaN(date.getTime())) return '-';
+
+  return `${date.getMonth() + 1}월 ${date.getDate()}일`;
+}

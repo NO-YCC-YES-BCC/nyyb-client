@@ -6,7 +6,7 @@ export const ROUTES = {
   CAPTURE: "/capture",
   CAPTURE_PRODUCTS: "/capture/products",
   ANALYSIS_LOADING: "/analysis/loading",
-  REPORT: "/report/:jobId",
+  REPORT: "/report/:analysisId",
   ROUTINE: "/routine",
   ROUTINE_MORNING: "/routine/morning",
   ROUTINE_EVENING: "/routine/evening",

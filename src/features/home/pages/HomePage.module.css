@@ -1,18 +1,20 @@
 .page {
   min-height: 100vh;
+  padding-bottom: 96px;
   display: flex;
   flex-direction: column;
   background: #fff;
 }
 
-.header {
+.plainHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 12px;
+  min-height: 43px; 
+  padding: 12px 20px 0;
 }
 
-.greeting {
+.plainGreeting {
   margin: 0;
   color: #000;
   font-size: 25px;
@@ -20,15 +22,71 @@
   line-height: 1.25;
 }
 
+.hero {
+  padding: 26px 20px 62px;
+  color: #fff;
+}
+
+.heroMorning {
+background: linear-gradient(93deg, #CBC8C8 7.34%, #B6D780 87.97%);
+}
+
+.heroEvening {
+  background: linear-gradient(93deg, #494949 7.34%, #3B5D4F 74.87%);
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nickname {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.greeting {
+  margin: 30px 0 0;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.slotIcon {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: -1px; /* 텍스트 baseline 에 맞춰 살짝 내린다 */
+  object-fit: contain;
+}
+
+.slotIconSun {
+  width: 17px;
+  height: 17px;
+}
+
+.slotIconMoon {
+  width: 14px;
+  height: 14px;
+}
+
+
 .profileButton {
   display: flex;
   width: 43px;
   height: 43px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background: #92d3e5;
   overflow: hidden;
+}
+
+.hero .profileButton {
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .profileImage {
@@ -41,6 +99,46 @@
   width: 23px;
   height: 23px;
   display: block;
+}
+
+.routineCard {
+  position: relative;
+  z-index: 1;
+  margin: -42px 16px 0;
+  padding: 24px 18px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stateBox {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.stateText {
+  margin: 0;
+  padding: 32px 20px;
+  color: #8c8c8c;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.stateBox .stateText {
+  padding: 0;
+}
+
+.retryButton {
+  margin-top: 12px;
+  padding: 8px 18px;
+  border: 1px solid #d5d5d5;
+  border-radius: 999px;
+  background: #fff;
+  color: #444;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .emptyState {
@@ -80,6 +178,7 @@
   display: inline-flex;
   text-decoration: none;
 }
+
 .analyzeButton {
   width: 129px;
   height: 43px;
