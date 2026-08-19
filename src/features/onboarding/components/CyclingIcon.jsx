@@ -1,17 +1,17 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-import dropperIcon from "../../../assets/icons/entry/dropper.svg";
-import jarIcon from "../../../assets/icons/entry/jar.svg";
-import sprayIcon from "../../../assets/icons/entry/spray.svg";
-import pumpIcon from "../../../assets/icons/entry/pump.svg";
+import cosmeticsIcon from "../../../assets/icons/entry/cosmetics.svg";
+import lotionIcon from "../../../assets/icons/entry/lotion.svg";
+import personalIcon from "../../../assets/icons/entry/personal.svg";
+import serumIcon from "../../../assets/icons/entry/serum.svg";
 import styles from "./CyclingIcon.module.css";
 
 const ICONS = [
-    { src: dropperIcon, bg: "#efebfb" },
-    { src: jarIcon, bg: "#fbf3e1" },
-    { src: sprayIcon, bg: "#fbeee8" },
-    { src: pumpIcon, bg: "#edf5ed" },
+    { src: cosmeticsIcon, bg: "#efebfb" },
+    { src: lotionIcon, bg: "#fbf3e1" },
+    { src: personalIcon, bg: "#fbeee8" },
+    { src: serumIcon, bg: "#edf5ed" },
 ];
 
 export default function CyclingIcon() {
