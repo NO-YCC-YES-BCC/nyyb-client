@@ -12,7 +12,6 @@ import cleanser from "../../../assets/images/category/cleanser.png";
 import mask from "../../../assets/images/category/mask.png";
 import etc from "../../../assets/images/category/etc.png";
 
-
 export const CATEGORY_THUMBNAILS = {
     TONER: toner,
     SKIN: skin,

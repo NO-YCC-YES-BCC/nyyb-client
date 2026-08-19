@@ -50,7 +50,7 @@ export default function LoadingPage() {
           <p className={styles.description}>
             식약처 공공데이터 원료 DB 대조 분석 중
             <span className={styles.dots} aria-hidden="true">
-              ...
+              ...w
             </span>
           </p>
         </section>
