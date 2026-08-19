@@ -13,7 +13,10 @@
   margin: 0;
   font-size: 16px;
   font-weight: 700;
+  line-height: 1.4;
   color: #000000;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .warningLocation {
@@ -28,9 +31,11 @@
   border-radius: 12px;
   background: #E7DACF8C;
   font-size: 12px;
-  font-weight : 500px;
+  font-weight: 500;
   line-height: 1.55;
   color: #000000;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .warningSource {
