@@ -31,3 +31,19 @@ export async function startAnalysis(products) {
     return response.data?.data ?? response.data;
 }
 
+export async function getAnalysisDetail(analysisId) {
+    const response = await apiClient.get(`/analyses/${analysisId}`);
+
+    return response.data?.data ?? response.data;
+}
+
+export function resolveAnalysisErrorStatus(error) {
+    const httpStatus = error?.response?.status;
+
+    if(httpStatus === 401) return "unauthorized";
+    if(httpStatus === 404) return "notFound";
+    return "error";
+}
+
+
+

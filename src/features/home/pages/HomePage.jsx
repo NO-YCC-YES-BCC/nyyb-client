@@ -1,43 +1,38 @@
-import { Link } from "react-router-dom";
-import { mockUser } from "../../../mocks/mockData";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../shared/constants/routes";
-import defaultProfileIcon from "../../../assets/icons/profile-default.svg";
-import EmptyAnalysis from "../components/EmptyAnalysis";
+import { useLatestRoutine } from "../hooks/useLatestRoutine";
+import BeforeAnalysisHome from "../components/BeforeAnalysisHome";
+import AfterAnalysisHome from "../components/AfterAnalysisHome";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
+    const navigate = useNavigate();
+    const { routine, status, reload } = useLatestRoutine();
+
+    useEffect(() => {
+      if (status === "unauthorized") {
+        navigate(ROUTES.LOGIN, { replace: true });
+      }
+    }, [status, navigate]);
+
   return (
     <main className={`page ${styles.page}`}>
-      <header className={styles.header}>
-        <h1 className={styles.greeting}>
-          안녕하세요 {mockUser.nickname}님!
-        </h1>
+      {status === "loading" && (
+        <p className={styles.stateText}> 루틴을 불러오는 중이에요</p>
+      )}
 
-        <Link
-          to={ROUTES.MYPAGE}
-          className={styles.profileButton}
-          aria-label="마이페이지로 이동"
-        >
-          {mockUser.profileImageUrl ? (
-            <img
-              className={styles.profileImage}
-              src={mockUser.profileImageUrl}
-              alt=""
-            />
-          ) : (
-            <img
-              className={styles.profileDefaultIcon}
-              src={defaultProfileIcon}
-              alt=""
-            />
-          )}
-        </Link>
-      </header>
+      {status === "empty" && <BeforeAnalysisHome />}
 
-      {mockUser.hasAnalysis ? (
-        <p>분석 후 홈은 다음 작업에서 구현</p>
-      ) : (
-        <EmptyAnalysis />
+      {status === "success" && <AfterAnalysisHome routine = {routine} />}
+
+      {status === "error" && (
+        <div className={styles.stateBox}>
+          <p className={styles.stateText}>정보를 불러올 수 없습니다. </p>
+            <button type="button" className={styles.retryButton} onClick={reload}>
+              다시시도
+            </button>
+        </div>
       )}
     </main>
   );

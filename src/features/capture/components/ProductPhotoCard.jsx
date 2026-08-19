@@ -1,6 +1,8 @@
 import deleteIcon from "../../../assets/icons/capture/delete.svg"
+import { getCategoryLabel } from "../../../shared/constants/productCategory";
 import { CATEGORY_THUMBNAILS } from "../constants/categoryThumbnails";
 import styles from "./ProductPhotoCard.module.css";
+
 
 
 const ROUTINE_SLOT_OPTIONS = [
@@ -24,15 +26,17 @@ export default function ProductPhotoCard({
                 <img 
                     className={styles.image}
                     src={thumbnailSrc}
-                    alt ={product.category}
+                    alt={getCategoryLabel(product.category)}
+
                 />
             </div>
 
             <div className={styles.info}>
                 <div className={styles.infoTop}>
                 <strong className={styles.name}>
-                    {product.productName || `${index + 1}번 제품`}
+                    {index + 1}번 {product.productName || "기타 제품"}
                 </strong>
+
                 <span className={styles.meta}>
                     {product.ingredientCount > 0
                     ? `✨ 성분 ${product.ingredientCount}개 파싱`

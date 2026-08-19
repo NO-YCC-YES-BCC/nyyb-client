@@ -1,4 +1,6 @@
 import { apiClient } from "../../../shared/api/client";
+import { getCategoryLabel } from "../../../shared/constants/productCategory";
+
 
 const CAPTURE_PRODUCTS_STORAGE_KEY = "sott.capture.products";
 
@@ -28,7 +30,7 @@ export async function uploadProductImage(file) {
     return {
         productId: data.productId,
         imageUrl: URL.createObjectURL(file),
-        productName: data.productName || "촬영한 제품",
+        productName: getCategoryLabel(data.category),
         category: data.category,
         ingredientCount: data.ingredientCount,
         ingredients: data.ingredients ?? [],

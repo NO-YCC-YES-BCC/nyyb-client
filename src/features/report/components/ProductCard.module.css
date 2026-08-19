@@ -13,7 +13,7 @@
 .removeName {
   margin: 0;
   padding-right: 72px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.4;
   color: #111111;
@@ -23,7 +23,7 @@
 
 .removeBadge {
   position: absolute;
-  top: 42px;
+  top: 18px;   
   right: 18px;
   width: 53px;
   height: 20.7px;
@@ -40,15 +40,15 @@
   z-index: 1;
 }
 
+
 .overlapList {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background : #ffffff;
-  border-radius : 10px;
+  background: #ffffff;
+  border-radius: 10px;
   margin: 0;
-  padding-left: 18px;
-  padding-right: 90px;
+  padding: 12px 18px 12px 34px; 
   list-style: disc;
 }
 
@@ -90,7 +90,7 @@
 .keepName {
   margin: 0;
   min-width: 0;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.45;
   color: #111111;
