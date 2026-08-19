@@ -17,6 +17,7 @@ export default function RoutineMainPage() {
 
   useEffect(() => {
     let ignore = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 재요청 전 로딩/에러 상태 초기화 (React 데이터 페칭 표준 패턴)
     setIsLoading(true);
     setLoadError(null);
 
