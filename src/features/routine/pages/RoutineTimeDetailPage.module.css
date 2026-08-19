@@ -120,3 +120,32 @@
   font-size: 12px;
   color: #d33;
 }
+
+/* 좌측 상단 뒤로가기 버튼 (와이어프레임 기준: top 14px / left 12px) */
+.page {
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  z-index: 1;
+
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 1);
+  white-space: nowrap;
+}
+
+.backButton:hover {
+  opacity: 0.7;
+}
