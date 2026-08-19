@@ -1,13 +1,3 @@
-/*
-  features/routine/pages/RoutineTimeDetailPage.jsx
-  라우트: /routine/morning/:routineId, /routine/evening/:routineId
-  담당: 천솔
-  작업현황판 task: "아침 루틴 상세 UI 구현" / "저녁 루틴 상세 UI 구현" (P1, 마감 8/15, API: /routines/{routineId}/day, /routines/{routineId}/products)
-  comment: "아침/저녁 전체 보기"
-
-  MorningRoutinePage / EveningRoutinePage가 timeSlot prop만 다르게 넘기는
-  공용 내부 컴포넌트(라우트 없음).
-*/
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRoutineTimeDetail, saveRoutineProducts } from '../api/routineApi';
@@ -27,24 +17,46 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
   const navigate = useNavigate();
   const [dayData, setDayData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
-    getRoutineTimeDetail(routineId, timeSlot).then((data) => {
-      if (!ignore) {
-        setDayData(data);
-        setIsLoading(false);
-      }
-    });
+    setIsLoading(true);
+    setLoadError(null);
+
+    getRoutineTimeDetail(routineId, timeSlot)
+      .then((data) => {
+        if (!ignore) {
+          setDayData(data);
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error('[RoutineTimeDetailPage] failed to load day detail:', error);
+        if (!ignore) {
+          setLoadError(error);
+          setIsLoading(false);
+        }
+      });
+
     return () => {
       ignore = true;
     };
   }, [routineId, timeSlot]);
 
-  if (isLoading) return <div className={styles.page}>불러오는 중...</div>;
-  if (!dayData) return <div className={styles.page}>루틴 정보를 찾을 수 없어요.</div>;
+  if (isLoading) {
+    return <div className={styles.page}>불러오는 중...</div>;
+  }
+
+  if (loadError) {
+    return <div className={styles.page}>루틴 정보를 불러오지 못했어요. 잠시 후 다시 시도해주세요.</div>;
+  }
+
+  if (!dayData) {
+    return <div className={styles.page}>루틴 정보를 찾을 수 없어요.</div>;
+  }
 
   const meta = TIME_SLOT_META[timeSlot];
   const products = dayData.products ?? [];
@@ -57,7 +69,6 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
       slot: dayData.slot,
       action: product.recommended,
     }));
-
     setIsSaving(true);
     setSaveError(null);
     try {
@@ -93,12 +104,7 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
       </div>
 
       <div className={styles.ctaWrap}>
-        <button
-          type="button"
-          className={styles.ctaButton}
-          onClick={handleSaveAndReorganize}
-          disabled={isSaving}
-        >
+        <button type="button" className={styles.ctaButton} onClick={handleSaveAndReorganize} disabled={isSaving}>
           {isSaving ? '저장 중...' : '제외 제안 반영 후 다시 정리하기'}
         </button>
         {saveError && <p className={styles.saveError}>{saveError}</p>}

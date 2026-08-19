@@ -1,15 +1,3 @@
-/*
-  features/routine/pages/RoutineMainPage.jsx
-  라우트: /routine
-  담당: 천솔
-  작업현황판 task: "루틴 카드 메인 UI 구현" (P1, API: /routines/latest)
-  comment: "저장된 루틴 요약 표시"
-
-  와이어프레임 기준: 점수 카드 + 오전/오후 루틴 미리보기 카드(가로 스크롤 +
-  dot 인디케이터) + 하단 저장 CTA(게스트만 노출).
-  /routines/latest는 KST 기준 현재 시간대 슬롯만 채워서 주기 때문에
-  오전/오후 중 데이터가 있는 섹션만 보여준다.
-*/
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
@@ -25,15 +13,28 @@ export default function RoutineMainPage() {
   const navigate = useNavigate();
   const [routine, setRoutine] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
-    getRoutineMain().then((data) => {
-      if (!ignore) {
-        setRoutine(data);
-        setIsLoading(false);
-      }
-    });
+    setIsLoading(true);
+    setLoadError(null);
+
+    getRoutineMain()
+      .then((data) => {
+        if (!ignore) {
+          setRoutine(data);
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error('[RoutineMainPage] failed to load routine:', error);
+        if (!ignore) {
+          setLoadError(error);
+          setIsLoading(false);
+        }
+      });
+
     return () => {
       ignore = true;
     };
@@ -45,6 +46,14 @@ export default function RoutineMainPage() {
 
   if (isLoading) {
     return <div className={styles.page}>불러오는 중...</div>;
+  }
+
+  if (loadError) {
+    return (
+      <div className={styles.page}>
+        <p className={styles.emptyState}>루틴 정보를 불러오지 못했어요. 잠시 후 다시 시도해주세요.</p>
+      </div>
+    );
   }
 
   if (!routine) {
