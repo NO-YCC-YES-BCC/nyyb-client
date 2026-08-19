@@ -10,6 +10,8 @@ export const ROUTES = {
   ROUTINE: "/routine",
   ROUTINE_MORNING: "/routine/morning",
   ROUTINE_EVENING: "/routine/evening",
+  ROUTINE_MORNING_DETAIL: "/routine/morning/:routineId",
+  ROUTINE_EVENING_DETAIL: "/routine/evening/:routineId",
   HISTORY: "/history",
   MYPAGE: "/mypage",
   NOT_FOUND: "/not-found",

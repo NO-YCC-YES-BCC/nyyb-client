@@ -31,7 +31,9 @@ export default function AppRouter() {
                 <Route path={ROUTES.REPORT} element={<ReportPage />} />
                 <Route path={ROUTES.ROUTINE} element={<RoutineMainPage />} />
                 <Route path={ROUTES.ROUTINE_MORNING} element={<MorningRoutinePage />} />
+                <Route path={ROUTES.ROUTINE_MORNING_DETAIL} element={<MorningRoutinePage />} />
                 <Route path={ROUTES.ROUTINE_EVENING} element={<EveningRoutinePage />} />
+                <Route path={ROUTES.ROUTINE_EVENING_DETAIL} element={<EveningRoutinePage />} />
                 <Route path={ROUTES.HISTORY} element={<HistoryPage />} />
                 <Route path={ROUTES.MYPAGE} element={<MyPage />} />
 

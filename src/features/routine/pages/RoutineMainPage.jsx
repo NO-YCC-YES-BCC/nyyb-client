@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
 import { getRoutineMain } from '../api/routineApi';
-import { getAccessToken } from '../../../shared/utils/tokenStorage';
+import { getUser } from '../../../shared/utils/tokenStorage';
 import RoutineThumbCarousel from '../components/RoutineThumbCarousel';
 import Button from '../../../shared/components/Button';
 import styles from './RoutineMainPage.module.css';
@@ -57,7 +57,8 @@ export default function RoutineMainPage() {
 
   const { routineId, score, scoreReason, summary, morning, evening } = routine;
   const isDesigned = score !== null && score !== undefined;
-  const isGuest = !getAccessToken();
+  const user = getUser();
+  const isGuest = user?.guest === true;
 
   return (
     <div className={styles.page}>
