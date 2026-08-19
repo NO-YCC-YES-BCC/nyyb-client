@@ -2,7 +2,7 @@
   features/routine/pages/RoutineTimeDetailPage.jsx
   라우트: /routine/morning/:routineId, /routine/evening/:routineId
   담당: 천솔
-  작업현황판 task: "아침 루틴 상세 UI 구현" / "저녁 루틴 상세 UI 구현" (P1, 마감 8/15, API: /routines/{routineId})
+  작업현황판 task: "아침 루틴 상세 UI 구현" / "저녁 루틴 상세 UI 구현" (P1, 마감 8/15, API: /routines/{routineId}/day, /routines/{routineId}/products)
   comment: "아침/저녁 전체 보기"
 
   MorningRoutinePage / EveningRoutinePage가 timeSlot prop만 다르게 넘기는
@@ -10,7 +10,8 @@
 */
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getRoutineDetail } from '../api/routineApi';
+import { getRoutineTimeDetail, saveRoutineProducts } from '../api/routineApi';
+import { ROUTES } from '../../../shared/constants/routes';
 import RoutineProductCard from '../components/RoutineProductCard';
 import morningIcon from '../../../assets/icons/routine/morning.svg';
 import eveningIcon from '../../../assets/icons/routine/evening.svg';
@@ -24,29 +25,51 @@ const TIME_SLOT_META = {
 export default function RoutineTimeDetailPage({ timeSlot }) {
   const { routineId } = useParams();
   const navigate = useNavigate();
-  const [routine, setRoutine] = useState(null);
+  const [dayData, setDayData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
-    getRoutineDetail(routineId).then((data) => {
+    getRoutineTimeDetail(routineId, timeSlot).then((data) => {
       if (!ignore) {
-        setRoutine(data);
+        setDayData(data);
         setIsLoading(false);
       }
     });
     return () => {
       ignore = true;
     };
-  }, [routineId]);
+  }, [routineId, timeSlot]);
 
   if (isLoading) return <div className={styles.page}>불러오는 중...</div>;
-  if (!routine) return <div className={styles.page}>루틴 정보를 찾을 수 없어요.</div>;
+  if (!dayData) return <div className={styles.page}>루틴 정보를 찾을 수 없어요.</div>;
 
   const meta = TIME_SLOT_META[timeSlot];
-  const products = routine[timeSlot] ?? [];
-  const excludeCount = products.filter((p) => p.status === 'exclude').length;
+  const products = dayData.products ?? [];
+  const excludeCount = products.filter((p) => p.recommended === 'REMOVE').length;
   const keepCount = products.length - excludeCount;
+
+  const handleSaveAndReorganize = async () => {
+    const payload = products.map((product) => ({
+      id: product.id,
+      slot: dayData.slot,
+      action: product.recommended,
+    }));
+
+    setIsSaving(true);
+    setSaveError(null);
+    try {
+      await saveRoutineProducts(routineId, payload);
+      navigate(ROUTES.ROUTINE);
+    } catch (error) {
+      console.error('[RoutineTimeDetailPage] failed to save routine products:', error);
+      setSaveError('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   return (
     <div className={styles.page}>
@@ -69,17 +92,17 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
         ))}
       </div>
 
-      {routine.jobId && (
-        <div className={styles.ctaWrap}>
-          <button
-            type="button"
-            className={styles.ctaButton}
-            onClick={() => navigate(`/routine/edit/${routine.jobId}`)}
-          >
-            제외 제안 반영 후 다시 정리하기
-          </button>
-        </div>
-      )}
+      <div className={styles.ctaWrap}>
+        <button
+          type="button"
+          className={styles.ctaButton}
+          onClick={handleSaveAndReorganize}
+          disabled={isSaving}
+        >
+          {isSaving ? '저장 중...' : '제외 제안 반영 후 다시 정리하기'}
+        </button>
+        {saveError && <p className={styles.saveError}>{saveError}</p>}
+      </div>
     </div>
   );
 }

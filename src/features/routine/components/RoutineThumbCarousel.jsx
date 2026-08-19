@@ -1,3 +1,4 @@
+import { getCategoryIcon } from '../constants/categoryIcons';
 import { useRef, useState, useEffect } from 'react';
 import styles from './RoutineThumbCarousel.module.css';
 
@@ -52,7 +53,7 @@ export default function RoutineThumbCarousel({ items }) {
         style={{ '--thumb-size': `${thumbSize}px` }}
       >
         {items.map((item) => (
-          <img key={item.id} src={item.imageUrl} alt={item.name} className={styles.thumb} />
+          <img key={item.id} src={getCategoryIcon(item.category)} alt={item.productName} className={styles.thumb} />
         ))}
       </div>
 
