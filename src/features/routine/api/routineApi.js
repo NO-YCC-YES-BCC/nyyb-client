@@ -7,12 +7,19 @@ function isValidRoutine(data) {
 }
 
 export async function getRoutineMain() {
-  const { data: body } = await apiClient.get('/routines/latest');
-  const payload = body?.data;
-  if (!isValidRoutine(payload)) {
+  const { data: latestBody } = await apiClient.get('/routines/latest');
+  const latestPayload = latestBody?.data;
+  if (!latestPayload?.routineId) {
     throw new Error('[getRoutineMain] invalid routine response shape');
   }
-  return payload;
+
+  const { data: detailBody } = await apiClient.get(`/routines/${latestPayload.routineId}`);
+  const detailPayload = detailBody?.data;
+  if (!isValidRoutine(detailPayload)) {
+    throw new Error('[getRoutineMain] invalid routine detail response shape');
+  }
+
+  return detailPayload;
 }
 
 export async function getRoutineDetail(routineId) {
