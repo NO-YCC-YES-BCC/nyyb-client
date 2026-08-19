@@ -7,14 +7,18 @@
   border-radius: 18px;
   background: #fdf1ee;
   border: 1px solid #f3c9be;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25)
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
 }
 
 .removeName {
   margin: 0;
+  padding-right: 72px;
   font-size: 16px;
   font-weight: 800;
+  line-height: 1.4;
   color: #111111;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .removeBadge {
@@ -75,7 +79,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   padding: 16px 18px;
   border-radius: 16px;
   background: #ffffff;
@@ -85,9 +89,13 @@
 
 .keepName {
   margin: 0;
+  min-width: 0;
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.45;
   color: #111111;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .keepBadge {
