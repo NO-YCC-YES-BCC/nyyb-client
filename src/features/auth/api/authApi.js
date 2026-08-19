@@ -42,3 +42,18 @@ export async function ensureGuestSession() {
 
     return guestSessionPromise;
 }
+
+export async function loginWithKakao(code) {
+    const response = await apiClient.post("/auth/kakao", { code });
+    const data = getResponseData(response);
+
+    saveToken(data.token);
+    saveUser({
+        id: data.id,
+        nickname: data.nickname,
+        guest: data.guest,
+        linkedGuestUserId: data.linkedGuestUserId
+    });
+
+    return data;
+}

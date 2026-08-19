@@ -9,7 +9,18 @@ export default function KakaoLoginPage() {
   const navigate = useNavigate();
 
   const handleKakaoLogin = () => {
-    console.warn('[KakaoLoginPage] 카카오 로그인 연동 예정');
+    const kakaoAuthUrl = new URL("https://kauth.kakao.com/oauth/authorize");
+
+    kakaoAuthUrl.searchParams.set("response_type", "code");
+    kakaoAuthUrl.searchParams.set(
+      "client_id",
+      import.meta.env.VITE_KAKAO_REST_API_KEY
+    );
+    kakaoAuthUrl.searchParams.set(
+      "redirect_uri",
+      import.meta.env.VITE_KAKAO_REDIRECT_URI
+    ); 
+    window.location.href = kakaoAuthUrl.toString();
   };
 
   const handleTestLogin = () => {
