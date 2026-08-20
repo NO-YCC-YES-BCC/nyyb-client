@@ -15,6 +15,8 @@ import EveningRoutinePage from "../features/routine/pages/EveningRoutinePage"
 import HistoryPage from "../features/report/pages/HistoryPage"
 import MyPage from "../features/mypage/pages/MyPage"
 import BottomNav from "../shared/components/BottomNav";
+import PurchaseComparePage from "../features/purchase/pages/PurchaseComparePage";
+import PurchaseResultPage from "../features/purchase/pages/PurchaseResultPage";
 import NotFoundPage from "../features/not-found/pages/NotFoundPage"
 import KakaoCallbackPage from "../features/auth/pages/KaKaoCallbackPage";
 
@@ -38,6 +40,8 @@ export default function AppRouter() {
                 <Route path={ROUTES.ROUTINE_EVENING_DETAIL} element={<EveningRoutinePage />} />
                 <Route path={ROUTES.HISTORY} element={<HistoryPage />} />
                 <Route path={ROUTES.MYPAGE} element={<MyPage />} />
+                <Route path={ROUTES.PURCHASE_COMPARE} element={<PurchaseComparePage />} />
+                <Route path={ROUTES.PURCHASE_RESULT} element={<PurchaseResultPage />} />
 
                 <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage/>} />
                 <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} replace />} />

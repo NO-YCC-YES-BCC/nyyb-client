@@ -65,7 +65,9 @@
 .overlapHighlight {
   color: #c85a4b;
   font-weight: 700;
+  white-space: nowrap;
 }
+
 
 .removeSummary {
   margin: 6px 0 0;

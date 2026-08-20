@@ -19,6 +19,7 @@ function toWarningIngredient(ingredient, allergics) {
     id: ingredient.id,
     name: ingredient.name,
     nameEn: getIngredientNameEn(ingredient.name),
+    location: ingredient.productName ? `${ingredient.productName}에 포함되어있어요` : null,
     reason: ingredient.description,
     source: allergic?.dataSource ?? DEFAULT_SOURCE,
   };

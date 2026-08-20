@@ -1,23 +1,44 @@
 import ImagePicker from "../components/ImagePicker";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { ROUTES } from "../../../shared/constants/routes";
 import styles from "./CaptureGuidePage.module.css";
-import { addProductImage } from "../api/captureApi";
+import { addProductImage, uploadProductImage } from "../api/captureApi";
+import { savePurchaseProduct } from "../../purchase/utils/purchaseStorage";
 
 export default function CaptureGuidePage() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const mode = location.state?.mode ?? "my-products";
+    const isPurchaseMode = mode === "new-purchase";
 
+    const [errorMessage, setErrorMessage] = useState("");
 
     async function handleImageChange(file) {
         if (!file) return;
 
-        await addProductImage(file);
-        navigate(ROUTES.CAPTURE_PRODUCTS);
+        try {
+            setErrorMessage("");
+
+            if (isPurchaseMode) {
+                const product = await uploadProductImage(file);
+                savePurchaseProduct(product);
+                navigate(ROUTES.PURCHASE_COMPARE, { state: { product } });
+                return;
+            }
+
+            await addProductImage(file);
+            navigate(ROUTES.CAPTURE_PRODUCTS);
+        } catch (error) {
+            console.error("[CaptureGuidePage] image upload failed:", error);
+            setErrorMessage("사진 분석에 실패했어요. 전성분표가 잘 보이도록 다시 촬영해주세요.");
+        }
     }
 
     function goBack() {
         navigate(-1);
     }
+
 
     return (
         <main className={styles.page}>
@@ -115,6 +136,10 @@ export default function CaptureGuidePage() {
                 <span className={styles.tipIcon}>💡</span>
                 <span>전성분표면 전체가 가이드 틀 안에 들어오게 해주세요</span>
             </p>
+
+            {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+
+
 
             <div className={styles.buttonRow}>
                 <ImagePicker

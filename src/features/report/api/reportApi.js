@@ -8,5 +8,17 @@ export async function getMatchedIngredients(productIds) {
     },
   });
 
-  return response.data?.data ?? response.data;
+  const data = response.data?.data ?? response.data;
+  const productGroups = Array.isArray(data) ? data : [];
+
+  const ingredients = productGroups.flatMap((group) =>
+    (group.ingredients ?? []).map((ingredient) => ({
+      ...ingredient,
+      productName: group.productName,
+    }))
+  );
+
+  const allergics = productGroups.flatMap((group) => group.allergics ?? []);
+
+  return { ingredients, allergics };
 }

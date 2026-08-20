@@ -1,7 +1,6 @@
 import { useInView } from "../../../shared/hooks/useInView";
 import infoIcon from "../../../assets/icons/onboarding/info-fill.svg";
 import checkIcon from "../../../assets/icons/onboarding/check-fill.svg";
-import arrowRightIcon from "../../../assets/icons/onboarding/arrow-drop-right.svg";
 import arrowUpIcon from "../../../assets/icons/onboarding/arrow-up.svg";
 import serumImage from "../../../assets/images/onboarding/serum.png";
 import tonerImage from "../../../assets/images/onboarding/toner.png";

@@ -215,7 +215,7 @@
 
 .tipIcon {
     flex-shrink: 0;
-}
+}   
 
 .fileInput {
     display: none;
@@ -276,5 +276,12 @@
 
 .guideButton {
     width: 100%;
+}
+.errorText {
+    margin: 12px 0 0;
+    color: #d2606f;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
 }
 

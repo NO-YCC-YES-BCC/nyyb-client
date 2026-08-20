@@ -26,13 +26,13 @@
   padding: 26px 20px 62px;
   color: #fff;
 }
-
+  
 .heroMorning {
-background: linear-gradient(93deg, #CBC8C8 7.34%, #B6D780 87.97%);
+  background: linear-gradient(120deg, #CBC8C8 0%, #B6D780 45%);
 }
 
 .heroEvening {
-  background: linear-gradient(93deg, #494949 7.34%, #3B5D4F 74.87%);
+  background: linear-gradient(120deg, #494949 0%, #3B5D4F 45%);
 }
 
 .profileRow {
