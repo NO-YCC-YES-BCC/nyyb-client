@@ -1,0 +1,29 @@
+.thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #ffffff;
+  background: #cfcabb;
+}
+
+.tone-remove {
+  background: #c85a4b;
+}
+
+.tone-keep {
+  background: #4f7a5a;
+}
+
+.tone-caution {
+  background: #b8792a;
+}
+
+.tone-history {
+  background: #8a887f;
+}
