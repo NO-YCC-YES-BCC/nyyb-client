@@ -9,6 +9,13 @@ import styles from './RoutineMainPage.module.css';
 import morningIcon from '../../../assets/icons/routine/morning.svg';
 import eveningIcon from '../../../assets/icons/routine/evening.svg';
 
+// TODO: 배지 문구에 해당하는 API 필드가 없어 점수 구간으로 임시 생성. 문구/기준 PM 확인 필요
+function getScoreLabel(score) {
+  if (score >= 85) return '아주 잘 맞는 루틴이에요';
+  if (score >= 70) return '조금만 바꾸면 더 좋아요';
+  return '정리하면 훨씬 좋아져요';
+}
+
 export default function RoutineMainPage() {
   const navigate = useNavigate();
   const [routine, setRoutine] = useState(null);
@@ -26,7 +33,6 @@ export default function RoutineMainPage() {
       .then(async (data) => {
         if (ignore) return;
 
-        // 아직 루틴 설계(LLM)가 실행되지 않았으면 여기서 한 번 실행한다.
         if (data.score === null || data.score === undefined) {
           setRoutine(data);
           setIsLoading(false);
@@ -93,17 +99,19 @@ export default function RoutineMainPage() {
         {isDesigned ? (
           <>
             <p className={styles.score}>{score}점</p>
-            <span className={styles.scoreBadge}>{scoreReason}</span>
-            <p className={styles.description}>{summary}</p>
+            <span className={styles.scoreLabel}>{getScoreLabel(score)}</span>
+            <p className={styles.scoreReason}>{scoreReason}</p>
           </>
         ) : (
-          <p className={styles.description}>
+          <p className={styles.scoreReason}>
             {isDesigning
               ? '루틴을 분석하고 있어요. 잠시만 기다려주세요...'
               : '루틴을 분석하고 있어요. 잠시 후 다시 확인해주세요.'}
           </p>
         )}
       </section>
+
+      {isDesigned && summary && <p className={styles.summaryPill}>{summary}</p>}
 
       {morning.length > 0 && (
         <Link to={`${ROUTES.ROUTINE_MORNING}/${routineId}`} className={styles.timeCard}>
