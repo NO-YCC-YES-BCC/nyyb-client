@@ -12,13 +12,20 @@
   box-shadow: 2px 1px 10px rgba(247, 242, 227, 1);
 }
 
+/* Figma Frame 23: 60 x 60 / radius 10 / bg 흰색 / shadow 2 2 2 */
 .thumb {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  object-fit: cover;
-  background: #f3f5f0;
-  flex-shrink: 0;
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  align-self: center;        /* ← 추가: 카드 세로 가운데 정렬 */
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  object-fit: contain;
+  display: block;
+  border: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .thumbPlaceholder {

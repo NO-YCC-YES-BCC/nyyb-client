@@ -3,22 +3,21 @@ import { useRef, useState, useEffect } from 'react';
 import styles from './RoutineThumbCarousel.module.css';
 
 const ITEMS_PER_VIEW = 4;
-const GAP = 8;
+const GAP = 6;
 
 export default function RoutineThumbCarousel({ items }) {
-  const scrollRef = useRef(null);
+  const rowRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [thumbSize, setThumbSize] = useState(76);
   const pageCount = Math.max(1, Math.ceil(items.length / ITEMS_PER_VIEW));
 
   useEffect(() => {
-    const el = scrollRef.current;
+    const el = rowRef.current;
     if (!el) return;
 
     const updateSize = () => {
-      const rowWidth = el.clientWidth;
-      const size = (rowWidth - GAP * (ITEMS_PER_VIEW - 1)) / ITEMS_PER_VIEW;
-      setThumbSize(size);
+      const size = (el.clientWidth - GAP * (ITEMS_PER_VIEW - 1)) / ITEMS_PER_VIEW;
+      if (size > 0) setThumbSize(size);
     };
 
     updateSize();
@@ -28,31 +27,19 @@ export default function RoutineThumbCarousel({ items }) {
     return () => observer.disconnect();
   }, []);
 
-  const handleScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const index = Math.round(el.scrollLeft / el.clientWidth);
-    setActiveIndex(index);
-  };
-
   const goToPage = (event, index) => {
     event.preventDefault();
     event.stopPropagation();
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollTo({ left: index * el.clientWidth, behavior: 'smooth' });
     setActiveIndex(index);
   };
 
+  // 현재 페이지에 해당하는 4개만 렌더링한다.
+  const visibleItems = items.slice(activeIndex * ITEMS_PER_VIEW, (activeIndex + 1) * ITEMS_PER_VIEW);
+
   return (
     <div className={styles.carousel}>
-      <div
-        className={styles.thumbRow}
-        ref={scrollRef}
-        onScroll={handleScroll}
-        style={{ '--thumb-size': `${thumbSize}px` }}
-      >
-        {items.map((item) => (
+      <div className={styles.thumbRow} ref={rowRef} style={{ '--thumb-size': `${thumbSize}px` }}>
+        {visibleItems.map((item) => (
           <img key={item.id} src={getCategoryIcon(item.category)} alt={item.productName} className={styles.thumb} />
         ))}
       </div>
