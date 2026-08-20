@@ -70,9 +70,11 @@ export default function PurchaseResultPage() {
                     {overlaps.length > 0 && (
                         <div className={styles.reasonBox}>
                             {overlaps.map((overlap, index) => (
-                                <p key={index}>
-                                    {overlap.prefix}{" "}
-                                    <strong>{overlap.count}개 성분 중복</strong>
+                                <p key={index} className={styles.reasonRow} title={overlap.name}>
+                                    <span className={styles.reasonName}>{overlap.name}</span>
+                                    <strong className={styles.reasonCount}>
+                                        {overlap.count}개 성분 중복
+                                    </strong>
                                 </p>
                             ))}
 

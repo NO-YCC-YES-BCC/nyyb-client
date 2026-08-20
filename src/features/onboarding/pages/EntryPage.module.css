@@ -1,6 +1,9 @@
 .page {
+    /* 100vh는 모바일 주소창 영역까지 포함해 버튼이 화면 밖으로 밀리므로
+       실제 보이는 높이(dvh) 기준으로 잡는다. */
     min-height: 100vh;
-    padding: 0 24px 28px;
+    min-height: 100dvh;
+    padding: 0 24px calc(28px + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,7 +41,8 @@
 .animationArea {
     width: 130px;
     height: 130px;
-    margin-top: 84px;
+    /* 짧은 화면에서는 여백을 줄여 버튼이 잘리지 않게 한다 */
+    margin-top: clamp(32px, 10vh, 84px);
     display: flex;
     align-items: center;
     justify-content: center;

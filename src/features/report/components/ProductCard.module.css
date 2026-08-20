@@ -62,6 +62,24 @@
   color: #7A8880;
 }
 
+/* 제품명(말줄임) + 중복 개수(고정)를 한 줄에 배치. li 안에 두어 불릿은 유지한다. */
+.overlapRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.overlapName {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overlapHighlight {
+  flex-shrink: 0;
+}
+
 .overlapHighlight {
   color: #c85a4b;
   font-weight: 700;

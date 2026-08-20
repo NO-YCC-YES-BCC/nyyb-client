@@ -14,9 +14,11 @@ export default function RemoveProductCard({ product }) {
       {overlaps.length > 0 && (
         <ul className={styles.overlapList}>
           {overlaps.map((overlap, i) => (
-            <li key={i} className={styles.overlapItem}>
-              {overlap.prefix}{' '}
-              <strong className={styles.overlapHighlight}>{overlap.count}개 성분 중복</strong>
+            <li key={i} className={styles.overlapItem} title={overlap.name}>
+              <div className={styles.overlapRow}>
+                <span className={styles.overlapName}>{overlap.name}</span>
+                <strong className={styles.overlapHighlight}>{overlap.count}개 성분 중복</strong>
+              </div>
             </li>
           ))}
 

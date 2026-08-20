@@ -77,6 +77,24 @@
     margin: 0;
 }
 
+/* 제품명(말줄임) + 중복 개수(고정)를 한 줄에 배치 */
+.reasonRow {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.reasonName {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.reasonCount {
+    flex-shrink: 0;
+}
+
 .description {
     margin: 16px 0 0;
     color: #111111;
