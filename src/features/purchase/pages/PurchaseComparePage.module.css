@@ -1,0 +1,217 @@
+.page {
+    min-height: 100%;
+    padding: 22px 22px 96px;
+    background: #ffffff;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #edf5ef;
+    color: #3f6652;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 6px 14px rgba(224, 206, 192, 0.8);
+}
+
+.header {
+    margin-top: 34px;
+}
+
+.title {
+    margin: 0;
+    color: #000000;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.subtitle {
+    margin: 10px 0 0;
+    color: #8a8a8a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.routineBox {
+    margin-top: 44px;
+    padding: 18px 14px;
+    border: 1px solid #e8d5c7;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.sectionTitle {
+    margin: 0 0 16px;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.routineList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.routineItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding: 0 18px;
+    border: 1px solid #f0dcd2;
+    border-radius: 16px;
+    background: #fffdfc;
+    color: #111111;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.selectedRoutine {
+    border-color: #badf86;
+    background: #f7fde9;
+}
+
+.routineTitle {
+    color: #111111;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.routineBadge {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #edf5ef;
+    color: #47705b;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.productCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    padding: 16px;
+    border: 1px solid #e8d5c7;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 1px 1px 10px 0 #eee3dc;
+}
+
+.thumbnailBox {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #efe2d7;
+    border-radius: 14px;
+    background: #fffdf9;
+}
+
+.thumbnail {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+
+.thumbnailFallback {
+    font-size: 11px;
+    color: #9a9a9a;
+}
+
+.productInfo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.productName {
+    color: #111111;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.parsedText {
+    color: #416852;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.loadingText,
+.errorText {
+    margin: 16px 0 0;
+    color: #8a8a8a;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.submitButton {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    width: min(349px, calc(100% - 44px));
+    height: 43px;
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 10px;
+    background: #effad7;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.removeButton {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: #f4eee9;
+    color: #8a8a8a;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.emptyText {
+    margin-top: 120px;
+    color: #8a8a8a;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.emptyButton {
+    margin-top: 20px;
+    width: 100%;
+}
+.routineBadgeWarn {
+    background: #fdf1ee;
+    color: #c86b51;
+}
+
+.backLink {
+    display: block;
+    margin: 18px auto 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #8a8a8a;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+

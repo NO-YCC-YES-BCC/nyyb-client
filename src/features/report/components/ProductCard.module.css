@@ -1,0 +1,112 @@
+.removeCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #fdf1ee;
+  border: 1px solid #f3c9be;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+}
+
+.removeName {
+  margin: 0;
+  padding-right: 72px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #111111;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.removeBadge {
+  position: absolute;
+  top: 18px;   
+  right: 18px;
+  width: 53px;
+  height: 20.7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #C86B51;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+
+.overlapList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  margin: 0;
+  padding: 12px 18px 12px 34px; 
+  list-style: disc;
+}
+
+.overlapItem {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7A8880;
+}
+
+.overlapItem::marker {
+  color: #7A8880;
+}
+
+.overlapHighlight {
+  color: #c85a4b;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
+.removeSummary {
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-weight:600;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.keepCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #E0CEC0;
+  box-shadow: 0 4px 12px rgba(28, 43, 36, 0.03);
+}
+
+.keepName {
+  margin: 0;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #111111;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.keepBadge {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #E8EFE9;
+  color: #3B5D4F;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}

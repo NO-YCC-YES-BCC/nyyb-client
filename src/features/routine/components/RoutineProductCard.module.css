@@ -1,0 +1,113 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+/* 제외 제안 카드 */
+.cardExclude {
+  background: #fffdf7;
+  border-color: #f2e6cc;
+}
+
+/* Figma Frame 23: 60 x 60 / radius 10 / 흰 배경 / shadow 2 2 2 */
+.thumb {
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  object-fit: contain;
+  display: block;
+  border: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.metaGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.brand {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8a8a85;
+  white-space: nowrap;
+}
+
+.categoryTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f0f0ee;
+  font-size: 11px;
+  font-weight: 500;
+  color: #7a7a75;
+  white-space: nowrap;
+}
+
+.statusTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.statusKeep {
+  background: #e6f1e1;
+  color: #4f7a4a;
+}
+
+.statusExclude {
+  background: #fbeecd;
+  color: #9a7520;
+}
+
+.name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 140%;
+  color: #1a1a1a;
+  word-break: keep-all;
+}
+
+.reason {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 150%;
+  color: #6e6e68;
+  word-break: keep-all;
+}
