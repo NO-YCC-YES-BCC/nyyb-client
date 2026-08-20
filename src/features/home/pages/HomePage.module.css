@@ -1,9 +1,30 @@
 .page {
   min-height: 100vh;
-  padding-bottom: 96px;
+  min-height: 100dvh;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   background: #fff;
+}
+
+/* 로딩 → 콘텐츠 교체가 뚝 끊기지 않게 새로 뜨는 요소를 페이드 인 */
+.page > * {
+  animation: contentFadeIn 0.25s ease-out both;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page > * {
+    animation: none;
+  }
 }
 
 .plainHeader {

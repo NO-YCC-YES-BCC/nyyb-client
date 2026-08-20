@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ROUTES } from "../shared/constants/routes";
 
 import EntryPage from "../features/onboarding/pages/EntryPage"
@@ -20,10 +21,18 @@ import PurchaseResultPage from "../features/purchase/pages/PurchaseResultPage";
 import NotFoundPage from "../features/not-found/pages/NotFoundPage"
 import KakaoCallbackPage from "../features/auth/pages/KaKaoCallbackPage";
 
-export default function AppRouter() {
-    return(
-        <BrowserRouter>
-            <Routes>
+function AppRoutes() {
+    const location = useLocation();
+
+    // 이전 페이지의 스크롤 위치가 새 페이지에 남지 않게 맨 위로 되돌린다.
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
+
+    return (
+        // pathname 을 key 로 걸어 페이지가 바뀔 때마다 페이드 인 애니메이션을 다시 실행한다.
+        <div key={location.pathname} className="route-transition">
+            <Routes location={location}>
                 <Route path={ROUTES.ENTRY} element={<EntryPage/>} />
                 <Route path={ROUTES.ONBOARDING} element={<OnboardingPage />} />
                 <Route path={ROUTES.LOGIN} element={<KaKaoLoginPage/>} />
@@ -45,11 +54,16 @@ export default function AppRouter() {
 
                 <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage/>} />
                 <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} replace />} />
-
-                
             </Routes>
+        </div>
+    );
+}
+
+export default function AppRouter() {
+    return(
+        <BrowserRouter>
+            <AppRoutes />
             <BottomNav/>
         </BrowserRouter>
     );
 }
-

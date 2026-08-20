@@ -18,7 +18,7 @@ export default function HomePage() {
     }, [status, navigate]);
 
   return (
-    <main className={`page ${styles.page}`}>
+    <main className={styles.page}>
       {status === "loading" && (
         <p className={styles.stateText}> 루틴을 불러오는 중이에요</p>
       )}
