@@ -1,7 +1,7 @@
 import styles from './ProfileSummary.module.css';
 
 export default function ProfileSummary({ profile }) {
-  const { userName, email, stats } = profile;
+  const { userName, email, stats, isLoggedIn } = profile;
 
   return (
     <section className={styles.profileSummary}>
@@ -13,12 +13,20 @@ export default function ProfileSummary({ profile }) {
           </svg>
         </div>
         <div className={styles.profileInfo}>
-          <p className={styles.profileName}>{userName} 님</p>
-          <p className={styles.profileEmail}>{email}</p>
+          {isLoggedIn ? (
+            <>
+              <p className={styles.profileName}>{userName} 님</p>
+              {email && <p className={styles.profileEmail}>{email}</p>}
+            </>
+          ) : (
+            <p className={styles.profileName}>로그인이 필요해요</p>
+          )}
         </div>
-        <button type="button" className={styles.editButton}>
-          수정
-        </button>
+        {isLoggedIn && (
+          <button type="button" className={styles.editButton}>
+            수정
+          </button>
+        )}
       </div>
 
       <div className={styles.statList}>
