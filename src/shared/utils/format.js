@@ -27,4 +27,4 @@ export function formatKoreanMonthDay(isoString) {
   if (Number.isNaN(date.getTime())) return '-';
 
   return `${date.getMonth() + 1}월 ${date.getDate()}일`;
-}
+  } 

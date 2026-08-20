@@ -7,8 +7,8 @@ import styles from "./EntryPage.module.css";
 export default function EntryPage() {
   const navigate = useNavigate();
 
-  function goToCaptureGuide() {
-    navigate(ROUTES.CAPTURE);
+  function goToHome() {
+    navigate(ROUTES.HOME);
   }
 
   function goToLogin() {
@@ -38,7 +38,7 @@ export default function EntryPage() {
       </section>
 
       <div className={styles.actionArea}>
-        <Button variant="primary" onClick={goToCaptureGuide}>
+        <Button variant="primary" onClick={goToHome}>
           성분 검사해보기
         </Button>
 

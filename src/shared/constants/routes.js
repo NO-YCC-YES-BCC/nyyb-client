@@ -16,5 +16,4 @@ export const ROUTES = {
   MYPAGE: "/mypage",
   KAKAO_CALLBACK: "/login/kakao/callback",
   NOT_FOUND: "/not-found",
-
 };

@@ -25,7 +25,7 @@ export default function AppRouter() {
                 <Route path={ROUTES.ENTRY} element={<EntryPage/>} />
                 <Route path={ROUTES.ONBOARDING} element={<OnboardingPage />} />
                 <Route path={ROUTES.LOGIN} element={<KaKaoLoginPage/>} />
-                <Route path={ROUTES.KAKAO_CALLBACK} element={<KakaoCallbackPage />}/>
+                <Route path={ROUTES.KAKAO_CALLBACK} element={<KakaoCallbackPage />} />
                 <Route path={ROUTES.HOME} element={<HomePage/>} />
                 <Route path={ROUTES.CAPTURE} element={<CaptureGuidePage />} />
                 <Route path={ROUTES.CAPTURE_PRODUCTS} element={<ProductListPage />} />

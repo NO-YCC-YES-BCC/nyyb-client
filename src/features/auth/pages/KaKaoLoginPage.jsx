@@ -9,19 +9,26 @@ export default function KakaoLoginPage() {
   const navigate = useNavigate();
 
   const handleKakaoLogin = () => {
-    const kakaoAuthUrl = new URL("https://kauth.kakao.com/oauth/authorize");
+  const kakaoClientId = import.meta.env.VITE_KAKAO_CLIENT_ID;
+  const kakaoRedirectUri = import.meta.env.VITE_KAKAO_REDIRECT_URI;
 
-    kakaoAuthUrl.searchParams.set("response_type", "code");
-    kakaoAuthUrl.searchParams.set(
-      "client_id",
-      import.meta.env.VITE_KAKAO_REST_API_KEY
-    );
-    kakaoAuthUrl.searchParams.set(
-      "redirect_uri",
-      import.meta.env.VITE_KAKAO_REDIRECT_URI
-    ); 
-    window.location.href = kakaoAuthUrl.toString();
-  };
+  if (!kakaoClientId || !kakaoRedirectUri) {
+    console.error("카카오 환경변수가 없습니다.", {
+      kakaoClientId,
+      kakaoRedirectUri,
+    });
+    return;
+  }
+
+  const params = new URLSearchParams({
+    client_id: kakaoClientId,
+    redirect_uri: kakaoRedirectUri,
+    response_type: "code",
+  });
+
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?${params.toString()}`;
+};
+
 
   const handleTestLogin = () => {
     navigate(ROUTES.HOME);
