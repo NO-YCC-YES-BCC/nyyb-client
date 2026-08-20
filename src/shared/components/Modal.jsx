@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { createPortal} from "react-dom";
 import styles from "./Modal.module.css";
-import closeIcon from "../../assets/icons/close.svg";
+import closeIcon from "../../assets/icons/common/close.svg";
 
 export default function Modal({ isOpen, onClose, labelledBy, children }) {
     useEffect(() => {

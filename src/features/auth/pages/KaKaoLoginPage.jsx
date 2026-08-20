@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../shared/components/Button';
 import { ROUTES } from '../../../shared/constants/routes';
-import kakaoIcon from '../../../assets/icons/kakao.svg';
-import sottLogo from '../../../assets/icons/sott_logo.svg';
+import kakaoIcon from '../../../assets/icons/auth/kakao.svg';
+import sottLogo from '../../../assets/icons/auth/sott-logo.svg';
 import styles from './KakaoLoginPage.module.css';
 
 export default function KakaoLoginPage() {

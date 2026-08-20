@@ -6,9 +6,11 @@ export default function ImagePicker({
     buttonText = "+ 제품 추가 촬영하기",
     buttonVariant = "secondaryDashed",
     capture,
+    leftIcon,
     onSelect,
     className = "",
 }) {
+
     const inputRef = useRef(null);
 
     function openPicker() {
@@ -26,7 +28,7 @@ export default function ImagePicker({
 
     return (
         <>
-            <Button variant={buttonVariant} className={className} onClick={openPicker}>
+            <Button variant={buttonVariant} className={className} leftIcon={leftIcon} onClick={openPicker}>
                 {buttonText}
             </Button>
 

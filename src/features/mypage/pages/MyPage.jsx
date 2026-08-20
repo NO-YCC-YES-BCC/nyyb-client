@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getMypageProfile } from '../api/mypageApi';
 import ProfileSummary from '../components/ProfileSummary';
-import arrowLeftIcon from '../../../assets/icons/Arrow_left.svg';
+import arrowLeftIcon from '../../../assets/icons/mypage/arrow-left.svg';
 import styles from './MyPage.module.css';
 
 const SERVICE_LINKS = ['SOTT는 어떤 서비스인가요', '판정 근거는 어디서 왔나요', '1:1 문의하기'];

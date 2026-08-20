@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
-import emptyCameraIcon from "../../../assets/icons/camera-empty.svg";
+import emptyCameraIcon from "../../../assets/icons/home/camera-empty.svg";
 import styles from "../pages/HomePage.module.css";
 
 export default function EmptyAnalysis() {

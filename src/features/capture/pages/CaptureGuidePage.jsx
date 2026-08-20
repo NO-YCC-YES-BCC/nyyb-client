@@ -5,6 +5,8 @@ import { ROUTES } from "../../../shared/constants/routes";
 import styles from "./CaptureGuidePage.module.css";
 import { addProductImage, uploadProductImage } from "../api/captureApi";
 import { savePurchaseProduct } from "../../purchase/utils/purchaseStorage";
+import cameraIcon from "../../../assets/icons/capture/camera.svg";
+import galleryIcon from "../../../assets/icons/capture/photo.svg";
 
 export default function CaptureGuidePage() {
     const navigate = useNavigate();
@@ -146,13 +148,15 @@ export default function CaptureGuidePage() {
                     buttonText="카메라 열기"
                     buttonVariant="primary"
                     capture="environment"
+                    leftIcon={cameraIcon}
                     className={styles.guideButton}
                     onSelect={handleImageChange}
                 />
 
-                <ImagePicker 
+                <ImagePicker
                     buttonText="사진첩 열기"
                     buttonVariant="primary"
+                    leftIcon={galleryIcon}
                     className={styles.guideButton}
                     onSelect={handleImageChange}
                 />

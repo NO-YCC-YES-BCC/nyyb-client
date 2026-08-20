@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../shared/constants/routes";
-import defaultProfileIcon from "../../../assets/icons/profile-default.svg";
+import defaultProfileIcon from "../../../assets/icons/home/profile-default.svg";
 import { getHomeUser } from "../utils/homeUser";
 import EmptyAnalysis from "./EmptyAnalysis";
 import styles from "../pages/HomePage.module.css"

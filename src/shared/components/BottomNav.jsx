@@ -3,9 +3,9 @@ import { matchPath, NavLink, useLocation } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 import AnalysisStartModal from "../../features/capture/components/AnalysisStartModal";
 import styles from "./BottomNav.module.css";
-import homeIcon from "../../assets/icons/home.svg";
-import cameraIcon from "../../assets/icons/camera.svg";
-import userIcon from "../../assets/icons/my.svg";
+import homeIcon from "../../assets/icons/nav/home.svg";
+import cameraIcon from "../../assets/icons/nav/camera.svg";
+import userIcon from "../../assets/icons/nav/my.svg";
 
 // 온보딩, 로그인, 촬영 플로우에서는 하단 네비를 숨긴다.
 const HIDDEN_NAV_PATHS = [
