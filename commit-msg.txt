@@ -1,0 +1,15 @@
+fix: 루틴 화면 mock 데이터 폴백 제거, 실제 API 응답만 사용
+
+- routineApi.js: getRoutineMain / getRoutineDetail / getRoutineTimeDetail의
+  mock 폴백(try/catch → mockRoutineDetail) 로직 제거. API 실패 시 에러를
+  그대로 throw하도록 변경
+- RoutineMainPage / RoutineTimeDetailPage: 로딩 실패 상태(loadError) 추가,
+  에러 발생 시 안내 문구 노출
+- 게스트(비로그인) 테스트 상태에서도 더 이상 mock 데이터가 화면에 노출되지
+  않고, 백엔드에 미리 세팅된 실 데이터가 루틴메인/오전/오후 화면에 표시됨을
+  확인
+
+참고: .env 파일 부재로 API 요청이 프론트 개발 서버(localhost:5173)로
+새던 문제를 별도로 발견해 로컬에서 해결함 (VITE_API_BASE_URL 설정,
+.env는 gitignore 대상이라 이번 커밋에 포함 안 됨 — 팀원 각자 로컬에
+VITE_API_BASE_URL=https://api.hwangs.site 설정 필요)
