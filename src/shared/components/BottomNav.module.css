@@ -29,6 +29,14 @@
     font-weight: 700;
     line-height: 1;
 }
+.navButton {
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
 
 .icon {
     display: flex;
