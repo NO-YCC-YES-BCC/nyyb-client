@@ -14,6 +14,8 @@ export const ROUTES = {
   ROUTINE_EVENING_DETAIL: "/routine/evening/:routineId",
   HISTORY: "/history",
   MYPAGE: "/mypage",
+  PURCHASE_COMPARE: "/purchase/compare",
+  PURCHASE_RESULT: "/purchase/result",
   KAKAO_CALLBACK: "/login/kakao/callback",
   NOT_FOUND: "/not-found",
 };
