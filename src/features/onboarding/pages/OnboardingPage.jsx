@@ -5,7 +5,14 @@ import arrowRightIcon from "../../../assets/icons/onboarding/arrow-drop-right.sv
 import arrowUpIcon from "../../../assets/icons/onboarding/arrow-up.svg";
 import serumImage from "../../../assets/images/onboarding/serum.png";
 import tonerImage from "../../../assets/images/onboarding/toner.png";
+import point1Image from "../../../assets/images/onboarding/point1.png";
+import point2Image from "../../../assets/images/onboarding/point2.png";
+import point3Image from "../../../assets/images/onboarding/point3.png";
 import ellipseIcon from "../../../assets/icons/onboarding/ellipse.svg";
+import routineProduct1 from "../../../assets/images/onboarding/routine-product1.png";
+import routineProduct2 from "../../../assets/images/onboarding/routine-product2.png";
+import stepCheckIcon from "../../../assets/icons/onboarding/step-check.png";
+import stepCircleIcon from "../../../assets/icons/onboarding/step-circle.png";
 import styles from "./OnboardingPage.module.css";
 import { useRef } from "react";
 
@@ -17,8 +24,8 @@ export default function OnboardingPage() {
   const pageRef = useRef(null);
 
   function scrollToTop() {
-  pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-}
+    pageRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   return (
     <main ref={pageRef} className={styles.page}>
@@ -28,25 +35,29 @@ export default function OnboardingPage() {
           point1InView ? styles.inView : ""
         }`}
       >
-        <span className={styles.pointBadge}>POINT 1</span>
+        <div className={styles.sectionHeader}>
+          <span className={styles.pointBadge}>POINT 1</span>
 
-        <h1 className={styles.title}>
-          “겹치는 게 있으려나”
-          <br />
-          고민 했는데
-          <br />
-          생각보다 훨씬 많아요
-        </h1>
+          <h1 className={styles.title}>
+            “겹치는 게 있으려나”
+            <br />
+            고민 했는데
+            <br />
+            생각보다 훨씬 많아요
+          </h1>
 
-        <p className={styles.description}>
-          전성분을 대조해 보면
-          <br />
-          체감보다 겹친 성분이 더 많이 나와요
-        </p>
+          <p className={styles.description}>
+            전성분을 대조해 보면
+            <br />
+            체감보다 겹친 성분이 더 많이 나와요
+          </p>
+        </div>
+
+        <img className={styles.pointImage} src={point1Image} alt="" />
 
         <article className={styles.statCard}>
           <p className={styles.statCaption}>
-            상위 화장품 10개 중 6개는 제품명과 실제 주성분이 다릅니다.
+            상위 화장품 10개 중 6개는 제품명과 실제 주성분이 달라요.
           </p>
           <div className={styles.highlightWrap}>
             <img className={styles.highlightGlow} src={ellipseIcon} alt="" />
@@ -72,19 +83,23 @@ export default function OnboardingPage() {
           point2InView ? styles.inView : ""
         }`}
       >
-        <span className={styles.pointBadge}>POINT 2</span>
+        <div className={styles.sectionHeader}>
+          <span className={styles.pointBadge}>POINT 2</span>
 
-        <h1 className={styles.title}>
-          추천 대신,
-          <br />
-          판정을 보여드려요
-        </h1>
+          <h1 className={styles.title}>
+            추천 대신,
+            <br />
+            판정을 보여드려요
+          </h1>
 
-        <p className={styles.description}>
-          겹치는 여러 제품 중에서
-          <br />
-          무엇을 선택할지 근거를 설명해요
-        </p>
+          <p className={styles.description}>
+            겹치는 여러 제품 중에서
+            <br />
+            무엇을 선택할지 근거를 설명해요
+          </p>
+        </div>
+
+        <img className={styles.pointImage} src={point2Image} alt="" />
 
         <article className={styles.judgementCard}>
           <div className={`${styles.judgementBar} ${styles.removeBar}`}>
@@ -129,65 +144,57 @@ export default function OnboardingPage() {
           point3InView ? styles.inView : ""
         }`}
       >
-        <span className={styles.pointBadge}>POINT 3</span>
+        <div className={styles.sectionHeader}>
+          <span className={styles.pointBadge}>POINT 3</span>
 
-        <h1 className={styles.title}>
-          추천템 대신
-          <br />
-          정리된 루틴 카드를 제안해요
-        </h1>
+          <h1 className={styles.title}>
+            추천템 대신
+            <br />
+            정리된 루틴 카드를 제안해요
+          </h1>
 
-        <p className={styles.description}>
-          쇼핑몰은 연결되지 않아요
-          <br />
-          결론은 언제나 ‘축소’예요
-        </p>
+          <p className={styles.description}>
+            쇼핑몰은 연결되지 않아요
+            <br />
+            결론은 언제나 ‘축소’예요
+          </p>
+        </div>
 
-        <article className={styles.routineCard}>
+        <img className={styles.pointImage} src={point3Image} alt="" />
+
+                <article className={styles.routineCard}>
           <div className={styles.noticePill}>
             <img src={infoIcon} alt="" />
             <strong>이 리포트엔 구매 링크가 없어요</strong>
           </div>
 
-          <div className={styles.routineDivider} />
+                    <ol className={styles.productList}>
+            <li className={`${styles.productItem} ${styles.productItemRemoved}`}>
+              <div className={styles.productThumb}>
+                <img src={routineProduct1} alt="" />
+                <img className={styles.stepBadge} src={stepCheckIcon} alt="" />
+              </div>
 
-          <div className={styles.routineCompare}>
-            <div className={styles.routineItem}>
-              <span>아침 루틴</span>
-              <strong>5개</strong>
-            </div>
+              <div className={styles.productBody}>
+                <span className={styles.productIndex}>1</span>
+                <strong className={styles.productName}>동국제약 마데카셀 베리어 엠디 크림</strong>
+                <span className={styles.productStep}>스킨케어 첫 번째</span>
+              </div>
+            </li>
 
-            <img className={styles.arrowRight} src={arrowRightIcon} alt="" />
+            <li className={`${styles.productItem} ${styles.productItemActive}`}>
+              <div className={styles.productThumb}>
+                <img src={routineProduct2} alt="" />
+                <img className={styles.stepBadge} src={stepCircleIcon} alt="" />
+              </div>
 
-            <div className={styles.routineItem}>
-              <span>아침 루틴</span>
-              <strong className={styles.routineStrong}>
-                <img className={styles.routineGlow} src={ellipseIcon} alt="" />
-                <span className={styles.routineStrongText}>3개 제안</span>
-              </strong>
-            </div>
-          </div>
-
-          <div className={styles.routineDivider} />
-
-          <div className={styles.routineCompare}>
-            <div className={styles.routineItem}>
-              <span>저녁 루틴</span>
-              <strong>7개</strong>
-            </div>
-
-            <img className={styles.arrowRight} src={arrowRightIcon} alt="" />
-
-            <div className={styles.routineItem}>
-              <span>저녁 루틴</span>
-              <strong className={styles.routineStrong}>
-                <img className={styles.routineGlow} src={ellipseIcon} alt="" />
-                <span className={styles.routineStrongText}>5개 제안</span>
-              </strong>
-            </div>
-          </div>
-
-          <div className={styles.routineDivider} />
+              <div className={styles.productBody}>
+                <span className={styles.productIndex}>2</span>
+                <strong className={styles.productName}>토리든 다이브인 저분자 히알루론산 세럼</strong>
+                <span className={styles.productStep}>스킨케어 두 번째</span>
+              </div>
+            </li>
+          </ol>
         </article>
 
         <button
