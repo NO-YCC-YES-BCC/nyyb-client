@@ -1,6 +1,9 @@
 .page {
+  /* 100vh는 모바일 주소창 영역까지 포함해 하단 버튼이 잘리므로
+     실제 보이는 높이(dvh) 기준으로 잡는다. 짧은 화면에선 상단 여백도 줄인다. */
   min-height: 100vh;
-  padding: 130px 20px 40px;
+  min-height: 100dvh;
+  padding: clamp(60px, 16vh, 130px) 20px calc(40px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   align-items: center;
