@@ -6,31 +6,22 @@
 
 .thumbRow {
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.thumbRow::-webkit-scrollbar {
-  display: none;
+  gap: 6px;
 }
 
 .thumb {
   flex: 0 0 var(--thumb-size, 76px);
-  flex-shrink: 0;
   width: var(--thumb-size, 76px);
-  height: var(--thumb-size, 76px);
-  aspect-ratio: 1 / 1;
+  height: auto;
+  aspect-ratio: 82 / 106;
   box-sizing: border-box;
-  scroll-snap-align: start;
-  border-radius: 14px;
-  object-fit: cover;
-  background: #cfcabb;
+  padding: 6px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: #ffffff;
   display: block;
   border: none;
-  box-shadow: 4px 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16), 0 0 4px rgba(0, 0, 0, 0.06);
 }
 
 .dots {
@@ -38,20 +29,19 @@
   justify-content: center;
   align-items: center;
   gap: 6px;
-  margin-top: 2px;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: #d8d2c5;
+  background: #d9d9d9;
   cursor: pointer;
   transition: background 0.15s ease;
 }
 
 .dotActive {
-  background: #6f9a78;
+  background: rgba(166, 166, 166, 1);
 }
