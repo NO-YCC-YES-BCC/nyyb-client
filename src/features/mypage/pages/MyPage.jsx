@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getProfile } from '../api/profileApi';
+import { getMypageProfile } from '../api/mypageApi';
 import ProfileSummary from '../components/ProfileSummary';
 import arrowLeftIcon from '../../../assets/icons/Arrow_left.svg';
 import styles from './MyPage.module.css';
@@ -12,16 +12,34 @@ const POLICY_LINKS = ['이용약관', '개인정보 처리방침'];
 export default function MyPage() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
+  const [loadError, setLoadError] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
-    getProfile().then((data) => {
-      if (isMounted) setProfile(data);
-    });
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 재요청 전 에러 상태 초기화
+    setLoadError(null);
+
+    getMypageProfile()
+      .then((data) => {
+        if (isMounted) setProfile(data);
+      })
+      .catch((error) => {
+        console.error('[MyPage] failed to load profile:', error);
+        if (isMounted) setLoadError(error);
+      });
+
     return () => {
       isMounted = false;
     };
   }, []);
+
+  if (loadError) {
+    return (
+      <div className={styles.page}>
+        <p className={styles.loadingText}>내 정보를 불러오지 못했어요. 잠시 후 다시 시도해주세요.</p>
+      </div>
+    );
+  }
 
   if (!profile) {
     return (
