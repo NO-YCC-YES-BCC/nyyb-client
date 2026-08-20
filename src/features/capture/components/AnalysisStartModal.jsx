@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Modal from "../../../shared/components/Modal";
 import { ROUTES } from "../../../shared/constants/routes";
-import myProductsImage from "../../../assets/images/modal/my-products.svg";
-import newPurchaseImage from "../../../assets/images/modal/new-purchase.svg";
+import myProductsImage from "../../../assets/images/modal/my-products.png";
+import newPurchaseImage from "../../../assets/images/modal/new-purchase.png";
 import styles from "./AnalysisStartModal.module.css";
 import qmarkImage from "../../../assets/images/modal/qmark.svg";
 

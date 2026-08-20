@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { matchPath, NavLink, useLocation } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 import AnalysisStartModal from "../../features/capture/components/AnalysisStartModal";
+import { preloadAnalysisStartImages } from "../../features/capture/utils/preloadAnalysisImages";
 import styles from "./BottomNav.module.css";
 import homeIcon from "../../assets/icons/nav/home.svg";
 import cameraIcon from "../../assets/icons/nav/camera.svg";
@@ -30,6 +31,11 @@ const NAV_ITEMS = [
 export default function BottomNav() {
     const location = useLocation();
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // 촬영 모달의 카드 이미지를 미리 받아둔다 (첫 오픈 시 이미지 늦게 뜨는 것 방지)
+    useEffect(() => {
+        preloadAnalysisStartImages();
+    }, []);
 
     const shouldHide = HIDDEN_NAV_PATHS.some((path) =>
         matchPath({ path, end: true }, location.pathname)
