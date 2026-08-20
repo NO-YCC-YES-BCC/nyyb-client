@@ -9,8 +9,26 @@ export default function KakaoLoginPage() {
   const navigate = useNavigate();
 
   const handleKakaoLogin = () => {
-    console.warn('[KakaoLoginPage] 카카오 로그인 연동 예정');
-  };
+  const kakaoClientId = import.meta.env.VITE_KAKAO_CLIENT_ID;
+  const kakaoRedirectUri = import.meta.env.VITE_KAKAO_REDIRECT_URI;
+
+  if (!kakaoClientId || !kakaoRedirectUri) {
+    console.error("카카오 환경변수가 없습니다.", {
+      kakaoClientId,
+      kakaoRedirectUri,
+    });
+    return;
+  }
+
+  const params = new URLSearchParams({
+    client_id: kakaoClientId,
+    redirect_uri: kakaoRedirectUri,
+    response_type: "code",
+  });
+
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?${params.toString()}`;
+};
+
 
   const handleTestLogin = () => {
     navigate(ROUTES.HOME);

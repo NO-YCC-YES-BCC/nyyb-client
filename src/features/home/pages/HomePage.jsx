@@ -7,6 +7,7 @@ import AfterAnalysisHome from "../components/AfterAnalysisHome";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
+    
     const navigate = useNavigate();
     const { routine, status, reload } = useLatestRoutine();
 

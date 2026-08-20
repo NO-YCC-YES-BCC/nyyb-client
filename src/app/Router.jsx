@@ -16,14 +16,16 @@ import HistoryPage from "../features/report/pages/HistoryPage"
 import MyPage from "../features/mypage/pages/MyPage"
 import BottomNav from "../shared/components/BottomNav";
 import NotFoundPage from "../features/not-found/pages/NotFoundPage"
+import KakaoCallbackPage from "../features/auth/pages/KaKaoCallbackPage";
 
 export default function AppRouter() {
     return(
         <BrowserRouter>
             <Routes>
                 <Route path={ROUTES.ENTRY} element={<EntryPage/>} />
-                <Route path={ROUTES.ONBOARDING} element={<OnboardingPage/>} />
+                <Route path={ROUTES.ONBOARDING} element={<OnboardingPage />} />
                 <Route path={ROUTES.LOGIN} element={<KaKaoLoginPage/>} />
+                <Route path={ROUTES.KAKAO_CALLBACK} element={<KakaoCallbackPage />} />
                 <Route path={ROUTES.HOME} element={<HomePage/>} />
                 <Route path={ROUTES.CAPTURE} element={<CaptureGuidePage />} />
                 <Route path={ROUTES.CAPTURE_PRODUCTS} element={<ProductListPage />} />
