@@ -102,7 +102,12 @@ export default function RoutineTimeDetailPage({ timeSlot }) {
       navigate(ROUTES.ROUTINE);
     } catch (error) {
       console.error('[RoutineTimeDetailPage] failed to save routine products:', error);
-      setSaveError('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+      // 401 = 토큰 만료. 재발급 API가 없어 재로그인 안내가 최선이다.
+      setSaveError(
+        error?.response?.status === 401
+          ? '세션이 만료됐어요. 다시 로그인 후 시도해주세요.'
+          : '저장에 실패했어요. 잠시 후 다시 시도해주세요.'
+      );
     } finally {
       setIsSaving(false);
     }

@@ -47,9 +47,12 @@ export async function getRoutineTimeDetail(routineId, timeSlot) {
 }
 
 export async function saveRoutineProducts(routineId, products) {
-  const { data: body } = await apiClient.patch(`/routines/${routineId}/products`, {
-    products,
-  });
+  const { data: body } = await apiClient.patch(
+    `/routines/${routineId}/products`,
+    { products },
+    // 저장은 가벼운 요청이라 짧게 제한한다. 응답이 늦으면 실패 처리해 버튼 잠김을 푼다.
+    { timeout: 15000 }
+  );
   return body?.data;
 }
 
