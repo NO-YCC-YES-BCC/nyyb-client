@@ -1,4 +1,5 @@
 import { parseRecommendReason } from '../utils/recommendReason';
+import OverlapToggleRow from './OverlapToggleRow';
 import styles from './ProductCard.module.css';
 
 export default function RemoveProductCard({ product }) {
@@ -14,11 +15,16 @@ export default function RemoveProductCard({ product }) {
       {overlaps.length > 0 && (
         <ul className={styles.overlapList}>
           {overlaps.map((overlap, i) => (
-            <li key={i} className={styles.overlapItem} title={overlap.name}>
-              <div className={styles.overlapRow}>
-                <span className={styles.overlapName}>{overlap.name}</span>
-                <strong className={styles.overlapHighlight}>{overlap.count}개 성분 중복</strong>
-              </div>
+            <li key={i} className={styles.overlapItem}>
+              <OverlapToggleRow
+                overlap={overlap}
+                classNames={{
+                  row: styles.overlapRow,
+                  rowExpanded: styles.overlapRowExpanded,
+                  name: styles.overlapName,
+                  count: styles.overlapHighlight,
+                }}
+              />
             </li>
           ))}
 

@@ -62,11 +62,21 @@
   color: #7A8880;
 }
 
-/* 제품명(말줄임) + 중복 개수(고정)를 한 줄에 배치. li 안에 두어 불릿은 유지한다. */
+/* 제품명(말줄임) + 중복 개수(고정)를 한 줄에 배치. li 안에 두어 불릿은 유지한다.
+   탭하면 전체 이름이 펼쳐진다. */
 .overlapRow {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .overlapName {
@@ -74,6 +84,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.overlapRowExpanded {
+  align-items: flex-start;
+}
+
+.overlapRowExpanded .overlapName {
+  overflow: visible;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .overlapHighlight {

@@ -77,11 +77,20 @@
     margin: 0;
 }
 
-/* 제품명(말줄임) + 중복 개수(고정)를 한 줄에 배치 */
+/* 제품명(말줄임) + 중복 개수(고정)를 한 줄에 배치. 탭하면 전체 이름이 펼쳐진다. */
 .reasonRow {
     display: flex;
     align-items: baseline;
     gap: 6px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
 }
 
 .reasonName {
@@ -89,6 +98,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.reasonRowExpanded {
+    align-items: flex-start;
+}
+
+.reasonRowExpanded .reasonName {
+    overflow: visible;
+    white-space: normal;
+    word-break: keep-all;
 }
 
 .reasonCount {

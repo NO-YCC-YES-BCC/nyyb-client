@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../../shared/constants/routes';
 import { getMypageProfile } from '../api/mypageApi';
 import ProfileSummary from '../components/ProfileSummary';
 import arrowLeftIcon from '../../../assets/icons/mypage/arrow-left.svg';
 import styles from './MyPage.module.css';
 
-const SERVICE_LINKS = ['SOTT는 어떤 서비스인가요', '판정 근거는 어디서 왔나요', '1:1 문의하기'];
+// path 가 있는 항목만 클릭 시 이동한다 (나머지는 준비 중)
+const SERVICE_LINKS = [
+  { label: 'SOTT는 어떤 서비스인가요', path: ROUTES.ONBOARDING },
+  { label: '판정 근거는 어디서 왔나요' },
+  { label: '1:1 문의하기' },
+];
 
 const POLICY_LINKS = ['이용약관', '개인정보 처리방침'];
 
@@ -63,9 +69,14 @@ export default function MyPage() {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>서비스 정보</h2>
         <div className={styles.linkCard}>
-          {SERVICE_LINKS.map((label) => (
-            <button key={label} type="button" className={styles.linkRowBase}>
-              <span>{label}</span>
+          {SERVICE_LINKS.map((link) => (
+            <button
+              key={link.label}
+              type="button"
+              className={styles.linkRowBase}
+              onClick={link.path ? () => navigate(link.path) : undefined}
+            >
+              <span>{link.label}</span>
               <span className={styles.linkArrow}>&rarr;</span>
             </button>
           ))}

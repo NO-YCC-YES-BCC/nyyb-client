@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../shared/constants/routes";
 import IngredientWarningCard from "../../report/components/IngredientWarningCard";
+import OverlapToggleRow from "../../report/components/OverlapToggleRow";
 import { getIngredientNameEn, normalizeIngredientName } from "../../report/constants/ingredientNameEn";
 import { parseRecommendReason } from "../../report/utils/recommendReason";
 import styles from "./PurchaseResultPage.module.css";
@@ -70,12 +71,16 @@ export default function PurchaseResultPage() {
                     {overlaps.length > 0 && (
                         <div className={styles.reasonBox}>
                             {overlaps.map((overlap, index) => (
-                                <p key={index} className={styles.reasonRow} title={overlap.name}>
-                                    <span className={styles.reasonName}>{overlap.name}</span>
-                                    <strong className={styles.reasonCount}>
-                                        {overlap.count}개 성분 중복
-                                    </strong>
-                                </p>
+                                <OverlapToggleRow
+                                    key={index}
+                                    overlap={overlap}
+                                    classNames={{
+                                        row: styles.reasonRow,
+                                        rowExpanded: styles.reasonRowExpanded,
+                                        name: styles.reasonName,
+                                        count: styles.reasonCount,
+                                    }}
+                                />
                             ))}
 
                         </div>
