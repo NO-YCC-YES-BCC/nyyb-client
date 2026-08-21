@@ -24,6 +24,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* 모바일(앱 화면 폭 이하)에서는 프레임 배경색이 세이프에어리어/오버스크롤 영역에
+   크림색 띠로 드러나므로 앱 배경과 같은 흰색으로 맞춘다. */
+@media (max-width: 500px) {
+  body {
+    background: #fff;
+  }
+}
+
 /* 더블 탭 확대로 인한 터치 반응 지연 방지 */
 a,
 button {
