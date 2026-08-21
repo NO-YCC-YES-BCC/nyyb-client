@@ -34,6 +34,8 @@
 .guideFrame {
     position: relative;
     height: 485px;
+    /* 내부가 픽셀 좌표 기반이라 프레임 크기 대신 전체를 scale 로 축소한다 */
+    transform-origin: top center;
     padding: 18px 14px;
     display: flex;
     flex-direction: column;
@@ -272,7 +274,60 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     width: 100%;
-    margin-top: 40px;
+    /* 화면이 길든 짧든 버튼이 항상 하단에 붙어 잘리지 않게 한다 */
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+/* 화면 높이에 따라 가이드 일러스트와 여백을 단계적으로 축소해
+   버튼이 스크롤 없이 항상 보이게 한다 */
+@media (max-height: 840px) {
+    .title {
+        margin-top: 20px;
+    }
+
+    .cameraGuide {
+        margin-top: 20px;
+        height: 437px; /* 485px * 0.9 */
+    }
+
+    .guideFrame {
+        transform: scale(0.9);
+    }
+
+    .tip {
+        margin: 20px 0 0;
+    }
+}
+
+@media (max-height: 760px) {
+    .cameraGuide {
+        height: 379px; /* 485px * 0.78 */
+    }
+
+    .guideFrame {
+        transform: scale(0.78);
+    }
+}
+
+@media (max-height: 680px) {
+    .title {
+        margin-top: 14px;
+        font-size: 21px;
+    }
+
+    .cameraGuide {
+        margin-top: 14px;
+        height: 320px; /* 485px * 0.66 */
+    }
+
+    .guideFrame {
+        transform: scale(0.66);
+    }
+
+    .tip {
+        margin: 14px 0 0;
+    }
 }
 
 .guideButton {
