@@ -1,5 +1,68 @@
 /* global.css */
 
+:root {
+  /* Gray */
+  --gray-100: #cbc8c8;
+  --gray-200: #999999;
+  --gray-300: #494949;
+
+  /* Green */
+  --green-50: #f9fef0;
+  --green-100: #effad7;
+  --green-200: #ebffa7;
+  --green-300: #c6eec5;
+  --green-300-alpha-60: rgba(198, 238, 197, 0.6);
+  --green-400: #98f496;
+  --green-500: #b6e48c;
+  --green-600: #b6d780;
+  --green-700: #75c892;
+
+  /* Sage */
+  --sage-50: #eaf4ed;
+  --sage-100: #e8efe9;
+  --sage-200: #c2deca;
+  --sage-300: #c2d1be;
+  --sage-400: #667661;
+
+  /* Mint */
+  --mint-100: #bcf1cc;
+  --mint-200: #3b5d4f;
+
+  /* Blue */
+  --blue-100: #c1e2ec;
+  --blue-200: #8fcbdd;
+
+  /* Purple */
+  --purple-100: #f1eafc;
+  --purple-200: #dcc6ff;
+  --purple-300: #ccabff;
+
+  /* Yellow */
+  --yellow-50: #faf6eb;
+  --yellow-100: #fbf4df;
+  --yellow-200: #fff8bb;
+  --yellow-300: #ffe8a4;
+  --yellow-400: #edd691;
+  --yellow-500: #fee500;
+  --yellow-600: #ffdb30;
+  --yellow-700: #d8a200;
+
+  /* Beige */
+  --beige-100-alpha-55: rgba(231, 218, 207, 0.55);
+  --beige-200-alpha-55: rgba(224, 206, 192, 0.55);
+  --beige-200: #e0cec0;
+
+  /* Coral */
+  --coral-50: #fff2f2;
+  --coral-100: #fdf2ef;
+  --coral-200: #ffeee7;
+  --coral-300: #ffe0d7;
+  --coral-400: #ffceba;
+  --coral-500: #fdab8a;
+  --coral-600: #ca8672;
+  --coral-700: #c86b51;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -17,8 +80,13 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    sans-serif;
   background: #f3f5f0;
   color: #111;
   -webkit-font-smoothing: antialiased;
