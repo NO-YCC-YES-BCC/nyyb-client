@@ -64,6 +64,7 @@ export const CATEGORY_MAIN_LIST = [
 
 // 소분류(categorySub) → 아이콘. 소분류는 대분류에 종속되지 않는다 (예: 오일은 스킨케어·클렌징·바디케어에 모두 쓰임)
 const CATEGORY_ICON_MAP = {
+  ETC: etc,
   // 스킨케어
   스킨: skin,
   토너: toner,

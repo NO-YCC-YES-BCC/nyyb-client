@@ -6,7 +6,6 @@ import SearchListSection from "../components/SearchListSection";
 import { useProductSuggestions } from "../hooks/useProductSuggestions";
 import ProductSection from "../components/ProductSection";
 import { searchProducts } from "../apis/product";
-// import NotFound from "../components/NotFound";
 
 const RECENT_SEARCHES_STORAGE_KEY = "sott.product.recentSearches";
 
@@ -52,12 +51,15 @@ export default function ProductPage() {
     const data = await searchProducts(normalizedName);
 
     setProducts(data.data.data);
+    setSearch("");
     setIsShow(false);
   };
 
   return (
     <main className={styles.mainWarpper}>
-      <h1 className={styles.title}>제품 선택</h1>
+      <h1 className={styles.title} onClick={() => searchProducts("")}>
+        제품 선택
+      </h1>
       <ProductSearchField
         value={search}
         onChange={(e) => {
@@ -70,11 +72,11 @@ export default function ProductPage() {
         ? isShow && (
             <SearchListSection items={suggestions} onSearch={getProduct} />
           )
-        : !products && <RecentListSection items={recentSearches} />}
+        : !products && (
+            <RecentListSection items={recentSearches} onSearch={getProduct} />
+          )}
 
       {products && <ProductSection products={products} />}
-
-      {/* <NotFound /> */}
     </main>
   );
 }

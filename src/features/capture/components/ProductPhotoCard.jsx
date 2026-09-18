@@ -32,12 +32,12 @@ export default function ProductPhotoCard({
             <div className={styles.info}>
                 <div className={styles.infoTop}>
                 <strong className={styles.name}>
-                    {index + 1}번 {product.productName || "기타 제품"}
+                    {product.productName || "기타 제품"}
                 </strong>
 
                 <span className={styles.meta}>
                     {product.ingredientCount > 0
-                    ? `✨ 성분 ${product.ingredientCount}개 파싱`
+                    ? `✨ 성분 ${product.ingredientCount}개`
                     : "성분 분석 전"}
                 </span>
             </div>
