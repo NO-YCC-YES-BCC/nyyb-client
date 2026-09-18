@@ -6,7 +6,6 @@ import SearchListSection from "../components/SearchListSection";
 import { useProductSuggestions } from "../hooks/useProductSuggestions";
 import ProductSection from "../components/ProductSection";
 import { searchProducts } from "../apis/product";
-// import NotFound from "../components/NotFound";
 
 const RECENT_SEARCHES_STORAGE_KEY = "sott.product.recentSearches";
 
@@ -52,6 +51,7 @@ export default function ProductPage() {
     const data = await searchProducts(normalizedName);
 
     setProducts(data.data.data);
+    setSearch("");
     setIsShow(false);
   };
 
@@ -73,8 +73,6 @@ export default function ProductPage() {
         : !products && <RecentListSection items={recentSearches} />}
 
       {products && <ProductSection products={products} />}
-
-      {/* <NotFound /> */}
     </main>
   );
 }

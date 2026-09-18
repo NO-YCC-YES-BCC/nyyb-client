@@ -3,7 +3,7 @@ import Img from "../../../assets/images/product/image.png";
 import AddIcon from "../../../assets/icons/product/add.png";
 import SelectIcon from "../../../assets/icons/product/select.png";
 
-export default function ProductItem({ product, selected = false }) {
+export default function ProductItem({ product, selected = false, onClick }) {
   return (
     <div className={styles.itemBox}>
       <div className={styles.productBox}>
@@ -23,7 +23,12 @@ export default function ProductItem({ product, selected = false }) {
       {selected ? (
         <img src={SelectIcon} className={styles.icon} alt="selected" />
       ) : (
-        <img src={AddIcon} className={styles.icon} alt="add" />
+        <img
+          src={AddIcon}
+          className={styles.icon}
+          alt="add"
+          onClick={onClick}
+        />
       )}
     </div>
   );
