@@ -41,7 +41,7 @@ export default function KakaoLoginPage() {
         <p className={styles.tagline}>
           제품 성분이 겹치고 있진 않을까요?
           <br />
-          전성분을 찍으면 바로 확인해드려요
+          제품을 검색해서 바로 성분을 확인해보세요!
         </p>
       </div>
 
@@ -50,7 +50,7 @@ export default function KakaoLoginPage() {
           카카오로 시작하기
         </Button>
         <Button variant="kakaoLight" onClick={handleTestLogin}>
-          테스트 계정으로 로그인
+          게스트 계정으로 로그인
         </Button>
       </div>
     </div>
