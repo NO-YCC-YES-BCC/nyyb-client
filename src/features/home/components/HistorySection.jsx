@@ -20,17 +20,23 @@ export default function HistorySection() {
 
         <ul className={styles.list}>
             {analyses.map((item) => (
-            <li key={item.id} className={styles.card}>
+            <li key={item.id} >
                 <Link to={`/report/${item.id}`} className={styles.cardLink}>
                 <div className={styles.cardText}>
                     <p className={styles.cardTitle}>{item.title}</p>
                     <p className={styles.cardCaption}>보유 화장품 {item.productCount}개 점검</p>
                 </div>
 
-                {item.removeCount > 0 && (
+                {item.removeCount > 0 ? (
                     <span className={`${styles.tag} ${styles.tagWarning}`}>
-                    과잉 {item.removeCount}개 제외
+                        과잉 {item.removeCount}개 제외
                     </span>
+                ) : (
+                    item.score != null && (
+                        <span className={`${styles.tag} ${styles.tagSafe}`}>
+                            안전 루틴 {item.score}점
+                        </span>
+                    )
                 )}
                 </Link>
             </li>

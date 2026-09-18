@@ -26,5 +26,5 @@ const ORDINALS = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여
 
 export function getStepLabel(index) {
     const ordinal = ORDINALS[index];
-    return ordinal ? `스킨케어 ${ordinal} 번쨰 ` :  `스킨케어 ${index +1}번째`;
+    return ordinal ? `스킨케어 ${ordinal} 번째 ` :  `스킨케어 ${index +1}번째`;
 }

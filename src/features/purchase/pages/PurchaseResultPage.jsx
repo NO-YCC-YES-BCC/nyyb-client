@@ -27,7 +27,7 @@ export default function PurchaseResultPage() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const result = location.state?.result; 
+    const result = location.state?.result;
 
     if (!result) {
         return (
@@ -51,7 +51,7 @@ export default function PurchaseResultPage() {
 
     return (
         <main className={styles.page}>
-            <span className={styles.tag}>✨ SOTT 비용 리포트</span>
+            <span className={styles.tag}>✨ SOTT 비움 리포트</span>
 
             <header className={styles.header}>
                 <h1 className={styles.title}>분석이 모두 완료되었어요!</h1>
@@ -73,7 +73,7 @@ export default function PurchaseResultPage() {
                             {overlaps.map((overlap, index) => (
                                 <OverlapToggleRow
                                     key={index}
-                                    overlap={overlap}
+                                    overlap={{ ...overlap, name: overlap.prefix }}
                                     classNames={{
                                         row: styles.reasonRow,
                                         rowExpanded: styles.reasonRowExpanded,
