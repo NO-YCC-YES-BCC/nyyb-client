@@ -1,0 +1,10 @@
+.item {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+
+  padding-block: 5px;
+  padding-inline: 10px;
+  background-color: #95aaa1;
+  border-radius: 10px;
+}
