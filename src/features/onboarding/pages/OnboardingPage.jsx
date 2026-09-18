@@ -8,10 +8,10 @@ import point1Image from "../../../assets/images/onboarding/point1.jpg";
 import point2Image from "../../../assets/images/onboarding/point2.jpg";
 import point3Image from "../../../assets/images/onboarding/point3.jpg";
 import ellipseIcon from "../../../assets/icons/onboarding/ellipse.svg";
-import routineProduct1 from "../../../assets/images/onboarding/routine-product1.png";
-import routineProduct2 from "../../../assets/images/onboarding/routine-product2.png";
-import stepCheckIcon from "../../../assets/icons/onboarding/step-check.png";
-import stepCircleIcon from "../../../assets/icons/onboarding/step-circle.png";
+import routineProduct1 from "../../../assets/images/onboarding/routine-product1.jpg";
+import routineProduct2 from "../../../assets/images/onboarding/routine-product2.jpg";
+import stepCheckIcon from "../../../assets/icons/onboarding/step-check.svg";
+import stepCircleIcon from "../../../assets/icons/onboarding/step-circle.svg";
 import styles from "./OnboardingPage.module.css";
 import { useRef } from "react";
 

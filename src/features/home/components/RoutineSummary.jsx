@@ -1,4 +1,4 @@
-import { CATEGORY_THUMBNAILS } from "../../capture/constants/categoryThumbnails";
+import { getCategoryIcon } from "../../../shared/constants/productCategory";
 import { getStepLabel } from "../utils/routineTime";
 import styles from "./RoutineSummary.module.css";
 
@@ -16,8 +16,7 @@ export default function RoutineSummary({ products = [] }) {
             <div className={styles.thumbBox}>
                 <img
                 className={styles.thumb}
-                // category Enum 이 예상 밖 값이면 ETC 썸네일로 대체
-                src={CATEGORY_THUMBNAILS[product.category] ?? CATEGORY_THUMBNAILS.ETC}
+                src={getCategoryIcon(product.categorySub)}
                 alt=""
                 />
             </div>
