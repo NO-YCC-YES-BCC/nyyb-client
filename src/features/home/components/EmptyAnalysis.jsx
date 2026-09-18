@@ -13,9 +13,7 @@ export default function EmptyAnalysis() {
         alt=""
       />
 
-      <h2 className={styles.emptyTitle}>
-        아직 분석을 진행하지 않았어요!
-      </h2>
+      <h2 className={styles.emptyTitle}>아직 분석을 진행하지 않았어요!</h2>
 
       <p className={styles.emptyDescription}>
         쓰고 있는 화장품을 검색하고 선택하면
@@ -23,7 +21,7 @@ export default function EmptyAnalysis() {
         덜어낼 수 있는 제품을 찾아드려요!
       </p>
 
-      <Link to={ROUTES.CAPTURE} className={styles.ctaLink}>
+      <Link to={ROUTES.PRODUCT} className={styles.ctaLink}>
         <Button className={styles.analyzeButton}>분석하러 가기</Button>
       </Link>
     </section>
