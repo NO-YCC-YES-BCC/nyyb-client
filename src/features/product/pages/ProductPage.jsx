@@ -57,7 +57,9 @@ export default function ProductPage() {
 
   return (
     <main className={styles.mainWarpper}>
-      <h1 className={styles.title}>제품 선택</h1>
+      <h1 className={styles.title} onClick={() => searchProducts("")}>
+        제품 선택
+      </h1>
       <ProductSearchField
         value={search}
         onChange={(e) => {
@@ -70,7 +72,9 @@ export default function ProductPage() {
         ? isShow && (
             <SearchListSection items={suggestions} onSearch={getProduct} />
           )
-        : !products && <RecentListSection items={recentSearches} />}
+        : !products && (
+            <RecentListSection items={recentSearches} onSearch={getProduct} />
+          )}
 
       {products && <ProductSection products={products} />}
     </main>

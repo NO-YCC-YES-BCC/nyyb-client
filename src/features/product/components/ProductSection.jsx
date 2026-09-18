@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../../shared/components/Button";
+import { ROUTES } from "../../../shared/constants/routes";
+import { saveStoredCaptureProducts } from "../../capture/api/captureApi";
 import styles from "../styles/ProductSection.module.css";
 import ProductItem from "./ProductItem";
 import NotFound from "./NotFound";
 import SelectedProduct from "./SelectedProduct";
 
 export default function ProductSection({ products }) {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const count = products.length;
 
@@ -23,6 +27,17 @@ export default function ProductSection({ products }) {
     setSelected((prev) =>
       prev.filter((product) => product.productId !== productId),
     );
+  };
+
+  const handleProceed = () => {
+    const analysisProducts = selected.map((product) => ({
+      ...product,
+      productName: product.name,
+      userRoutineSlot: product.userRoutineSlot ?? "BOTH",
+    }));
+
+    saveStoredCaptureProducts(analysisProducts);
+    navigate(ROUTES.CAPTURE_PRODUCTS);
   };
 
   if (count === 0) {
@@ -59,8 +74,8 @@ export default function ProductSection({ products }) {
       </div>
 
       <div className={styles.buttonBox}>
-        <Button disabled={selected ? false : true}>
-          선택한 제품으로 분석 진행하기
+        <Button disabled={selected.length === 0} onClick={handleProceed}>
+          다음으로
         </Button>
       </div>
     </section>

@@ -1,14 +1,16 @@
 import styles from "../styles/ProductItem.module.css";
-import Img from "../../../assets/images/product/image.png";
 import AddIcon from "../../../assets/icons/product/add.png";
 import SelectIcon from "../../../assets/icons/product/select.png";
+import { getCategoryIcon } from "../../../shared/constants/productCategory";
 
 export default function ProductItem({ product, selected = false, onClick }) {
+  const categoryImage = getCategoryIcon(product.categorySub);
+
   return (
     <div className={styles.itemBox}>
       <div className={styles.productBox}>
         <div className={styles.imgBox}>
-          <img src={Img} className={styles.img} />
+          <img src={categoryImage} className={styles.img} alt="" />
         </div>
         <div className={styles.textBox}>
           <h3 className={styles.name}>{product.name}</h3>

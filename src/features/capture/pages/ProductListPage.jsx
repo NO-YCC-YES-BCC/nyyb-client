@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
-import ImagePicker from "../components/ImagePicker";
 import ProductPhotoCard from "../components/ProductPhotoCard";
 import {
-  addProductImage,
   getStoredCaptureProducts,
   saveStoredCaptureProducts,
 } from "../api/captureApi";
@@ -20,20 +18,6 @@ export default function ProductListPage() {
   const [products, setProducts] = useState(() => getStoredCaptureProducts());
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  async function handleAddImage(file) {
-    try {
-      setErrorMessage("");
-
-      const nextProducts = await addProductImage(file);
-      setProducts(nextProducts);
-    } catch (error) {
-      console.error("제품 사진 분석 실패", error);
-      setErrorMessage(
-        "사진 분석에 실패했어요. 글자가 잘 보이도록 다시 촬영해주세요.",
-      );
-    }
-  }
 
   function handleRemove(productId) {
     const nextProducts = products.filter(
@@ -81,24 +65,19 @@ export default function ProductListPage() {
 
   return (
     <main className={styles.page}>
-      <div className={styles.badge}>
-        <span className={styles.badgeIcon}>📷</span>
-        <span>라벨 스캔 완료</span>
-      </div>
-
       <header className={styles.header}>
         <h1 className={styles.title}>
-          {products.length}개의 제품을 촬영했어요!
+          {products.length}개의 제품을 선택했어요!
         </h1>
         <p className={styles.description}>
-          분석 전 추가하거나 제외할 제품이 있다면 지금 수정해주세요!
+          제품마다 아침 / 저녁 중 언제 사용하는지 체크해주세요!
         </p>
 
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
       </header>
 
       {products.length > 0 ? (
-        <section className={styles.productList} aria-label="촬영한 제품 목록">
+        <section className={styles.productList} aria-label="선택한 제품 목록">
           {products.map((product, index) => (
             <ProductPhotoCard
               key={product.productId}
@@ -111,18 +90,19 @@ export default function ProductListPage() {
         </section>
       ) : (
         <section className={styles.emptyState}>
-          <strong>아직 추가된 제품이 없어요</strong>
-          <p>제품 뒷면 성분표를 촬영하면 이곳에 표시됩니다.</p>
+          <strong>아직 선택한 제품이 없어요</strong>
+          <p>제품을 추가하면 이곳에 표시됩니다.</p>
         </section>
       )}
 
       <div className={styles.addButtonArea}>
-        <ImagePicker
-          buttonText="+ 제품 추가 촬영하기"
-          buttonVariant="secondaryDashed"
+        <Button
+          variant="secondaryDashed"
           className={styles.addButton}
-          onSelect={handleAddImage}
-        />
+          onClick={() => navigate(ROUTES.PRODUCT)}
+        >
+          + 제품 추가로 더 담기
+        </Button>
       </div>
 
       <Button

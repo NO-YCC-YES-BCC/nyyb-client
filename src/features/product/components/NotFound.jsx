@@ -25,7 +25,7 @@ export default function NotFound() {
     try {
       setIsSubmitting(true);
       setErrorMessage("");
-      await requestProduct({ name: normalizedName });
+      await requestProduct({ keyword: normalizedName });
       setProductName("");
       handleClose();
     } catch {
