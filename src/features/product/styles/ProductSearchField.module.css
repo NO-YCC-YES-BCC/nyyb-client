@@ -1,0 +1,86 @@
+/* 전체 레이아웃 */
+.inputField {
+  width: 100%;
+
+  position: relative;
+}
+
+/* 인풋 */
+.searchInput {
+  width: 100%;
+
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-block: 8px;
+
+  background: #e8efe7;
+  border: 1px solid transparent;
+
+  border-radius: 20px;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.searchInput::placeholder {
+  color: var(--mint-200);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.searchInput:focus {
+  border-color: var(--green-300);
+  border-width: 2px;
+}
+
+.searchInput.hasValue {
+  border-color: var(--green-300);
+  border-width: 2px;
+}
+
+/* 인풋 내부 아이콘들 */
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 18px;
+
+  width: 20px;
+  height: 20px;
+}
+
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid var(--green-300);
+  outline-offset: 2px;
+}
+
+.cancelIcon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
