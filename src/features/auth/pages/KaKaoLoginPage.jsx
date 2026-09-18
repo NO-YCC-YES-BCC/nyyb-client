@@ -53,7 +53,7 @@ export default function KakaoLoginPage() {
         <p className={styles.tagline}>
           제품 성분이 겹치고 있진 않을까요?
           <br />
-          전성분을 찍으면 바로 확인해드려요
+          제품을 검색해서 바로 성분을 확인해보세요!
         </p>
       </div>
 

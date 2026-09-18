@@ -4,7 +4,7 @@ import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
 import { getRoutineCandidates, compareProductWithRoutine } from "../api/purchaseApi";
 import { getPurchaseProduct, savePurchaseProduct, clearPurchaseProduct } from "../utils/purchaseStorage";
-import { CATEGORY_THUMBNAILS } from "../../capture/constants/categoryThumbnails";
+import { getCategoryIcon } from "../../../shared/constants/productCategory";
 import styles from "./PurchaseComparePage.module.css";
 
 function getProductId(product) {
@@ -20,7 +20,7 @@ function getIngredientCount(product) {
 }
 
 function getThumbnail(product) {
-    return CATEGORY_THUMBNAILS[product?.category] ?? CATEGORY_THUMBNAILS.ETC;
+    return getCategoryIcon(product?.categorySub);
 }
 
 function getRoutineId(routine) {

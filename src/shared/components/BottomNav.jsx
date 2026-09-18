@@ -5,7 +5,7 @@ import AnalysisStartModal from "../../features/capture/components/AnalysisStartM
 import { preloadAnalysisStartImages } from "../../features/capture/utils/preloadAnalysisImages";
 import styles from "./BottomNav.module.css";
 import homeIcon from "../../assets/icons/nav/home.svg";
-import cameraIcon from "../../assets/icons/nav/camera.svg";
+import magnifierIcon from "../../assets/icons/nav/magnifier.svg";
 import userIcon from "../../assets/icons/nav/my.svg";
 
 // 온보딩, 로그인, 촬영 플로우에서는 하단 네비를 숨긴다.
@@ -23,7 +23,7 @@ const HIDDEN_NAV_PATHS = [
 
 const NAV_ITEMS = [
     { id: "home", label: "홈", path: ROUTES.HOME, icon: homeIcon, showLabel: true, type: "home" },
-    { id: "capture", label: "촬영", icon: cameraIcon, primary: true, showLabel: false },
+    { id: "capture", label: "검색", icon: magnifierIcon, primary: true, showLabel: false },
     { id: "my", label: "마이", path: ROUTES.MYPAGE, icon: userIcon, showLabel: true, type: "my" },
 ];
 
@@ -57,7 +57,7 @@ export default function BottomNav() {
                         </>
                     );
 
-                    // path 가 없는 항목(촬영)은 모달을 여는 버튼이다.
+                    // path 가 없는 항목(검색)은 모달을 여는 버튼이다.
                     if (!item.path) {
                         return (
                             <button
