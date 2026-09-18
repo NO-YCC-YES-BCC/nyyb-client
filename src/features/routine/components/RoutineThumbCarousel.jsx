@@ -1,46 +1,51 @@
-import { getCategoryIcon } from '../constants/categoryIcons';
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { getCategoryIcon } from '../../../shared/constants/productCategory';
 import styles from './RoutineThumbCarousel.module.css';
 
-const ITEMS_PER_VIEW = 4;
-const GAP = 6;
+const ITEMS_PER_PAGE = 4;
 
 export default function RoutineThumbCarousel({ items }) {
   const rowRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [thumbSize, setThumbSize] = useState(76);
-  const pageCount = Math.max(1, Math.ceil(items.length / ITEMS_PER_VIEW));
+  const pageCount = Math.max(1, Math.ceil(items.length / ITEMS_PER_PAGE));
 
   useEffect(() => {
-    const el = rowRef.current;
-    if (!el) return;
+    const row = rowRef.current;
+    if (!row || pageCount <= 1) return;
 
-    const updateSize = () => {
-      const size = (el.clientWidth - GAP * (ITEMS_PER_VIEW - 1)) / ITEMS_PER_VIEW;
-      if (size > 0) setThumbSize(size);
+    const handleScroll = () => {
+      const maxScroll = row.scrollWidth - row.clientWidth;
+      if (maxScroll <= 0) return;
+      const progress = row.scrollLeft / maxScroll;
+      setActiveIndex(Math.round(progress * (pageCount - 1)));
     };
 
-    updateSize();
-
-    const observer = new ResizeObserver(updateSize);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    row.addEventListener('scroll', handleScroll, { passive: true });
+    return () => row.removeEventListener('scroll', handleScroll);
+  }, [pageCount]);
 
   const goToPage = (event, index) => {
     event.preventDefault();
     event.stopPropagation();
-    setActiveIndex(index);
+    const row = rowRef.current;
+    if (!row) return;
+    const maxScroll = row.scrollWidth - row.clientWidth;
+    row.scrollTo({
+      left: (index / (pageCount - 1)) * maxScroll,
+      behavior: 'smooth',
+    });
   };
-
-  // 현재 페이지에 해당하는 4개만 렌더링한다.
-  const visibleItems = items.slice(activeIndex * ITEMS_PER_VIEW, (activeIndex + 1) * ITEMS_PER_VIEW);
 
   return (
     <div className={styles.carousel}>
-      <div className={styles.thumbRow} ref={rowRef} style={{ '--thumb-size': `${thumbSize}px` }}>
-        {visibleItems.map((item) => (
-          <img key={item.id} src={getCategoryIcon(item.category)} alt={item.productName} className={styles.thumb} />
+      <div className={styles.thumbRow} ref={rowRef}>
+        {items.map((item) => (
+          <img
+            key={item.id}
+            src={getCategoryIcon(item.categorySub)}
+            alt={item.productName}
+            className={styles.thumb}
+          />
         ))}
       </div>
 

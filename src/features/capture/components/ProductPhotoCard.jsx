@@ -1,6 +1,5 @@
 import deleteIcon from "../../../assets/icons/capture/delete.svg"
-import { getCategoryLabel } from "../../../shared/constants/productCategory";
-import { CATEGORY_THUMBNAILS } from "../constants/categoryThumbnails";
+import { getCategoryLabel, getCategoryIcon } from "../../../shared/constants/productCategory";
 import styles from "./ProductPhotoCard.module.css";
 
 
@@ -17,16 +16,15 @@ export default function ProductPhotoCard({
     onRemove,
     onSlotChange,
 }) {
-    const thumbnailSrc =
-        CATEGORY_THUMBNAILS[product.category] ?? CATEGORY_THUMBNAILS.ETC;
-        
+    const thumbnailSrc = getCategoryIcon(product.categorySub);
+
     return (
         <article className={styles.card}>
             <div className={styles.imageBox}>
-                <img 
+                <img
                     className={styles.image}
                     src={thumbnailSrc}
-                    alt={getCategoryLabel(product.category)}
+                    alt={getCategoryLabel(product.categorySub)}
 
                 />
             </div>
