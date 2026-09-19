@@ -1,0 +1,18 @@
+.mainWarpper {
+  position: relative;
+
+  min-height: calc(
+    100dvh - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
+  padding-top: 20px;
+  padding-inline: 16px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  color: black;
+}

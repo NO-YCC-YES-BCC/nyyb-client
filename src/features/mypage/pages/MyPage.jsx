@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../shared/constants/routes';
+import { logout } from '../../auth/api/authApi';
 import { getMypageProfile } from '../api/mypageApi';
 import ProfileSummary from '../components/ProfileSummary';
 import arrowLeftIcon from '../../../assets/icons/mypage/arrow-left.svg';
@@ -19,6 +20,7 @@ export default function MyPage() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [loadError, setLoadError] = useState(null);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -38,6 +40,14 @@ export default function MyPage() {
       isMounted = false;
     };
   }, []);
+
+  const handleLogout = async () => {
+    if (isLoggingOut) return;
+
+    setIsLoggingOut(true);
+    await logout();
+    navigate(ROUTES.LOGIN, { replace: true });
+  };
 
   if (loadError) {
     return (
@@ -95,14 +105,21 @@ export default function MyPage() {
         </div>
       </section>
 
-      <div className={styles.footerLinks}>
-        <button type="button" className={`${styles.footerLink} ${styles.footerLinkUnderline}`}>
-          로그아웃
-        </button>
-        <button type="button" className={`${styles.footerLink} ${styles.footerLinkUnderline}`}>
-          회원탈퇴
-        </button>
-      </div>
+      {profile.isLoggedIn && (
+        <div className={styles.footerLinks}>
+          <button
+            type="button"
+            className={`${styles.footerLink} ${styles.footerLinkUnderline}`}
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+          >
+            로그아웃
+          </button>
+          <button type="button" className={`${styles.footerLink} ${styles.footerLinkUnderline}`}>
+            회원탈퇴
+          </button>
+        </div>
+      )}
     </div>
   );
 }

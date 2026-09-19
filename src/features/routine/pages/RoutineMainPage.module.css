@@ -84,7 +84,7 @@
   align-items: center;
   justify-content: center;
   height: 30px;
-  margin: 0;
+  margin: 10px;
   padding: 0 10px;
   border: 1px solid rgba(255, 224, 215, 1);
   border-radius: 10px;
@@ -102,12 +102,14 @@
 /* ── 오전/오후 루틴 카드 ─────────────────── */
 .timeCard {
   display: block;
-  padding: 16px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.06);
   text-decoration: none;
   color: inherit;
+}
+.timeCard + .timeCard {
+  margin-top: 30px;
+}
+.summaryPill + .timeCard {
+  margin-top: 30px;
 }
 
 .timeHeader {
@@ -136,8 +138,8 @@
 }
 
 .timeIconImg {
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   display: block;
 }
 
@@ -159,6 +161,44 @@
 }
 
 .saveButton {
-  margin-top: 90px;
+  margin-top: 35px;
   width: 100%;
+}
+
+/* ── 점수 계산 대기 (점수 카드 안) ───────────── */
+.scoreLoading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 100px;
+}
+
+.scoreSpinner {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border: 3px solid #e5e5e5;
+  border-top-color: #98f496;
+  border-radius: 50%;
+  animation: routineSpin 0.9s linear infinite;
+}
+
+.scoreLoadingText {
+  margin: 0;
+  color: #767676;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@keyframes routineSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scoreSpinner {
+    animation: none;
+  }
 }

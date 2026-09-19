@@ -4,7 +4,7 @@ import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
 import { getRoutineCandidates, compareProductWithRoutine } from "../api/purchaseApi";
 import { getPurchaseProduct, savePurchaseProduct, clearPurchaseProduct } from "../utils/purchaseStorage";
-import { CATEGORY_THUMBNAILS } from "../../capture/constants/categoryThumbnails";
+import { getCategoryIcon } from "../../../shared/constants/productCategory";
 import styles from "./PurchaseComparePage.module.css";
 
 function getProductId(product) {
@@ -20,7 +20,7 @@ function getIngredientCount(product) {
 }
 
 function getThumbnail(product) {
-    return CATEGORY_THUMBNAILS[product?.category] ?? CATEGORY_THUMBNAILS.ETC;
+    return getCategoryIcon(product?.categorySub);
 }
 
 function getRoutineId(routine) {
@@ -97,8 +97,17 @@ export default function PurchaseComparePage() {
         };
     }, []);
 
-    function goBackToCaptureGuide() {
+    // 검색으로 고른 제품과 촬영한 제품 둘 다 이 화면으로 오므로 들어온 경로에 맞춰 문구를 바꾼다.
+    const isFromSearch = product?.source === "search";
+
+    function goBackToProductStep() {
         clearPurchaseProduct();
+
+        if (isFromSearch) {
+            navigate(ROUTES.PURCHASE_PRODUCT);
+            return;
+        }
+
         navigate(ROUTES.CAPTURE, { state: { mode: "new-purchase" } });
     }
 
@@ -126,13 +135,15 @@ export default function PurchaseComparePage() {
     if (!productId) {
         return (
             <main className={styles.page}>
-                <p className={styles.emptyText}>촬영한 제품 정보가 없어요.</p>
+                <p className={styles.emptyText}>
+                    {isFromSearch ? "선택한 제품 정보가 없어요." : "촬영한 제품 정보가 없어요."}
+                </p>
                 <Button
                     variant="primary"
                     className={styles.emptyButton}
-                    onClick={goBackToCaptureGuide}
+                    onClick={goBackToProductStep}
                 >
-                    촬영 가이드로 돌아가기
+                    {isFromSearch ? "제품 검색 페이지로 돌아가기" : "촬영 가이드로 돌아가기"}
                 </Button>
             </main>
         );
@@ -140,10 +151,16 @@ export default function PurchaseComparePage() {
 
     return (
         <main className={styles.page}>
-            <span className={styles.tag}>📷 라벨 스캔 완료</span>
+            <span className={styles.tag}>
+                {isFromSearch ? "🔍 제품 선택 완료" : "📷 라벨 스캔 완료"}
+            </span>
 
             <header className={styles.header}>
-                <h1 className={styles.title}>1개의 제품을 촬영했어요!</h1>
+                <h1 className={styles.title}>
+                    {isFromSearch
+                        ? "1개의 제품을 선택했어요!"
+                        : "1개의 제품을 촬영했어요!"}
+                </h1>
                 <p className={styles.subtitle}>
                     내 최근 루틴과 비교해서 꼭 필요한지 확인해 보세요!
                 </p>
@@ -213,8 +230,8 @@ export default function PurchaseComparePage() {
                 <button
                     type="button"
                     className={styles.removeButton}
-                    onClick={goBackToCaptureGuide}
-                    aria-label="촬영한 제품 삭제"
+                    onClick={goBackToProductStep}
+                    aria-label={isFromSearch ? "선택한 제품 삭제" : "촬영한 제품 삭제"}
                 >
                     ×
                 </button>
@@ -223,9 +240,9 @@ export default function PurchaseComparePage() {
                 <button
                     type="button"
                     className={styles.backLink}
-                    onClick={goBackToCaptureGuide}
+                    onClick={goBackToProductStep}
                 >
-                    촬영 가이드로 돌아가기
+                    {isFromSearch ? "제품 검색 페이지로 돌아가기" : "촬영 가이드로 돌아가기"}
                 </button>
 
             {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}

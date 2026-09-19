@@ -18,4 +18,8 @@ export const ROUTES = {
   PURCHASE_RESULT: "/purchase/result",
   KAKAO_CALLBACK: "/login/kakao/callback",
   NOT_FOUND: "/not-found",
+
+  // 디벨롭 라우팅들
+  PRODUCT: "/product",
+  PURCHASE_PRODUCT: "/purchase/product",
 };

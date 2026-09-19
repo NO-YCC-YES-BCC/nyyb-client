@@ -29,10 +29,16 @@ const OPTIONS = [
     export default function AnalysisStartModal({ isOpen, onClose }) {
     const navigate = useNavigate();
 
-    // 촬영 화면은 하나를 공용으로 쓰고, 어떤 경로로 들어왔는지만 state 로 넘긴다.
+
     function handleSelect(mode) {
         onClose();
-        navigate(ROUTES.CAPTURE, { state: { mode } });
+
+        if (mode === "my-products") {
+            navigate(ROUTES.PRODUCT);
+            return;
+        }
+
+        navigate(ROUTES.PURCHASE_PRODUCT);
     }
 
     return (

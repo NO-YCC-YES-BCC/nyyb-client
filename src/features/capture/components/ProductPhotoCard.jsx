@@ -1,6 +1,5 @@
 import deleteIcon from "../../../assets/icons/capture/delete.svg"
-import { getCategoryLabel } from "../../../shared/constants/productCategory";
-import { CATEGORY_THUMBNAILS } from "../constants/categoryThumbnails";
+import { getCategoryLabel, getCategoryIcon } from "../../../shared/constants/productCategory";
 import styles from "./ProductPhotoCard.module.css";
 
 
@@ -17,16 +16,15 @@ export default function ProductPhotoCard({
     onRemove,
     onSlotChange,
 }) {
-    const thumbnailSrc =
-        CATEGORY_THUMBNAILS[product.category] ?? CATEGORY_THUMBNAILS.ETC;
-        
+    const thumbnailSrc = getCategoryIcon(product.categorySub);
+
     return (
         <article className={styles.card}>
             <div className={styles.imageBox}>
-                <img 
+                <img
                     className={styles.image}
                     src={thumbnailSrc}
-                    alt={getCategoryLabel(product.category)}
+                    alt={getCategoryLabel(product.categorySub)}
 
                 />
             </div>
@@ -34,12 +32,12 @@ export default function ProductPhotoCard({
             <div className={styles.info}>
                 <div className={styles.infoTop}>
                 <strong className={styles.name}>
-                    {index + 1}번 {product.productName || "기타 제품"}
+                    {product.productName || "기타 제품"}
                 </strong>
 
                 <span className={styles.meta}>
                     {product.ingredientCount > 0
-                    ? `✨ 성분 ${product.ingredientCount}개 파싱`
+                    ? `✨ 성분 ${product.ingredientCount}개`
                     : "성분 분석 전"}
                 </span>
             </div>

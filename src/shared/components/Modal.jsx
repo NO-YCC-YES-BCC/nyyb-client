@@ -3,12 +3,19 @@ import { createPortal} from "react-dom";
 import styles from "./Modal.module.css";
 import closeIcon from "../../assets/icons/common/close.svg";
 
-export default function Modal({ isOpen, onClose, labelledBy, children }) {
+export default function Modal({
+    isOpen,
+    onClose,
+    labelledBy,
+    className = "",
+    showCloseButton = true,
+    children,
+}) {
     useEffect(() => {
         if(!isOpen) return ;
 
         function handleKeyDown(event) {
-            if (event.key === "ESCAPE") {
+            if (event.key === "Escape") {
                 onClose();
             }
         }
@@ -29,20 +36,22 @@ export default function Modal({ isOpen, onClose, labelledBy, children }) {
     return createPortal(
         <div className={styles.overlay} onClick={onClose}>
             <div
-                className={styles.sheet}
+                className={[styles.sheet, className].join(" ")}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={labelledBy}
                 onClick={(event) => event.stopPropagation()}
             >
-                        <button
-                            type="button"
-                            className={styles.closeButton}
-                            onClick={onClose}
-                            aria-label="닫기"
-                            >
-                            <img className={styles.closeIcon} src={closeIcon} alt="" />
-                        </button>
+                {showCloseButton && (
+                    <button
+                        type="button"
+                        className={styles.closeButton}
+                        onClick={onClose}
+                        aria-label="닫기"
+                    >
+                        <img className={styles.closeIcon} src={closeIcon} alt="" />
+                    </button>
+                )}
 
 
                 {children}

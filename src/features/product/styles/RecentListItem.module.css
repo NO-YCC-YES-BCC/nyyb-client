@@ -1,0 +1,24 @@
+.item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  line-height: 1.4;
+  white-space: nowrap;
+  word-break: keep-all;
+  font-family: inherit;
+
+  padding: 6px 12px;
+  border: 0;
+  background-color: #95aaa1;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.item:focus-visible {
+  outline: 2px solid #355f44;
+  outline-offset: 2px;
+}
