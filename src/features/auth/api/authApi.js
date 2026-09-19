@@ -69,3 +69,23 @@ export async function loginWithKakao(code) {
 
   return data;
 }
+
+/*
+    서버는 accessToken 을 무효화하지 않아서(로그아웃·탈퇴 후에도 만료 전까지 유효)
+    로컬에 저장된 토큰은 항상 여기서 직접 지운다.
+*/
+export async function logout() {
+  try {
+    await apiClient.post("/auth/logout");
+  } catch (error) {
+    // 서버 요청이 실패해도(만료 토큰 등) 사용자는 로그아웃된 상태가 되어야 한다.
+    console.error("로그아웃 요청 실패", error);
+  } finally {
+    clearAuthStorage();
+  }
+}
+
+export async function withdraw() {
+  await apiClient.delete("/auth/user/me");
+  clearAuthStorage();
+}

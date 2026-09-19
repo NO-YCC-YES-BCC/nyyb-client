@@ -51,7 +51,7 @@ export default function AfterAnalysisHome( {routine }) {
             </header>
             
             <section className={styles.routineCard}>
-                <RoutineSummary products={products ?? []} />
+                <RoutineSummary products={products ?? []} slot={slot} />
             </section>
 
             <HistorySection />
