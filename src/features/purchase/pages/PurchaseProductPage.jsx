@@ -77,6 +77,7 @@ export default function PurchaseProductPage() {
           setIsSuggestionOpen(true);
         }}
         onClear={() => setSearch("")}
+        onSubmit={runSearch}
       />
 
       {hasKeyword
