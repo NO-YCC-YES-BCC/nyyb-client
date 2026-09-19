@@ -84,3 +84,10 @@
 .navItem:not(.active) {
     opacity: 0.85;
 }
+
+/* 실제 휴대폰에서는 앱 화면(.app-shell)과 같이 기기 폭 전체를 쓴다 */
+@media (max-width: 500px) {
+    .bottomNav {
+        max-width: none;
+    }
+}

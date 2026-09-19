@@ -164,3 +164,12 @@ button {
     animation: none;
   }
 }
+
+/* 393px 폭 고정은 데스크톱에서 폰 프레임처럼 보이게 하려는 것이라,
+   실제 휴대폰에서는 기기 폭 전체를 쓴다 (Pro Max 등 넓은 기기의 좌우 여백 방지).
+   .app-shell 정의보다 뒤에 있어야 덮어쓴다. */
+@media (max-width: 500px) {
+  .app-shell {
+    max-width: none;
+  }
+}
