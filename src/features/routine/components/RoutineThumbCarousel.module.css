@@ -6,11 +6,15 @@
 
 .thumbRow {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   margin: 0 -10px;
-  padding: 0 10px;
+  /* 가로 스크롤 영역은 세로로도 잘리므로 그림자가 보이도록 위아래 여유를 둔다 */
+  padding: 4px 10px 10px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* 손가락을 뗀 위치 근처 카드에만 부드럽게 맞춘다 (mandatory 는 뚝뚝 끊겨 보임) */
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 10px;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -25,12 +29,12 @@
   scroll-snap-align: start;
   box-sizing: border-box;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: 12px;
   object-fit: contain;
-  background: rgba(255, 255, 255, 0.2);
+  background: #fff;
   display: block;
-  border: none;
-  box-shadow: 4px 2px 6px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid #ececec;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
 }
 
 .dots {
