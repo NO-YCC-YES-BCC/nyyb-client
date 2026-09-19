@@ -50,6 +50,7 @@ export default function ProductPage() {
           setIsShow(true);
         }}
         onClear={() => setSearch("")}
+        onSubmit={getProduct}
       />
       {hasKeyword
         ? isShow && (
