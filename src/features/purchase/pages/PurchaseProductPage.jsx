@@ -7,7 +7,6 @@ import ProductItem from "../../product/components/ProductItem";
 import ProductSearchField from "../../product/components/ProductSearchField";
 import RecentListSection from "../../product/components/RecentListSection";
 import SearchListSection from "../../product/components/SearchListSection";
-import SelectedProduct from "../../product/components/SelectedProduct";
 import { searchProducts } from "../../product/apis/product";
 import { useProductSuggestions } from "../../product/hooks/useProductSuggestions";
 import {
@@ -109,15 +108,6 @@ export default function PurchaseProductPage() {
                 ))}
               </div>
             </div>
-
-            {selectedProduct && (
-              <div className={styles.selectedList}>
-                <SelectedProduct
-                  product={selectedProduct}
-                  onDelete={() => setSelectedProduct(null)}
-                />
-              </div>
-            )}
 
             <div className={styles.buttonBox}>
               <Button disabled={!selectedProduct} onClick={goToCompare}>

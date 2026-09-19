@@ -64,12 +64,6 @@
   border-radius: 999px;
 }
 
-/* 선택은 한 개뿐이라 가로 스크롤 없이 그대로 둔다 */
-.selectedList {
-  display: flex;
-  padding: 8px 0 10px;
-}
-
 .buttonBox {
   margin-top: 8px;
 

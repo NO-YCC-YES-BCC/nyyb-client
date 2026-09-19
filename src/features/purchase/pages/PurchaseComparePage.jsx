@@ -143,7 +143,7 @@ export default function PurchaseComparePage() {
                     className={styles.emptyButton}
                     onClick={goBackToProductStep}
                 >
-                    {isFromSearch ? "제품 다시 고르기" : "촬영 가이드로 돌아가기"}
+                    {isFromSearch ? "제품 검색 페이지로 돌아가기" : "촬영 가이드로 돌아가기"}
                 </Button>
             </main>
         );
@@ -242,7 +242,7 @@ export default function PurchaseComparePage() {
                     className={styles.backLink}
                     onClick={goBackToProductStep}
                 >
-                    {isFromSearch ? "제품 다시 고르기" : "촬영 가이드로 돌아가기"}
+                    {isFromSearch ? "제품 검색 페이지로 돌아가기" : "촬영 가이드로 돌아가기"}
                 </button>
 
             {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
