@@ -132,7 +132,9 @@ button {
   min-height: 100dvh; /* 모바일 주소창 높이 변화 대응 */
   background: #fff;
   position: relative;
-  overflow-x: hidden;
+  /* hidden 은 이 요소를 스크롤 상자로 만들어 안쪽 position: sticky 가 동작하지 않는다.
+     clip 은 가로 넘침만 잘라내고 스크롤 상자를 만들지 않는다. */
+  overflow-x: clip;
   /* 홈 화면 추가(standalone) 모드에서 상태바 영역과 콘텐츠가 겹치지 않도록 */
   padding-top: env(safe-area-inset-top);
 }

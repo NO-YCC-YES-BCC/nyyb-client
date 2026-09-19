@@ -1,11 +1,11 @@
 .page {
   position: relative;
 
-  min-height: calc(
-    100dvh - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
-  );
+  min-height: calc(100dvh - env(safe-area-inset-top));
   padding-top: 20px;
   padding-inline: 16px;
+  /* 하단 네비(72px)에 마지막 항목과 버튼이 가리지 않게 그만큼 비워 둔다 */
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
 
   display: flex;
   flex-direction: column;
@@ -20,11 +20,8 @@
 .resultSection {
   flex: 1;
 
-  padding-bottom: 16px;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .counter {
@@ -35,38 +32,31 @@
   color: black;
 }
 
+/* 목록 안에 작은 스크롤 상자를 두지 않고 화면 전체로 스크롤한다 (잘려 보이는 문제 방지) */
 .productList {
-  max-height: 294px;
-  padding-right: 16px;
-
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-  scrollbar-gutter: stable;
-  scrollbar-width: thin;
-  scrollbar-color: var(--green-300) var(--green-100);
+  padding-bottom: 8px;
 
   display: flex;
   flex-direction: column;
   gap: 26px;
 }
 
-.productList::-webkit-scrollbar {
-  width: 5px;
-}
+/* 하단 네비 바로 위에 떠 있는 버튼 영역. 위쪽을 흐리게 처리해 목록이 그 밑으로 자연스럽게 지나가게 한다 */
+.actionBar {
+  position: sticky;
+  bottom: calc(72px + env(safe-area-inset-bottom));
+  z-index: 5;
 
-.productList::-webkit-scrollbar-track {
-  background: var(--green-100);
-  border-radius: 999px;
-}
-
-.productList::-webkit-scrollbar-thumb {
-  background: var(--green-300);
-  border-radius: 999px;
-}
-
-.buttonBox {
-  margin-top: 8px;
+  margin-top: auto;
+  margin-inline: -16px;
+  padding: 28px 16px 12px;
 
   display: flex;
   justify-content: center;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0,
+    #fff 28px
+  );
 }

@@ -1,11 +1,11 @@
 .mainWarpper {
   position: relative;
 
-  min-height: calc(
-    100dvh - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
-  );
+  min-height: calc(100dvh - env(safe-area-inset-top));
   padding-top: 20px;
   padding-inline: 16px;
+  /* 하단 네비(72px)에 마지막 항목과 버튼이 가리지 않게 그만큼 비워 둔다 */
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
 
   display: flex;
   flex-direction: column;
