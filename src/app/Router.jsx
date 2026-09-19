@@ -27,6 +27,7 @@ import PurchaseResultPage from "../features/purchase/pages/PurchaseResultPage";
 import NotFoundPage from "../features/not-found/pages/NotFoundPage";
 import KakaoCallbackPage from "../features/auth/pages/KaKaoCallbackPage";
 import ProductPage from "../features/product/pages/ProductPage";
+import PurchaseProductPage from "../features/purchase/pages/PurchaseProductPage";
 
 function AppRoutes() {
   const location = useLocation();
@@ -73,6 +74,10 @@ function AppRoutes() {
 
         {/* 디벨롭 */}
         <Route path={ROUTES.PRODUCT} element={<ProductPage />} />
+        <Route
+          path={ROUTES.PURCHASE_PRODUCT}
+          element={<PurchaseProductPage />}
+        />
       </Routes>
     </div>
   );

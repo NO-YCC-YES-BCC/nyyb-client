@@ -21,4 +21,5 @@ export const ROUTES = {
 
   // 디벨롭 라우팅들
   PRODUCT: "/product",
+  PURCHASE_PRODUCT: "/purchase/product",
 };

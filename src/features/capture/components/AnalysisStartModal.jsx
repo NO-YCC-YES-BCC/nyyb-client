@@ -38,7 +38,7 @@ const OPTIONS = [
             return;
         }
 
-        navigate(ROUTES.CAPTURE, { state: { mode } });
+        navigate(ROUTES.PURCHASE_PRODUCT);
     }
 
     return (

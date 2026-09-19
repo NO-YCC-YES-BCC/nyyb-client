@@ -6,24 +6,11 @@ import SearchListSection from "../components/SearchListSection";
 import { useProductSuggestions } from "../hooks/useProductSuggestions";
 import ProductSection from "../components/ProductSection";
 import { searchProducts } from "../apis/product";
-
-const RECENT_SEARCHES_STORAGE_KEY = "sott.product.recentSearches";
-
-function getStoredRecentSearches() {
-  const storedSearches = localStorage.getItem(RECENT_SEARCHES_STORAGE_KEY);
-
-  if (!storedSearches) return [];
-
-  try {
-    const recentSearches = JSON.parse(storedSearches);
-
-    return Array.isArray(recentSearches)
-      ? recentSearches.filter((item) => typeof item === "string")
-      : [];
-  } catch {
-    return [];
-  }
-}
+import {
+  addRecentSearch,
+  getStoredRecentSearches,
+  saveRecentSearches,
+} from "../utils/recentSearches";
 
 export default function ProductPage() {
   const [search, setSearch] = useState("");
@@ -34,19 +21,15 @@ export default function ProductPage() {
   const hasKeyword = search.trim().length > 0;
 
   useEffect(() => {
-    localStorage.setItem(
-      RECENT_SEARCHES_STORAGE_KEY,
-      JSON.stringify(recentSearches),
-    );
+    saveRecentSearches(recentSearches);
   }, [recentSearches]);
 
   const getProduct = async (name) => {
     const normalizedName = name.trim();
 
-    setRecentSearches((currentSearches) => [
-      normalizedName,
-      ...currentSearches.filter((item) => item !== normalizedName),
-    ]);
+    setRecentSearches((currentSearches) =>
+      addRecentSearch(currentSearches, normalizedName),
+    );
 
     const data = await searchProducts(normalizedName);
 
