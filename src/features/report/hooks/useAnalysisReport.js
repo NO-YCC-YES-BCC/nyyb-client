@@ -3,9 +3,7 @@ import { getAnalysisDetail, resolveAnalysisErrorStatus } from "../api/analysisAp
 import { getMatchedIngredients } from "../api/reportApi";
 import { getStoredAnalysisResult } from "../../analysis/api/analysisApi";
 
-// 분석 직후 흐름은 /report/result 로 들어온다.
-// POST /analyses 응답에 analysisId 가 없어서 서버 재조회가 불가능하고,
-// sessionStorage 에 담아둔 결과를 그대로 쓴다.
+
 export const FRESH_ANALYSIS_PARAM = "result";
 
 const EMPTY_MATCH = { ingredients: [], allergics: [] };
@@ -34,7 +32,9 @@ export function useAnalysisReport(analysisId) {
             return;
         }
 
-        const productIds = (detail.products ?? []).map((product) => product.productId);
+        const productIds = (detail.products ?? [])
+        .map((product) => product.masterProductId)
+        .filter((id) => id != null);
 
         // 성분 조회 실패는 리포트 전체를 막지 않는다. 주의 성분 섹션만 비어 보인다.
         const matched =

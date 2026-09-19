@@ -102,11 +102,16 @@ export default function RoutineMainPage() {
             <span className={styles.scoreLabel}>{getScoreLabel(score)}</span>
             <p className={styles.scoreReason}>{scoreReason}</p>
           </>
+        ) : isDesigning ? (
+          <div className={styles.scoreLoading}>
+            <span className={styles.scoreSpinner} aria-hidden="true" />
+            <p className={styles.scoreLoadingText}>
+              루틴을 분석하고 있어요. 잠시만 기다려주세요...
+            </p>
+          </div>
         ) : (
           <p className={styles.scoreReason}>
-            {isDesigning
-              ? '루틴을 분석하고 있어요. 잠시만 기다려주세요...'
-              : '루틴을 분석하고 있어요. 잠시 후 다시 확인해주세요.'}
+            점수를 불러오지 못했어요. 잠시 후 다시 확인해주세요.
           </p>
         )}
       </section>

@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../shared/components/Button";
 import { ROUTES } from "../../../shared/constants/routes";
-import { saveStoredCaptureProducts } from "../../capture/api/captureApi";
+import {
+  getStoredCaptureProducts,
+  saveStoredCaptureProducts,
+} from "../../capture/api/captureApi";
 import styles from "../styles/ProductSection.module.css";
 import ProductItem from "./ProductItem";
 import NotFound from "./NotFound";
@@ -10,7 +13,7 @@ import SelectedProduct from "./SelectedProduct";
 
 export default function ProductSection({ products }) {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(() => getStoredCaptureProducts());
   const count = products.length;
 
   const addProduct = (product) => {
