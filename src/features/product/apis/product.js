@@ -1,9 +1,12 @@
 import { apiClient } from "../../../shared/api/client";
 
-export const searchProducts = (keyword) => {
+// 서버가 페이지 단위(기본 20개)로 돌려주므로 page 를 올려가며 이어 받는다.
+export const searchProducts = (keyword, { page = 0, size = 20 } = {}) => {
   const res = apiClient.get("/products", {
     params: {
       keyword,
+      page,
+      size,
     },
   });
 

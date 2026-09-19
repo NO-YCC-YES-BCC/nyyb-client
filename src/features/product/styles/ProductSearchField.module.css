@@ -2,7 +2,15 @@
 .inputField {
   width: 100%;
 
-  position: relative;
+  /* 목록을 내려도 검색창은 화면 위에 붙어 있어 바로 다시 검색할 수 있다 */
+  position: sticky;
+  top: 0;
+  z-index: 6;
+
+  /* 흰 배경이 목록을 가리도록 위아래로 넓히되, 음수 여백으로 원래 간격은 유지한다 */
+  margin-block: -8px;
+  padding-block: 8px;
+  background: #fff;
 }
 
 /* 인풋 */

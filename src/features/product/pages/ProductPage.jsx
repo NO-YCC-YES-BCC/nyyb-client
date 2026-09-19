@@ -6,6 +6,7 @@ import SearchListSection from "../components/SearchListSection";
 import { useProductSuggestions } from "../hooks/useProductSuggestions";
 import ProductSection from "../components/ProductSection";
 import { searchProducts } from "../apis/product";
+import { useProductSearch } from "../hooks/useProductSearch";
 import {
   addRecentSearch,
   getStoredRecentSearches,
@@ -15,7 +16,8 @@ import {
 export default function ProductPage() {
   const [search, setSearch] = useState("");
   const [isShow, setIsShow] = useState(true);
-  const [products, setProducts] = useState("");
+  const { products, hasMore, isLoadingMore, search: runSearch, loadMore } =
+    useProductSearch();
   const [recentSearches, setRecentSearches] = useState(getStoredRecentSearches);
   const { suggestions } = useProductSuggestions(search);
   const hasKeyword = search.trim().length > 0;
@@ -31,9 +33,8 @@ export default function ProductPage() {
       addRecentSearch(currentSearches, normalizedName),
     );
 
-    const data = await searchProducts(normalizedName);
+    await runSearch(normalizedName);
 
-    setProducts(data.data.data);
     setSearch("");
     setIsShow(false);
   };
@@ -60,7 +61,14 @@ export default function ProductPage() {
             <RecentListSection items={recentSearches} onSearch={getProduct} />
           )}
 
-      {products && <ProductSection products={products} />}
+      {products && (
+        <ProductSection
+          products={products}
+          hasMore={hasMore}
+          isLoadingMore={isLoadingMore}
+          onLoadMore={loadMore}
+        />
+      )}
     </main>
   );
 }

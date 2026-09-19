@@ -1,0 +1,27 @@
+.trigger {
+  display: flex;
+  justify-content: center;
+  min-height: 32px;
+  padding-block: 8px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--green-100, #e8efe7);
+  border-top-color: var(--green-300, #b6d780);
+  border-radius: 50%;
+  animation: loadMoreSpin 0.8s linear infinite;
+}
+
+@keyframes loadMoreSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
