@@ -7,8 +7,9 @@ import ProductItem from "../../product/components/ProductItem";
 import ProductSearchField from "../../product/components/ProductSearchField";
 import RecentListSection from "../../product/components/RecentListSection";
 import SearchListSection from "../../product/components/SearchListSection";
-import { searchProducts } from "../../product/apis/product";
 import { useProductSuggestions } from "../../product/hooks/useProductSuggestions";
+import { useProductSearch } from "../../product/hooks/useProductSearch";
+import LoadMoreTrigger from "../../product/components/LoadMoreTrigger";
 import {
   addRecentSearch,
   getStoredRecentSearches,
@@ -26,7 +27,8 @@ export default function PurchaseProductPage() {
 
   const [search, setSearch] = useState("");
   const [isSuggestionOpen, setIsSuggestionOpen] = useState(true);
-  const [products, setProducts] = useState(null);
+  const { products, hasMore, isLoadingMore, search: searchKeyword, loadMore } =
+    useProductSearch();
   const [recentSearches, setRecentSearches] = useState(getStoredRecentSearches);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -44,9 +46,8 @@ export default function PurchaseProductPage() {
       addRecentSearch(currentSearches, normalizedKeyword),
     );
 
-    const response = await searchProducts(normalizedKeyword);
+    await searchKeyword(normalizedKeyword);
 
-    setProducts(response.data.data);
     setSearch("");
     setIsSuggestionOpen(false);
   };
@@ -93,24 +94,32 @@ export default function PurchaseProductPage() {
           <NotFound />
         ) : (
           <section className={styles.resultSection}>
-            <div>
-              <p className={styles.counter}>{products.length}개 찾음</p>
+            {/* 서버가 전체 개수를 주지 않아, 더 불러올 게 남아 있으면 "이상"으로 표시한다 */}
+            <p className={styles.counter}>
+              {hasMore
+                ? `${products.length}개 이상 찾음`
+                : `${products.length}개 찾음`}
+            </p>
 
-              <div className={styles.productList}>
-                {products.map((product) => (
-                  <ProductItem
-                    key={product.productId}
-                    product={product}
-                    selected={
-                      selectedProduct?.productId === product.productId
-                    }
-                    onClick={() => setSelectedProduct(product)}
-                  />
-                ))}
-              </div>
+            <div className={styles.productList}>
+              {products.map((product) => (
+                <ProductItem
+                  key={product.productId}
+                  product={product}
+                  selected={selectedProduct?.productId === product.productId}
+                  onClick={() => setSelectedProduct(product)}
+                />
+              ))}
             </div>
 
-            <div className={styles.buttonBox}>
+            <LoadMoreTrigger
+              hasMore={hasMore}
+              isLoading={isLoadingMore}
+              onLoadMore={loadMore}
+            />
+
+            {/* 목록은 화면 전체로 스크롤하고, 버튼은 하단 네비 위에 고정한다 */}
+            <div className={styles.actionBar}>
               <Button disabled={!selectedProduct} onClick={goToCompare}>
                 구매 예정 제품 분석 진행하기
               </Button>

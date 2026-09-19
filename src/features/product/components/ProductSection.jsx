@@ -10,8 +10,14 @@ import styles from "../styles/ProductSection.module.css";
 import ProductItem from "./ProductItem";
 import NotFound from "./NotFound";
 import SelectedProduct from "./SelectedProduct";
+import LoadMoreTrigger from "./LoadMoreTrigger";
 
-export default function ProductSection({ products }) {
+export default function ProductSection({
+  products,
+  hasMore = false,
+  isLoadingMore = false,
+  onLoadMore,
+}) {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(() => getStoredCaptureProducts());
   const count = products.length;
@@ -49,37 +55,52 @@ export default function ProductSection({ products }) {
 
   return (
     <section className={styles.productSection}>
-      <div>
-        <p className={styles.counter}>{count}개 찾음</p>
-        <div className={styles.productList}>
-          {products.map((product) => (
-            <ProductItem
-              key={product.productId}
-              product={product}
-              selected={selected.some(
-                (selectedProduct) =>
-                  selectedProduct.productId === product.productId,
-              )}
-              onClick={() => addProduct(product)}
-            />
-          ))}
-        </div>
-      </div>
+      {/* 서버가 전체 개수를 주지 않아, 더 불러올 게 남아 있으면 "이상"으로 표시한다 */}
+      <p className={styles.counter}>
+        {hasMore ? `${count}개 이상 찾음` : `${count}개 찾음`}
+      </p>
 
-      <div className={styles.selectedList}>
-        {selected.map((selectedProduct) => (
-          <SelectedProduct
-            key={selectedProduct.productId}
-            product={selectedProduct}
-            onDelete={() => deleteProduct(selectedProduct.productId)}
+      <div className={styles.productList}>
+        {products.map((product) => (
+          <ProductItem
+            key={product.productId}
+            product={product}
+            selected={selected.some(
+              (selectedProduct) =>
+                selectedProduct.productId === product.productId,
+            )}
+            onClick={() => addProduct(product)}
           />
         ))}
       </div>
 
-      <div className={styles.buttonBox}>
-        <Button disabled={selected.length === 0} onClick={handleProceed}>
-          다음으로
-        </Button>
+      <LoadMoreTrigger
+        hasMore={hasMore}
+        isLoading={isLoadingMore}
+        onLoadMore={onLoadMore}
+      />
+
+      {/* 목록은 화면 전체로 스크롤하고, 선택한 제품과 버튼은 하단 네비 위에 고정한다 */}
+      <div className={styles.actionBar}>
+        {selected.length > 0 && (
+          <div className={styles.selectedList}>
+            {selected.map((selectedProduct) => (
+              <SelectedProduct
+                key={selectedProduct.productId}
+                product={selectedProduct}
+                onDelete={() => deleteProduct(selectedProduct.productId)}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className={styles.buttonBox}>
+          <Button disabled={selected.length === 0} onClick={handleProceed}>
+            {selected.length > 0
+              ? `${selected.length}개 선택 · 다음으로`
+              : "다음으로"}
+          </Button>
+        </div>
       </div>
     </section>
   );
