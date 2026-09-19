@@ -66,7 +66,7 @@ export default function KakaoLoginPage() {
           disabled={isTestLoginLoading}
           onClick={handleTestLogin}
         >
-          {isTestLoginLoading ? "로그인 중..." : "테스트 계정으로 로그인"}
+          {isTestLoginLoading ? "로그인 중..." : "게스트 계정으로 로그인"}
         </Button>
       </div>
     </div>

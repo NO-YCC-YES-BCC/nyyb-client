@@ -15,7 +15,7 @@ export default function ProductItem({ product, selected = false, onClick }) {
         <div className={styles.textBox}>
           <h3 className={styles.name}>{product.name}</h3>
           <div className={styles.descrptionBox}>
-            <p className={styles.descrptionText}>{product.categoryMain}</p>
+            <p className={styles.descrptionText}>{product.categorySub}</p>
             <p className={styles.descrptionText}>
               성분 {product.ingredientCount}개
             </p>
